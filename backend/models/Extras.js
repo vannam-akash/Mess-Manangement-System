@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-//SCHEMA
+// Schema
 const extrasSchema = new mongoose.Schema({
   student: {
     type: mongoose.Types.ObjectId,
@@ -19,7 +19,7 @@ const extrasSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  mealType: {
+  takenDuring: {
     type: String,
     enum: ["breakfast", "lunch", "dinner"],
     required: true,
@@ -28,7 +28,7 @@ const extrasSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
     required: true,
-  },
+  }
   //Paid or Not as type:boolean later?
 });
 

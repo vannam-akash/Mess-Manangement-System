@@ -33,7 +33,7 @@ const messSchema = new mongoose.Schema({
     ref: "Staff",
     required: true,
   },
-  staffs: [
+  staff: [
     {
       type: mongoose.Types.ObjectId,
       ref: "Staff",

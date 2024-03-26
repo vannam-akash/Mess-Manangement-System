@@ -1,27 +1,11 @@
 const mongoose = require("mongoose");
 
-//SCHEMA
+// Schema
 const messSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
   },
-  totalStudentsEnrolled: {
-    type: Number,
-    required: true,
-  },
-  manager: {
-    type: mongoose.Types.ObjectId,
-    ref: "Staff",
-    required: true,
-  },
-  staffs: [
-    {
-      type: mongoose.Types.ObjectId,
-      ref: "Staff",
-      required: true,
-    },
-  ],
   hostel: {
     type: String,
     required: true,
@@ -40,6 +24,22 @@ const messSchema = new mongoose.Schema({
       required: true,
     },
   },
+  totalStudents: {
+    type: Number,
+    required: true,
+  },
+  manager: {
+    type: mongoose.Types.ObjectId,
+    ref: "Staff",
+    required: true,
+  },
+  staffs: [
+    {
+      type: mongoose.Types.ObjectId,
+      ref: "Staff",
+      required: true,
+    },
+  ]
 });
 
 const messModel = mongoose.model("Mess", messSchema);

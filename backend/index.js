@@ -1,22 +1,22 @@
+require("dotenv").config();
+const mongoConnect = require("./db");
 const express = require("express");
 const cors = require("cors");
-const mongoConnect = require("./db");
-require("dotenv").config();
 
-const port = process.env.PORT || 8002;
-
-//Mongo Connection
+// Mongo Connection
 mongoConnect();
 const app = express();
+const port = process.env.PORT || 8765;
 
 app.use(cors());
 app.use(express.json());
 
+// Routes
 app.get("/", (req, res) => {
-  res.send("Hello Bitches");
+  res.send("Hey Hi!");
 });
 
-//SERVER
+// Server
 app.listen(port, () => {
   console.log("Running on Port:" + port);
 });

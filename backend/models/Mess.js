@@ -24,7 +24,7 @@ const messSchema = new mongoose.Schema({
       required: true,
     },
   },
-  totalStudents: {
+  totalStudentsEnrolled: {
     type: Number,
     required: true,
   },

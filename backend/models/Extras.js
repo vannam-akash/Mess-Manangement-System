@@ -5,31 +5,35 @@ const extrasSchema = new mongoose.Schema({
   student: {
     type: mongoose.Types.ObjectId,
     ref: "Student",
-    required: true,
+    required: true
   },
   dish: {
     type: String,
-    required: true,
+    required: true
   },
   price: {
     type: Number,
-    required: true,
+    required: true
   },
   quantity: {
     type: Number,
-    required: true,
+    required: true
   },
-  takenDuring: {
+  duringMeal: {
     type: String,
     enum: ["breakfast", "lunch", "dinner"],
-    required: true,
+    required: true
   },
   date: {
     type: Date,
     default: Date.now,
-    required: true,
+    required: true
+  },
+  paid: {
+    type: Boolean,
+    default: false,
+    required: true
   }
-  //Paid or Not as type:boolean later?
 });
 
 const extrasModel = mongoose.model("Extras", extrasSchema);

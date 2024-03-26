@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-//SCHEMA
+// Schema
 const studentSchema = new mongoose.Schema({
   fullName: {
     type: String,
@@ -16,6 +16,11 @@ const studentSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
+  password: {
+    type: String,
+    required: true,
+    private: true,
+  },
   phoneNo: {
     type: String,
     required: true,
@@ -30,19 +35,13 @@ const studentSchema = new mongoose.Schema({
     ref: "Mess",
     required: true,
   },
-
-  password: {
-    type: String,
-    required: true,
-    private: true,
-  },
   extrasTaken: [
     {
       type: mongoose.Types.ObjectId,
       ref: "Extras",
       required: false,
     },
-  ],
+  ]
 });
 
 const studentModel = mongoose.model("Student", studentSchema);

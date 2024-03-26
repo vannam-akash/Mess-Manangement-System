@@ -21,11 +21,6 @@ const studentSchema = new mongoose.Schema({
     required: true,
     private: true,
   },
-  phoneNo: {
-    type: String,
-    required: true,
-    unique: true,
-  },
   hostel: {
     type: String,
     required: true,

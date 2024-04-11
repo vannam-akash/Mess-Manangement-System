@@ -3,9 +3,9 @@ const mongoose = require("mongoose");
 const mongoConnect = async () => {
   mongoose.connect(
       "mongodb+srv://" +
-       process.env.mongo_username +
+       process.env.MONGO_USERNAME +
       ":" +
-       process.env.mongo_password +
+       process.env.MONGO_PASSWORD +
       "@cluster0.amuso8q.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
     )
     .then(() => {

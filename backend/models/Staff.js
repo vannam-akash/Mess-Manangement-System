@@ -8,7 +8,7 @@ const staffSchema = new mongoose.Schema({
     required: true,
   },
   image: {
-    type: String
+    type: String,
   },
   fullName: {
     type: String,
@@ -18,7 +18,12 @@ const staffSchema = new mongoose.Schema({
     type: String,
     required: true,
     unique: true,
-  }
+  },
+  password: {
+    type: String,
+    required: true,
+    private: true,
+  },
 });
 
 const staffModel = mongoose.model("Staff", staffSchema);

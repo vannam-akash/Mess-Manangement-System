@@ -36,7 +36,24 @@ const studentSchema = new mongoose.Schema({
       ref: "Extras",
       required: false,
     },
-  ]
+  ],
+  mealLogs: {
+    type: [[Number]],
+    default: () => {
+      const days = 30;
+      const meals = 3;
+      mealLogsArray = [];
+      for (let i = 0; i < days; i++) {
+        mealLogsArray[i] = [];
+
+        for (let j = 0; j < meals; j++) {
+          mealLogsArray[i][j] = -1;
+        }
+        
+      }
+      return mealLogsArray;
+    },
+  },
 });
 
 const studentModel = mongoose.model("Student", studentSchema);

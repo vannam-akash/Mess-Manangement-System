@@ -19,11 +19,6 @@ const extrasSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
-  duringMeal: {
-    type: String,
-    enum: ["breakfast", "lunch", "dinner"],
-    required: true
-  },
   date: {
     type: Date,
     default: Date.now,

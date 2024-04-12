@@ -28,6 +28,18 @@ const messSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  manager: {
+    type: mongoose.Types.ObjectId,
+    ref: "Staff",
+    required: true,
+  },
+  staffs: [
+    {
+      type: mongoose.Types.ObjectId,
+      ref: "Staff",
+      required: true,
+    },
+  ]
 });
 
 const messModel = mongoose.model("Mess", messSchema);

@@ -24,6 +24,11 @@ const staffSchema = new mongoose.Schema({
     required: true,
     private: true,
   },
+  isManager: {
+    type: Boolean,
+    required: true,
+    default: false,
+  },
 });
 
 const staffModel = mongoose.model("Staff", staffSchema);

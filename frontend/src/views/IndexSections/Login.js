@@ -97,8 +97,8 @@ class Login extends React.Component {
                         >
                           <span className="btn-inner--icon mr-1">
                             <img
-                              alt="..."
-                              src={require("assets/img/icons/common/github.svg")}
+                              alt="git"
+                              src={require("assets/img/icons/common/github.svg").default}
                             />
                           </span>
                           <span className="btn-inner--text">Github</span>
@@ -112,7 +112,7 @@ class Login extends React.Component {
                           <span className="btn-inner--icon mr-1">
                             <img
                               alt="..."
-                              src={require("assets/img/icons/common/google.svg")}
+                              src={require("assets/img/icons/common/google.svg").default}
                             />
                           </span>
                           <span className="btn-inner--text">Google</span>

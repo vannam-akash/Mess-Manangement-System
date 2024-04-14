@@ -31,13 +31,13 @@ const messSchema = new mongoose.Schema({
   manager: {
     type: mongoose.Types.ObjectId,
     ref: "Staff",
-    required: true,
+    // required: true,
   },
   staffs: [
     {
       type: mongoose.Types.ObjectId,
       ref: "Staff",
-      required: true,
+      // required: true,
     },
   ]
 });

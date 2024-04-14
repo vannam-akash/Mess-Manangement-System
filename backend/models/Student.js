@@ -28,7 +28,7 @@ const studentSchema = new mongoose.Schema({
   messEnrolled: {
     type: mongoose.Types.ObjectId,
     ref: "Mess",
-    required: true,
+    // required: true,
   },
   extrasTaken: [
     {

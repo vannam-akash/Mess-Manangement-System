@@ -3,7 +3,7 @@ const mongoConnect = require("./db");
 const express = require("express");
 const cors = require("cors");
 const authRoutes = require("./routes/auth");
-const studentRoutes = require("./routes/student")
+const studentRoutes = require("./routes/student");
 // Mongo Connection
 mongoConnect();
 const app = express();
@@ -17,8 +17,8 @@ app.get("/", (req, res) => {
   res.send("Hey Hi!");
 });
 
-app.use("/auth",authRoutes);
-app.use("/student",studentRoutes);
+app.use("/auth", authRoutes);
+app.use("/students", studentRoutes);
 
 // Server
 app.listen(port, () => {

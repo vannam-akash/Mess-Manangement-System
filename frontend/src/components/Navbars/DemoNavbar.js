@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import Headroom from "headroom.js";
 import {
   Button,
@@ -14,6 +14,7 @@ import {
   Container,
   Row,
   Col,
+  NavItem,
 } from "reactstrap";
 
 const DemoNavbar = () => {
@@ -37,7 +38,7 @@ const DemoNavbar = () => {
   const toggleCollapse = () => {
     setCollapseOpen(!collapseOpen);
   };
-  
+
   const handleAuthClick = () => {
     navigate("/login-page");
   };
@@ -93,10 +94,7 @@ const DemoNavbar = () => {
                   </Col>
                 </Row>
               </div>
-              <Nav
-                className="navbar-nav-hover align-items-lg-center"
-                navbar
-              >
+              <Nav className="navbar-nav-hover align-items-lg-center" navbar>
                 <UncontrolledDropdown nav>
                   <DropdownToggle nav>
                     <i className="ni ni-collection d-lg-none mr-1" />
@@ -127,9 +125,19 @@ const DemoNavbar = () => {
                   type="button"
                   onClick={handleAuthClick}
                 >
-                  <i className="fa fa-sign-in" /><span/>
-                  Login
+                  <i className="fa fa-sign-in" />
+                  <span />
+                  SIGN IN
                 </Button>
+                <NavItem>
+                  <NavLink
+                    to="/student-profile"
+                    className="text-white ml-4"
+                    color="link"
+                  >
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                  </NavLink>
+                </NavItem>
               </Nav>
             </UncontrolledCollapse>
           </Container>

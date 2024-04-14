@@ -10,11 +10,14 @@ import {
   UncontrolledDropdown,
   NavbarBrand,
   Navbar,
+  NavItem,
+  NavLink,
   Nav,
   Container,
   Row,
   Col,
 } from "reactstrap";
+
 
 const DemoNavbar = () => {
   const [collapseClasses, setCollapseClasses] = useState("");
@@ -37,7 +40,7 @@ const DemoNavbar = () => {
   const toggleCollapse = () => {
     setCollapseOpen(!collapseOpen);
   };
-  
+
   const handleAuthClick = () => {
     navigate("/login-page");
   };
@@ -97,13 +100,14 @@ const DemoNavbar = () => {
                 className="navbar-nav-hover align-items-lg-center"
                 navbar
               >
+
                 <UncontrolledDropdown nav>
                   <DropdownToggle nav>
                     <i className="ni ni-collection d-lg-none mr-1" />
                     <span className="nav-link-inner--text">Examples</span>
                   </DropdownToggle>
                   <DropdownMenu>
-                    <DropdownItem to="/landing-page" tag={Link}>
+                    <DropdownItem to="/" tag={Link}>
                       Landing
                     </DropdownItem>
                     <DropdownItem to="/profile-page" tag={Link}>
@@ -117,6 +121,12 @@ const DemoNavbar = () => {
                     </DropdownItem>
                   </DropdownMenu>
                 </UncontrolledDropdown>
+
+                <NavItem>
+                  <NavLink to="/mess-bill" tag={Link}>
+                    Mess Bill
+                  </NavLink>
+                </NavItem>
               </Nav>
               <Nav
                 className="navbar-nav-hover align-items-lg-center ml-lg-auto"
@@ -127,7 +137,7 @@ const DemoNavbar = () => {
                   type="button"
                   onClick={handleAuthClick}
                 >
-                  <i className="fa fa-sign-in" /><span/>
+                  <i className="fa fa-sign-in" /><span />
                   Login
                 </Button>
               </Nav>

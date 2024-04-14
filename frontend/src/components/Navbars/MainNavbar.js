@@ -17,8 +17,9 @@ import {
   Col,
 } from "reactstrap";
 
+const studentId = process.env.REACT_APP_STUDENTID;
 
-const DemoNavbar = () => {
+const MainNavbar = () => {
   const [collapseClasses, setCollapseClasses] = useState("");
   const [collapseOpen, setCollapseOpen] = useState(false);
   const navigate = useNavigate();
@@ -138,11 +139,11 @@ const DemoNavbar = () => {
                 </Button>
                 <NavItem>
                   <NavLink
-                    to="/student-profile"
+                    to={`/students/${studentId}`}
                     className="text-white ml-4"
                     color="link"
                   >
-                    <i class="fa fa-user" aria-hidden="true"></i>
+                    <i className="fa fa-user" aria-hidden="true"></i>
                   </NavLink>
                 </NavItem>
               </Nav>
@@ -154,4 +155,4 @@ const DemoNavbar = () => {
   );
 };
 
-export default DemoNavbar;
+export default MainNavbar;

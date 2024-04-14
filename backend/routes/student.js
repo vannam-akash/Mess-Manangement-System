@@ -9,7 +9,6 @@ router.get("/:studentId", async (req, res) => {
     const { studentId } = req.params;
 
     const student = await Student.findById(studentId);
-    console.log(student);
     
     if (!student) {
       return res.status(404).json({ error: "Student not found" });

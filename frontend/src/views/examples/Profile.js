@@ -21,8 +21,8 @@ import React, { useEffect, useRef } from "react";
 import { Button, Card, Container, Row, Col } from "reactstrap";
 
 // core components
-import DemoNavbar from "components/Navbars/DemoNavbar.js";
-import SimpleFooter from "components/Footers/SimpleFooter.js";
+import MainNavbar from "components/Navbars/MainNavbar.js";
+import MainFooter from "components/Footers/MainFooter.js";
 
 function Profile() {
   const mainRef = useRef();
@@ -35,7 +35,7 @@ function Profile() {
 
   return (
     <>
-      <DemoNavbar />
+      <MainNavbar />
       <main className="profile-page" ref={mainRef}>
         <section className="section-profile-cover section-shaped my-0">
           {/* Circles background */}
@@ -162,7 +162,7 @@ function Profile() {
           </Container>
         </section>
       </main>
-      <SimpleFooter />
+      <MainFooter />
     </>
   );
 }

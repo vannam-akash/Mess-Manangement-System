@@ -1,12 +1,8 @@
 import React, { useEffect, useRef } from "react";
-import {useLoaderData } from "react-router-dom";
+import {useLoaderData} from "react-router-dom";
 
 // reactstrap components
 import {Card, Container} from "reactstrap";
-
-// core components
-import DemoNavbar from "components/Navbars/DemoNavbar.js";
-import SimpleFooter from "components/Footers/SimpleFooter.js";
 
 // functions
 import { fetchStudentDetails } from "../../http";
@@ -14,7 +10,6 @@ import { fetchStudentDetails } from "../../http";
 function StudentProfile() {
   const mainRef = useRef();
   const student = useLoaderData();
-  console.log(student);
 
   useEffect(() => {
     document.documentElement.scrollTop = 0;
@@ -24,7 +19,6 @@ function StudentProfile() {
 
   return (
     <>
-      <DemoNavbar />
       <main className="profile-page" ref={mainRef}>
         <section className="section-profile-cover section-shaped my-0">
           {/* Circles background */}
@@ -86,14 +80,13 @@ function StudentProfile() {
           </Container>
         </section>
       </main>
-      <SimpleFooter />
     </>
   );
 }
 
-export async function studentProfileLoader() {
-  const stud = await fetchStudentDetails("661b9b81f4720aa5ca332646");
-  console.log(stud);
+export async function studentProfileLoader({request:req, params}) {
+  const {id} = params;
+  const stud = await fetchStudentDetails(id);
   return stud;
 }
 

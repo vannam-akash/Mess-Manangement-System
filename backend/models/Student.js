@@ -45,11 +45,9 @@ const studentSchema = new mongoose.Schema({
       mealLogsArray = [];
       for (let i = 0; i < days; i++) {
         mealLogsArray[i] = [];
-
         for (let j = 0; j < meals; j++) {
-          mealLogsArray[i][j] = -1;
+          mealLogsArray[i][j] = 1;
         }
-        
       }
       return mealLogsArray;
     },

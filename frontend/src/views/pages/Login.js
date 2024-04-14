@@ -14,8 +14,6 @@ import {
   Row,
   Col,
 } from "reactstrap";
-import DemoNavbar from "components/Navbars/DemoNavbar";
-import SimpleFooter from "components/Footers/SimpleFooter";
 import styles from "./Login.module.css";
 
 const Login = () => {
@@ -34,7 +32,6 @@ const Login = () => {
 
   return (
     <>
-      <DemoNavbar />
       <main ref={mainRef}>
         <section className="section section-shaped section-lg">
           <div className="shape shape-style-1 bg-gradient-primary">
@@ -145,7 +142,6 @@ const Login = () => {
           </Container>
         </section>
       </main>
-      <SimpleFooter />
     </>
   );
 };

@@ -30,7 +30,7 @@ import {
 } from "reactstrap";
 
 
-function SimpleFooter(){
+function MainFooter(){
   return (
     <>
       <footer className=" footer">
@@ -160,4 +160,4 @@ function SimpleFooter(){
   );
 }
 
-export default SimpleFooter;
+export default MainFooter;

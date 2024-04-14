@@ -10,12 +10,13 @@ import {
   UncontrolledDropdown,
   NavbarBrand,
   Navbar,
+  NavItem,
   Nav,
   Container,
   Row,
   Col,
-  NavItem,
 } from "reactstrap";
+
 
 const DemoNavbar = () => {
   const [collapseClasses, setCollapseClasses] = useState("");
@@ -101,7 +102,7 @@ const DemoNavbar = () => {
                     <span className="nav-link-inner--text">Examples</span>
                   </DropdownToggle>
                   <DropdownMenu>
-                    <DropdownItem to="/landing-page" tag={Link}>
+                    <DropdownItem to="/" tag={Link}>
                       Landing
                     </DropdownItem>
                     <DropdownItem to="/profile-page" tag={Link}>
@@ -115,6 +116,12 @@ const DemoNavbar = () => {
                     </DropdownItem>
                   </DropdownMenu>
                 </UncontrolledDropdown>
+
+                <NavItem className="text-white">
+                  <NavLink to="/mess-bill" tag={Link} className="text-white">
+                    Mess Bill
+                  </NavLink>
+                </NavItem>
               </Nav>
               <Nav
                 className="navbar-nav-hover align-items-lg-center ml-lg-auto"

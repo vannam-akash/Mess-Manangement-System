@@ -13,6 +13,7 @@ import Login from "views/examples/Login.js";
 import Profile from "views/examples/Profile.js";
 import Register from "views/examples/Register.js";
 import StudentProfile,{ studentProfileLoader} from "views/examples/StudentProfile";
+import MessBill from "views/examples/MessBill";
 
 const root = createRoot(document.getElementById("root"));
 const queryClient = new QueryClient();
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
   {
     path: "/register-page",
     element: <Register />,
+  },
+  {
+    path: "/mess-bill",
+    element: <MessBill />,
   },
   {
     path: "*",

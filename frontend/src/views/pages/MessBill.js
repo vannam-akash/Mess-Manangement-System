@@ -1,11 +1,15 @@
 import React, { useEffect, useRef } from "react";
-import DemoNavbar from "components/Navbars/DemoNavbar";
-import SimpleFooter from "components/Footers/SimpleFooter";
 import MessTable from "components/Tables/MessTable";
 import "../../components/Tables/MessTable.css"
+import { useLoaderData} from "react-router-dom";
+import { fetchStudentDetails } from "http";
+
+const studentId = process.env.REACT_APP_STUDENTID;
 
 const MessBill = () => {
   const mainRef = useRef();
+  const student = useLoaderData();
+  console.log(student);
 
   useEffect(() => {
     document.documentElement.scrollTop = 0;
@@ -13,18 +17,8 @@ const MessBill = () => {
     mainRef.current.scrollTop = 0;
   }, []);
 
-  // Sample student data
-  const studentData = {
-    name: "BKL Akash Vannam",
-    rollNo: "21135011",
-    month: "April",
-    year: "2024",
-  };
-
   return (
     <>
-
-      <DemoNavbar />
       <section className="section section-shaped section-lg">
           <div className="shape shape-style-1 bg-gradient-primary">
             <span />
@@ -40,22 +34,24 @@ const MessBill = () => {
         <section className="section section-shaped section-lg">
           <div >
             <p className="student-info">
-              <b>Student Name:</b> {studentData.name}
+              <b>Student Name:</b> {student.fullName}
               <br />
-              <b>Roll No.:</b> {studentData.rollNo}
+              <b>Roll No.:</b> {student.rollNo}
               <br />
-              <b>Month:</b> {studentData.month},
-              {/* <br /> */}
-              {studentData.year}
+              <b>Month:</b> {"April"}, {"2024"}
             </p>
           </div>
-          <MessTable />
+          <MessTable mealTable={student.mealLogs} />
         </section>
       </main>
       </section>
-      <SimpleFooter />
     </>
   );
 };
+
+export async function messBillLoader() {
+  const stud = fetchStudentDetails(studentId);
+  return stud;
+}
 
 export default MessBill;

@@ -41,7 +41,8 @@ const studentSchema = new mongoose.Schema({
   bill: {
     type: mongoose.Types.ObjectId,
     ref: "Bill",
-  },
+
+  }
 });
 
 const studentModel = mongoose.model("Student", studentSchema);

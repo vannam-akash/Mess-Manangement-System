@@ -35,8 +35,8 @@ import {
 } from "reactstrap";
 
 // core components
-import DemoNavbar from "components/Navbars/DemoNavbar.js";
-import SimpleFooter from "components/Footers/SimpleFooter.js";
+import MainNavbar from "components/Navbars/MainNavbar.js";
+import MainFooter from "components/Footers/MainFooter.js";
 
 function Register(){
   const mainRef = useRef();
@@ -48,7 +48,7 @@ function Register(){
 
   return (
     <>
-      <DemoNavbar />
+      <MainNavbar />
       <main ref={mainRef}>
         <section className="section section-shaped section-lg">
           <div className="shape shape-style-1 bg-gradient-default">
@@ -195,7 +195,7 @@ function Register(){
           </Container>
         </section>
       </main>
-      <SimpleFooter />
+      <MainFooter />
     </>
   );
 }

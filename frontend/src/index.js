@@ -9,11 +9,12 @@ import "assets/scss/argon-design-system-react.scss?v1.1.0";
 
 import Index from "views/Index.js";
 import Landing from "views/examples/Landing.js";
-import Login from "views/examples/Login.js";
+import Login from "views/pages/Login.js";
 import Profile from "views/examples/Profile.js";
 import Register from "views/examples/Register.js";
-import StudentProfile,{ studentProfileLoader} from "views/examples/StudentProfile";
-import MessBill from "views/examples/MessBill";
+import StudentProfile,{ studentProfileLoader} from "views/pages/StudentProfile";
+import MessBill,{ messBillLoader } from "views/pages/MessBill";
+import Root from "views/layouts/Root";
 
 const root = createRoot(document.getElementById("root"));
 const queryClient = new QueryClient();
@@ -21,32 +22,45 @@ const queryClient = new QueryClient();
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Index />,
-  },
-  {
-    path: "/landing-page",
-    element: <Landing />,
-  },
-  {
-    path: "/student-profile",
-    element: <StudentProfile />,
-    loader: studentProfileLoader,
-  },
-  {
-    path: "/login-page",
-    element: <Login />,
-  },
-  {
-    path: "/profile-page",
-    element: <Profile />,
-  },
-  {
-    path: "/register-page",
-    element: <Register />,
-  },
-  {
-    path: "/mess-bill",
-    element: <MessBill />,
+    element: <Root />,
+    children:[
+      {
+        index: true,
+        element: <Index/>
+      },
+      {
+        path: "students",
+        children:[
+          {
+            path: ":id",
+            id: "student-profile",
+            element: <StudentProfile />,
+            loader: studentProfileLoader,
+          },
+        ]
+      },
+      {
+        path: "login-page",
+        element: <Login />,
+      },
+      {
+        path: "landing-page",
+        element: <Landing />,
+      },
+      {
+        path: "profile-page",
+        element: <Profile />,
+      },
+      {
+        path: "register-page",
+        element: <Register />,
+      },
+      {
+        path: "mess-bill",
+        element: <MessBill />,
+        loader: messBillLoader
+      },
+    ]
   },
   {
     path: "*",

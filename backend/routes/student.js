@@ -24,7 +24,7 @@ router.get(
       return res.status(500).json({ error: "Internal Server Error" });
     }
   }
-);
+};
 
 // Get students with unassigned mess
 router.get(

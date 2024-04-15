@@ -20,10 +20,6 @@ import React, { useEffect, useRef } from "react";
 // reactstrap components
 import { Container, Row } from "reactstrap";
 
-// core components
-import DemoNavbar from "components/Navbars/DemoNavbar.js";
-import CardsFooter from "components/Footers/CardsFooter.js";
-
 // index page sections
 import Hero from "./IndexSections/Hero.js";
 import Buttons from "./IndexSections/Buttons.js";
@@ -46,8 +42,6 @@ import Icons from "./IndexSections/Icons.js";
 import Login from "./IndexSections/Login.js";
 import Download from "./IndexSections/Download.js";
 
-// import MessBill from "../components/Tables/MessTable.js"
-
 function Index() {
   const mainRef = useRef();
   
@@ -59,7 +53,6 @@ function Index() {
 
   return (
     <>
-      <DemoNavbar />
       <main ref={mainRef}>
         <Hero />
         <Buttons />
@@ -94,7 +87,6 @@ function Index() {
         <Login />
         <Download />
       </main>
-      <CardsFooter />
     </>
   );
 }

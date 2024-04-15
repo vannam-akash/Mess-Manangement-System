@@ -18,21 +18,20 @@ const mongoConnect = async () => {
       }
     );
     console.log("Successfully connected to MongoDB!");
+    const db = mongoose.connection;
 
-    
-    // const db = mongoose.connection;
     // db.once("open", async () => {
     //   try {
-    //     // Insert seed data into the collection
-    //     await db.dropDatabase();
-    //     await Student.insertMany(studs);
-    //     await Mess.insertMany(messes);
-    //     await Staff.insertMany(staffs);
-    //     console.log("Student, Mess, Staff data inserted successfully");
+    // Insert seed data into the collection
+    // await db.dropDatabase();
+    // await Student.insertMany(studs);
+    // await Mess.insertMany(messes);
+    // await Staff.insertMany(staffs);
+    // console.log("Student, Mess, Staff data inserted successfully");
     //   } catch (err) {
     //     console.error("Error seeding student data:", err);
     //   } finally {
-    //     // Close the connection
+    // Close the connection
     //     mongoose.disconnect();
     //   }
     // });

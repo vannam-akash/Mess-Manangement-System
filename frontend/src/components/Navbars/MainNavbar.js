@@ -123,6 +123,16 @@ const MainNavbar = () => {
                     Mess Bill
                   </NavLink>
                 </NavItem>
+                <NavItem className="text-white">
+                  <NavLink to="/staffProfile-page" tag={Link} className="text-white mr-2">
+                    Staff Profile
+                  </NavLink>
+                </NavItem>
+                <NavItem className="text-white">
+                  <NavLink to="/canceled-meal" tag={Link} className="text-white">
+                    Cancel a Meal
+                  </NavLink>
+                </NavItem>
               </Nav>
               <Nav
                 className="navbar-nav-hover align-items-lg-center ml-lg-auto"

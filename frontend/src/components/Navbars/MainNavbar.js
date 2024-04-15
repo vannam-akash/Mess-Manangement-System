@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import Headroom from "headroom.js";
 import {
   Button,
@@ -11,15 +11,15 @@ import {
   NavbarBrand,
   Navbar,
   NavItem,
-  NavLink,
   Nav,
   Container,
   Row,
   Col,
 } from "reactstrap";
 
+const studentId = process.env.REACT_APP_STUDENTID;
 
-const DemoNavbar = () => {
+const MainNavbar = () => {
   const [collapseClasses, setCollapseClasses] = useState("");
   const [collapseOpen, setCollapseOpen] = useState(false);
   const navigate = useNavigate();
@@ -96,11 +96,7 @@ const DemoNavbar = () => {
                   </Col>
                 </Row>
               </div>
-              <Nav
-                className="navbar-nav-hover align-items-lg-center"
-                navbar
-              >
-
+              <Nav className="navbar-nav-hover align-items-lg-center" navbar>
                 <UncontrolledDropdown nav>
                   <DropdownToggle nav>
                     <i className="ni ni-collection d-lg-none mr-1" />
@@ -122,8 +118,8 @@ const DemoNavbar = () => {
                   </DropdownMenu>
                 </UncontrolledDropdown>
 
-                <NavItem>
-                  <NavLink to="/mess-bill" tag={Link}>
+                <NavItem className="text-white">
+                  <NavLink to="/mess-bill" tag={Link} className="text-white">
                     Mess Bill
                   </NavLink>
                 </NavItem>
@@ -137,9 +133,19 @@ const DemoNavbar = () => {
                   type="button"
                   onClick={handleAuthClick}
                 >
-                  <i className="fa fa-sign-in" /><span />
-                  Login
+                  <i className="fa fa-sign-in" />
+                  <span />
+                  SIGN IN
                 </Button>
+                <NavItem>
+                  <NavLink
+                    to={`/students/${studentId}`}
+                    className="text-white ml-4"
+                    color="link"
+                  >
+                    <i className="fa fa-user" aria-hidden="true"></i>
+                  </NavLink>
+                </NavItem>
               </Nav>
             </UncontrolledCollapse>
           </Container>
@@ -149,4 +155,4 @@ const DemoNavbar = () => {
   );
 };
 
-export default DemoNavbar;
+export default MainNavbar;

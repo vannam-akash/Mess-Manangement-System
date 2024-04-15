@@ -31,15 +31,22 @@ const messSchema = new mongoose.Schema({
   manager: {
     type: mongoose.Types.ObjectId,
     ref: "Staff",
-    required: true,
+    // required: true,
   },
   staffs: [
     {
       type: mongoose.Types.ObjectId,
       ref: "Staff",
-      required: true,
+      // required: true,
     },
-  ]
+  ],
+  students: [
+    {
+      type: mongoose.Types.ObjectId,
+      ref: "Student",
+      // required: true,
+    },
+  ],
 });
 
 const messModel = mongoose.model("Mess", messSchema);

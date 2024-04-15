@@ -24,11 +24,6 @@ const extrasSchema = new mongoose.Schema({
     default: Date.now,
     required: true
   },
-  paid: {
-    type: Boolean,
-    default: false,
-    required: true
-  }
 });
 
 const extrasModel = mongoose.model("Extras", extrasSchema);

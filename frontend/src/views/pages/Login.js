@@ -14,12 +14,11 @@ import {
   Row,
   Col,
 } from "reactstrap";
-import DemoNavbar from "components/Navbars/DemoNavbar";
-import SimpleFooter from "components/Footers/SimpleFooter";
+import styles from "./Login.module.css";
 
 const Login = () => {
   const mainRef = useRef();
-  const [loginType, setLoginType] = useState("Manager"); // Default to Manager login
+  const [loginType, setLoginType] = useState("staff"); // Default to Manager login
 
   const handleLoginType = (type) => {
     setLoginType(type);
@@ -33,7 +32,6 @@ const Login = () => {
 
   return (
     <>
-      <DemoNavbar />
       <main ref={mainRef}>
         <section className="section section-shaped section-lg">
           <div className="shape shape-style-1 bg-gradient-primary">
@@ -51,38 +49,41 @@ const Login = () => {
               <Col lg="5">
                 <Card className="bg-secondary shadow border-0">
                   <CardHeader className="bg-white pb-5">
-                    <div className="text-muted text-center mb-3">
+                    <div className="text-center mb-3">
                       <small>Sign in as</small>
                     </div>
                     <div className="btn-wrapper text-center">
                       <Button
                         className={
-                          loginType === "Manager" ? "btn-1" : "btn-neutral"
+                          loginType === "staff" ? "btn-1" : "btn-neutral"
                         }
-                        color={loginType === "Manager" ? "primary" : "default"}
+                        color={loginType === "staff" ? "primary" : "default"}
                         href="#pablo"
-                        onClick={() => handleLoginType("Manager")}
+                        onClick={() => handleLoginType("staff")}
                       >
-                        <span className="btn-inner--text">Mess Manager</span>
+                        <span className="btn-inner--text">Mess Staff</span>
                       </Button>
                       <Button
-                        color={loginType === "Student" ? "primary" : "default"}
+                        color={loginType === "student" ? "primary" : "default"}
                         className={
-                          loginType === "Student" ? "bnt-1" : "btn-neutral"
+                          loginType === "student" ? "bnt-1" : "btn-neutral"
                         }
                         href="#pablo"
-                        onClick={() => handleLoginType("Student")}
+                        onClick={() => handleLoginType("student")}
                       >
                         <span className="btn-inner--text">Student</span>
                       </Button>
                     </div>
                   </CardHeader>
                   <CardBody className="px-lg-5 py-lg-5">
-                    <div className="text-center text-muted mb-4">
-                      <small>{loginType === "Manager"? "Manager":"Student"} credentials</small>
+                    <div className="text-center mb-4">
+                      <small>
+                        {loginType === "staff" ? "Mess Staff" : "Student"}{" "}
+                        credentials
+                      </small>
                     </div>
                     <Form role="form">
-                      {loginType === "Manager" && (
+                      {loginType === "staff" && (
                         <FormGroup className="mb-3">
                           <InputGroup className="input-group-alternative">
                             <InputGroupAddon addonType="prepend">
@@ -90,11 +91,15 @@ const Login = () => {
                                 <i className="fa fa-phone" />
                               </InputGroupText>
                             </InputGroupAddon>
-                            <Input placeholder="Phone Number" type="number" />
+                            <Input
+                              className={styles.input}
+                              placeholder="Phone Number"
+                              inputMode="numeric"
+                            />
                           </InputGroup>
                         </FormGroup>
                       )}
-                      {loginType === "Student" && (
+                      {loginType === "student" && (
                         <FormGroup className="mb-3">
                           <InputGroup className="input-group-alternative">
                             <InputGroupAddon addonType="prepend">
@@ -102,7 +107,11 @@ const Login = () => {
                                 <i className="fa fa-address-card" />
                               </InputGroupText>
                             </InputGroupAddon>
-                            <Input placeholder="Roll Number" type="number" />
+                            <Input
+                              placeholder="Roll Number"
+                              type="number"
+                              className={styles.input}
+                            />
                           </InputGroup>
                         </FormGroup>
                       )}
@@ -120,19 +129,6 @@ const Login = () => {
                           />
                         </InputGroup>
                       </FormGroup>
-                      <div className="custom-control custom-control-alternative custom-checkbox">
-                        <input
-                          className="custom-control-input"
-                          id=" customCheckLogin"
-                          type="checkbox"
-                        />
-                        <label
-                          className="custom-control-label"
-                          htmlFor=" customCheckLogin"
-                        >
-                          <span>Remember me</span>
-                        </label>
-                      </div>
                       <div className="text-center">
                         <Button className="my-4" color="primary" type="button">
                           Sign in
@@ -146,7 +142,6 @@ const Login = () => {
           </Container>
         </section>
       </main>
-      <SimpleFooter />
     </>
   );
 };

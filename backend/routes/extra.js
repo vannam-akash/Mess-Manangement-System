@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Extras = require("../models/Extras");
 const Student = require("../models/Student");
+const passport = require("passport");
 
 // extras detail
 router.post(

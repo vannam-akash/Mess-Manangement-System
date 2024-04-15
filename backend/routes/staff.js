@@ -4,6 +4,7 @@ const Mess = require("../models/Mess");
 const Student = require("../models/Student");
 const Bill = require("../models/Bill");
 const router = express.Router();
+const passport = require("passport");
 
 // Get staff from Id
 router.get(

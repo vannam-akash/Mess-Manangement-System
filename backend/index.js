@@ -7,6 +7,7 @@ const studentRoutes = require("./routes/student");
 const staffRoutes = require("./routes/staff");
 const extraRoutes = require("./routes/extra");
 const billRoutes = require("./routes/bill");
+require("./passport");
 
 // Mongo Connection
 mongoConnect();

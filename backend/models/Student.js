@@ -28,7 +28,7 @@ const studentSchema = new mongoose.Schema({
   messEnrolled: {
     type: mongoose.Types.ObjectId,
     ref: "Mess",
-    default:null,
+    default: null,
     // required: true,
   },
   extrasTaken: [
@@ -41,6 +41,12 @@ const studentSchema = new mongoose.Schema({
   bill: {
     type: mongoose.Types.ObjectId,
     ref: "Bill",
+  },
+  userType: {
+    // Required for passport authentication purposes
+    type: String,
+    required: true,
+    default: "student",
   },
 });
 

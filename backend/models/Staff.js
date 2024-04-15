@@ -29,6 +29,12 @@ const staffSchema = new mongoose.Schema({
     required: true,
     default: false,
   },
+  userType: {
+    // Required for passport authentication purposes
+    type: String,
+    required: true,
+    default: "staff",
+  },
 });
 
 const staffModel = mongoose.model("Staff", staffSchema);

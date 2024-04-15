@@ -2,7 +2,7 @@ const express = require("express");
 const Staff = require("../models/Staff");
 const Mess = require("../models/Mess");
 const Student = require("../models/Student");
-const MessBill = require("../models/MessBills");
+const Bill = require("../models/Bill");
 const router = express.Router();
 
 // Get staff from Id
@@ -58,7 +58,7 @@ router.post(
       }
 
       alreadyAdded = false;
-      for (let i = 0; i < mess.students.length(); i++) {}
+      for (let i = 0; i < mess.students.length; i++) {}
       mess.students.map((id) => {
         if (id.equals(studentId)) {
           alreadyAdded = true;
@@ -76,7 +76,7 @@ router.post(
       student.messEnrolled = messId;
       await student.save();
 
-      const messBill = await MessBill.create({ student: studentId });
+      const bill = await Bill.create({ student: studentId });
 
       return res.status(200).json({ message: "Mess assigned successfully" });
     } catch (error) {

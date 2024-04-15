@@ -5,7 +5,7 @@ const Student = require("../models/Student");
 
 // extras detail
 router.post(
-  "/:studentId/extra",
+  "/:studentId",
   passport.authenticate("jwt", { session: false }),
   async (req, res) => {
     try {

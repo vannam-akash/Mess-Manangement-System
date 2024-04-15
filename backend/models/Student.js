@@ -38,9 +38,9 @@ const studentSchema = new mongoose.Schema({
       required: false,
     },
   ],
-  mealLogs: {
+  bill: {
     type: mongoose.Types.ObjectId,
-    ref: "MessBill",
+    ref: "Bill",
   },
 });
 

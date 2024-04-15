@@ -1,8 +1,4 @@
-/* MessTable.css */
-body{
-    background-color: #7085ef; /* Background color */
-    background-image: linear-gradient(to right, #7085ef, #9d7fef);
-}
+
 /* Set maximum width and center the table horizontally */
 .TableContainer {
     max-width: 60%;

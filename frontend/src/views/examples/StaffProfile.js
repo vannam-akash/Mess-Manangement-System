@@ -69,7 +69,8 @@ function StaffProfile() {
           </div>
         </section>
         <section className="section">
-          <Container>
+          <div className="cardDiv">
+          {/* <Container  > */}
             <Card className="card-profile shadow mt--300">
               <div className="px-4">
                 <Row className="justify-content-center">
@@ -104,7 +105,8 @@ function StaffProfile() {
                 
               </div>
             </Card>
-          </Container>
+          {/* </Container> */}
+          </div>
         </section>
       </main>
       {/* <MainFooter /> */}

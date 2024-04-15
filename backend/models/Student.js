@@ -28,6 +28,7 @@ const studentSchema = new mongoose.Schema({
   messEnrolled: {
     type: mongoose.Types.ObjectId,
     ref: "Mess",
+    default:null,
     // required: true,
   },
   extrasTaken: [
@@ -37,20 +38,9 @@ const studentSchema = new mongoose.Schema({
       required: false,
     },
   ],
-  mealLogs: {
-    type: [[Number]],
-    default: () => {
-      const days = 30;
-      const meals = 3;
-      mealLogsArray = [];
-      for (let i = 0; i < days; i++) {
-        mealLogsArray[i] = [];
-        for (let j = 0; j < meals; j++) {
-          mealLogsArray[i][j] = 1;
-        }
-      }
-      return mealLogsArray;
-    },
+  bill: {
+    type: mongoose.Types.ObjectId,
+    ref: "Bill",
   },
 });
 

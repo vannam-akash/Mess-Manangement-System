@@ -39,7 +39,14 @@ const messSchema = new mongoose.Schema({
       ref: "Staff",
       // required: true,
     },
-  ]
+  ],
+  students: [
+    {
+      type: mongoose.Types.ObjectId,
+      ref: "Student",
+      // required: true,
+    },
+  ],
 });
 
 const messModel = mongoose.model("Mess", messSchema);

@@ -16,28 +16,32 @@ import "assets/scss/argon-design-system-react.scss?v1.1.0";
 import Index from "views/Index.js";
 import Landing from "views/examples/Landing.js";
 import Login from "views/pages/Login.js";
-import Profile from "views/examples/Profile.js";
 import Register from "views/examples/Register.js";
 import StudentProfile, {
   studentProfileLoader,
 } from "views/pages/StudentProfile";
 import MessBill, { messBillLoader } from "views/pages/MessBill";
 import Root from "views/layouts/Root";
+import StaffProfile from "views/pages/StaffProfile";
 import StudentLogin from "views/pages/StudentLogin";
 import StaffLogin from "views/pages/StaffLogin";
 import { studentLoginActions } from "components/Forms/StudentLoginForm";
 import { staffLoginActions } from "components/Forms/StaffLoginForm";
 import Cancellation from "views/pages/Cancellation";
-import StaffProfile from "views/examples/StaffProfile";
-import Cancellation from "views/examples/Cancellation";
+import { staffProfileLoader } from "views/pages/StaffProfile";
+import {checkAuthLoader} from "auth";
+import { checkStudAuthLoader } from "auth";
+import { checkStaffAuthLoader } from "auth";
 
 const root = createRoot(document.getElementById("root"));
 const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
+    id: "root",
     path: "/",
     element: <Root />,
+    loader: checkAuthLoader,
     children: [
       {
         index: true,
@@ -45,6 +49,7 @@ const router = createBrowserRouter([
       },
       {
         path: "students",
+        loader: checkStudAuthLoader,
         children: [
           {
             path: ":id",
@@ -52,22 +57,28 @@ const router = createBrowserRouter([
             element: <StudentProfile />,
             loader: studentProfileLoader,
           },
+        ],
+      },
+      {
+        path: "students/login",
+        element: <StudentLogin />,
+        action: studentLoginActions,
+      },
+      {
+        path: "staffs",
+        loader: checkStaffAuthLoader,
+        children: [
           {
-            path: "login",
-            element: <StudentLogin />,
-            action: studentLoginActions,
+            path: ":id",
+            element: <StaffProfile />,
+            loader: staffProfileLoader,
           },
         ],
       },
       {
-        path: "staffs",
-        children: [
-          {
-            path: "login",
-            element: <StaffLogin />,
-            action: staffLoginActions,
-          },
-        ],
+        path: "staffs/login",
+        element: <StaffLogin />,
+        action: staffLoginActions,
       },
       {
         path: "login-page",
@@ -78,24 +89,20 @@ const router = createBrowserRouter([
         element: <Landing />,
       },
       {
-        path: "profile-page",
-        element: <Profile />,
-      },
-      {
         path: "register-page",
         element: <Register />,
       },
       {
         path: "/cancel-meal",
-        element: <Cancellation/>,
-      },
+        element: <Cancellation />,
+      },
       {
         path: "staffProfile-page",
         element: <StaffProfile />,
       },
       {
         path: "/canceled-meal",
-        element: <Cancellation/>,
+        element: <Cancellation />,
       },
       {
         path: "mess-bill",

@@ -18,7 +18,7 @@ const MessTable = ({ mealTable }) => {
             </tr>
           </thead>
           <tbody>
-            {mealTable.map((row, index) => (
+            {mealTable?.map((row, index) => (
               <tr key={index}>
                 <td>{`${index + 1}`}</td>
                 <td>{row[0]}</td>

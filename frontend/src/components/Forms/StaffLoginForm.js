@@ -1,7 +1,6 @@
 import React from "react";
 import {
   FormGroup,
-  Form,
   Input,
   InputGroupAddon,
   InputGroupText,
@@ -10,8 +9,8 @@ import {
 } from "reactstrap";
 import styles from "./Login.module.css";
 import axios from "axios";
-import {setStudAuth} from "auth";
-import { redirect } from "react-router-dom";
+import {setStaffAuth} from "auth";
+import { Form, redirect } from "react-router-dom";
 const url = process.env.REACT_APP_API_URL;
 
 const StaffLoginForm = () => {
@@ -22,7 +21,7 @@ const StaffLoginForm = () => {
           Mess Credentials:
         </small>
       </div>
-      <Form role="form">
+      <Form method="POST">
         <FormGroup className="mb-3">
           <InputGroup className="input-group-alternative">
             <InputGroupAddon addonType="prepend">
@@ -33,6 +32,7 @@ const StaffLoginForm = () => {
             <Input
               placeholder="Phone Number"
               type="number"
+              name="phoneNo"
               className={styles.input}
             />
           </InputGroup>
@@ -44,11 +44,11 @@ const StaffLoginForm = () => {
                 <i className="ni ni-lock-circle-open" />
               </InputGroupText>
             </InputGroupAddon>
-            <Input placeholder="Password" type="password" autoComplete="off" />
+            <Input placeholder="Password" type="password" name="password" autoComplete="off" />
           </InputGroup>
         </FormGroup>
         <div className="text-center">
-          <Button className="my-4" color="primary" type="button">
+          <Button className="my-4" color="primary" type="submit">
             Sign in
           </Button>
         </div>
@@ -61,13 +61,15 @@ export default StaffLoginForm;
 
 export async function staffLoginActions({ request: req }) {
   const formData = await req.formData();
-  const loginUrl = `${url}/auth/login/staff`;
   const loginData = Object.fromEntries(formData.entries());
+  console.log(loginData);
+  
+  const loginUrl = `${url}/auth/login/staff`;
   let id = null;
   try {
     const {data} = await axios.post(loginUrl, loginData);
     id = data._id;
-    setStudAuth(data.token, data._id);
+    setStaffAuth(data.token, data._id);
   } catch (error) {
     console.log(error);
   }

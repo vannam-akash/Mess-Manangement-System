@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import {
+  Link,
+  NavLink,
+  useNavigate,
+  useRouteLoaderData,
+} from "react-router-dom";
 import Headroom from "headroom.js";
 import {
   Button,
   UncontrolledCollapse,
-  DropdownMenu,
-  DropdownItem,
-  DropdownToggle,
-  UncontrolledDropdown,
   NavbarBrand,
   Navbar,
   NavItem,
@@ -16,15 +17,16 @@ import {
   Row,
   Col,
 } from "reactstrap";
-import mealIcon from "assets/img/icons/meal.png";
-
-
-const studentId = process.env.REACT_APP_STUDENTID;
+import LogoutButton from "components/Buttons/LogoutButton";
+import { getId } from "auth";
 
 const MainNavbar = () => {
   const [collapseClasses, setCollapseClasses] = useState("");
   const [collapseOpen, setCollapseOpen] = useState(false);
   const navigate = useNavigate();
+  const id = getId();
+  const userType = useRouteLoaderData("root");
+  console.log(userType);
 
   useEffect(() => {
     let headroom = new Headroom(document.getElementById("navbar-main"));
@@ -94,74 +96,103 @@ const MainNavbar = () => {
                   </Col>
                 </Row>
               </div>
-              <Nav className="navbar-nav-hover align-items-lg-center" navbar>
-                <UncontrolledDropdown nav>
-                  <DropdownToggle nav>
-                    <i className="ni ni-collection d-lg-none mr-1" />
-                    <span className="nav-link-inner--text">Examples</span>
-                  </DropdownToggle>
-                  <DropdownMenu>
-                    <DropdownItem to="/" tag={Link}>
-                      Landing
-                    </DropdownItem>
-                    <DropdownItem to="/profile-page" tag={Link}>
-                      Profile
-                    </DropdownItem>
-                    <DropdownItem to="/login-page" tag={Link}>
-                      Login
-                    </DropdownItem>
-                    <DropdownItem to="/register-page" tag={Link}>
-                      Register
-                    </DropdownItem>
-                  </DropdownMenu>
-                </UncontrolledDropdown>
-
-                <NavItem className="">
-                  <NavLink to="/mess-bill" tag={Link} className="nav-link">
-                  <i className="fa fa-inr d-lg-none mr-2" />
-                  <span className="nav-link-inner--text">Mess Bill</span>
-                  </NavLink>
-                </NavItem>
-                <NavItem className="">
-                  <NavLink to="/cancel-meal" tag={Link} className="nav-link">
-                  <img src={mealIcon}></img>
-                  <span className="nav-link-inner--text">Cancel Meal</span>
-                  </NavLink>
-                </NavItem>
-                <NavItem className="text-white">
-                  <NavLink to="/staffProfile-page" tag={Link} className="text-white mr-2">
-                    Staff Profile
-                  </NavLink>
-                </NavItem>
-                <NavItem className="text-white">
-                  <NavLink to="/canceled-meal" tag={Link} className="text-white">
-                    Cancel a Meal
-                  </NavLink>
-                </NavItem>
-              </Nav>
-              <Nav
-                className="navbar-nav-hover align-items-lg-center ml-lg-auto"
-                navbar
-              >
-                <Button
-                  className="btn-1 btn-neutral ml-1"
-                  type="button"
-                  onClick={handleAuthClick}
-                >
-                  <i className="fa fa-sign-in" />
-                  <span />
-                  SIGN IN
-                </Button>
-                <NavItem>
-                  <NavLink
-                    to={`/students/${studentId}`}
-                    className="text-white ml-4"
-                    color="link"
+              {userType && (
+                <>
+                  <Nav
+                    className="navbar-nav-hover align-items-lg-center"
+                    navbar
                   >
-                    <i className="fa fa-user" aria-hidden="true"></i>
-                  </NavLink>
-                </NavItem>
-              </Nav>
+                    {userType === "staff" && (
+                      <>
+                        <NavItem>
+                          <NavLink
+                            to="/mess-bill"
+                            tag={Link}
+                            className="nav-link"
+                          >
+                            <i className="fa fa-hand-o-right d-lg-none mr-2" />
+                            <span className="nav-link-inner--text">
+                              Mess Bill
+                            </span>
+                          </NavLink>
+                        </NavItem>
+                      </>
+                    )}
+                    {userType === "stud" && (
+                      <NavItem>
+                        <NavLink
+                          to="/cancel-meal"
+                          tag={Link}
+                          className="nav-link"
+                        >
+                          <i className="fa fa-hand-o-right d-lg-none" />
+                          <span className="nav-link-inner--text">
+                            Cancel Meal
+                          </span>
+                        </NavLink>
+                      </NavItem>
+                    )}
+                  </Nav>
+                  <Nav
+                    className="navbar-nav-hover align-items-lg-center ml-lg-auto"
+                    navbar
+                  >
+                    <LogoutButton />
+                    {userType === "stud" && (
+                      <>
+                        <NavItem>
+                          <NavLink
+                            id="stud"
+                            to={`/students/${id}`}
+                            className="ml-4"
+                            color="default"
+                          >
+                            <i
+                              className="fa fa-user fa-2x mt-2"
+                              aria-hidden="true"
+                            ></i>
+                          </NavLink>
+                        </NavItem>
+                      </>
+                    )}
+                    {userType === "staff" && (
+                      <>
+                        <NavItem>
+                          <NavLink
+                            id="staff-profile"
+                            to={`/staffs/${id}`}
+                            className="ml-4"
+                            color="link"
+                          >
+                            <i
+                              className="fa fa-user fa-2x mt-2"
+                              aria-hidden="true"
+                            />
+                          </NavLink>
+                        </NavItem>
+                      </>
+                    )}
+                  </Nav>
+                </>
+              )}
+              {!userType && (
+                <>
+                  <Nav
+                    className="navbar-nav-hover align-items-lg-center ml-lg-auto"
+                    navbar
+                  >
+                    <Button
+                      className="btn-1 btn-neutral ml-2"
+                      type="button"
+                      onClick={handleAuthClick}
+                    >
+                      <i className="fa fa-hand-o-right d-sm-none" />
+                      <span />
+                      SIGN IN
+                    </Button>
+                  </Nav>
+                </>
+              )}
             </UncontrolledCollapse>
           </Container>
         </Navbar>

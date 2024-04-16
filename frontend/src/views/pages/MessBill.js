@@ -3,6 +3,7 @@ import MessTable from "components/Tables/MessTable";
 import "../../components/Tables/MessTable.css"
 import { redirect, useLoaderData} from "react-router-dom";
 import { fetchStudentDetails } from "http";
+import { getId } from "auth";
 
 const MessBill = () => {
   const mainRef = useRef();
@@ -39,7 +40,8 @@ const MessBill = () => {
               <b>Month:</b> {"April"}, {"2024"}
             </p>
           </div>
-          <MessTable mealTable={student.mealLogs} />
+          {!student.messEnrolled && <p className="student-info" >Not enrolled in a mess.</p>}
+          {student.messEnrolled && <MessTable mealTable={student.bill} />}
         </section>
       </main>
       </section>
@@ -48,7 +50,7 @@ const MessBill = () => {
 };
 
 export async function messBillLoader() {
-  const studentId = localStorage.getItem("id");
+  const studentId = getId();
   if(!studentId) return redirect("/students/login");
   const stud = fetchStudentDetails(studentId);
   return stud;

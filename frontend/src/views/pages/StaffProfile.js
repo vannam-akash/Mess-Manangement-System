@@ -18,16 +18,17 @@
 import React, { useEffect, useRef } from "react";
 
 // reactstrap components
-import { Button, Card, Container, Row, Col } from "reactstrap";
+import { Card, Row, Col, Container } from "reactstrap";
 
 // core components
-import MainNavbar from "components/Navbars/MainNavbar.js";
-import MainFooter from "components/Footers/MainFooter.js";
 import "./StaffProfile.css";
+import { fetchStaffDetails } from "http";
+import { useLoaderData } from "react-router-dom";
 
 
 function StaffProfile() {
   const mainRef = useRef();
+  const staff = useLoaderData();
 
   useEffect(()=>{
     document.documentElement.scrollTop = 0;
@@ -37,7 +38,6 @@ function StaffProfile() {
 
   return (
     <>
-      <MainNavbar />
       <main className="profile-page" ref={mainRef}>
         <section className="section-profile-cover section-shaped my-0">
           {/* Circles background */}
@@ -60,58 +60,53 @@ function StaffProfile() {
               x="0"
               y="0"
             >
-              <polygon
-                className="fill-white"
-                points="2560 0 2560 100 0 100"
-              />
+              <polygon className="fill-white" points="2560 0 2560 100 0 100" />
             </svg>
-
           </div>
         </section>
         <section className="section">
-          <div className="cardDiv">
-          {/* <Container  > */}
+          <Container>
             <Card className="card-profile shadow mt--300">
-              <div className="px-4">
-                <Row className="justify-content-center">
-                  <Col className="order-lg-2" lg="3">
-                    <div className="card-profile-image">
-                      <a href="#pablo" onClick={(e) => e.preventDefault()}>
-                        <img
-                          alt="..."
-                          className="rounded-circle"
-                          src={require("assets/img/theme/team-4-800x800.jpg")}
-                        />
-                      </a>
-                    </div>
-                  </Col>
-                  
-                </Row>
-                <div className=" staffData text-center ">
-                  <h3>
-                    Kattapa Bhaiya{" "}
-                    <span className="font-weight-medium">, 34</span>
-                  </h3>
-                  <div className="h6 font-weight-400">
-                    <i className="ni mr-2" />
-                    Phone no. - 9211420420 
-                  </div>
-                  <div className="h6 mt-4">
-                    <i className="ni  mr-2" />
-                    Role - Staff/Manager
-                  </div>
-                  
+              <div className="px-4 mb-5">
+                <div className="card-profile-image mb-5">
+                  <img
+                    alt="..."
+                    className="rounded-circle"
+                    src={require("assets/img/theme/team-4-800x800.jpg")}
+                  />
                 </div>
-                
+              </div>
+              <div id="card-content" className="mb-5">
+              <div className="text-center mt-5">
+                <h3>
+                  {staff.fullName}
+                </h3>
+                <div className="h6 font-weight-300">
+                  <i className="ni location_pin mr-2" />
+                  Role - {staff.isManager? "Manager":"Staff"}
+                </div>
+                <div className="h6 mt-4">
+                  <i className="ni business_briefcase-24 mr-2" />
+                  Phone Number - {staff.phoneNo}
+                </div>
+                {/* <div>
+                  <i className="ni education_hat mr-2" />
+                  Email ID - {student.email}
+                </div> */}
+              </div>
               </div>
             </Card>
-          {/* </Container> */}
-          </div>
+          </Container>
         </section>
       </main>
-      {/* <MainFooter /> */}
     </>
   );
 }
 
 export default StaffProfile;
+
+export async function staffProfileLoader({request:req, params}) {
+  const {id} = params;
+  const staff = await fetchStaffDetails(id);
+  return staff;
+}

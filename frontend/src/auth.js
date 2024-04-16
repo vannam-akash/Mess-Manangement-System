@@ -1,37 +1,52 @@
 import { redirect } from "react-router-dom";
 
-export function getAuthToken() {
-  const token = localStorage.getItem("token");
-  return token;
-}
-
 export function setStaffAuth(token, staffId){
   delAuth();
   localStorage.setItem("token", token);
   localStorage.setItem("id", staffId);
-  localStorage.setItem("type", "staff");
+  localStorage.setItem("user_type", "staff");
 }
 
 export function setStudAuth(token, studId) {
   delAuth();
   localStorage.setItem("token",token);
   localStorage.setItem("id", studId);
-  localStorage.setItem("type", "stud");
+  localStorage.setItem("user_type", "stud");
 }
 
 export function delAuth(){
   localStorage.removeItem("token");
   localStorage.removeItem("id");
-  localStorage.removeItem("type");
+  localStorage.removeItem("user_type");
 }
 
-export function tokenLoader() {
-  return getAuthToken();
+export function getToken() {
+  return localStorage.getItem("token");
+}
+
+export function getId() {
+  return localStorage.getItem("id");
+}
+
+export function getUserType() {
+  return localStorage.getItem("user_type");
 }
 
 export function checkAuthLoader() {
-  const token = localStorage.getItem("token");
-  if (!token) return redirect("/auth");
+  if(!getToken() || !getId()) return null;
+  return getUserType(); 
+}
+
+export function checkStudAuthLoader() {
+  const user_type = getUserType();
+  if(window.location.pathname == "/students/login") return null;
+  if(!user_type || user_type !== "stud") return redirect("/students/login");
+}
+
+export function checkStaffAuthLoader() {
+  const user_type = getUserType();
+  if(window.location.pathname == "/staffs/login") return null;
+  if(!user_type || user_type !== "staff") return redirect("/staffs/login");
   return null;
 }
 

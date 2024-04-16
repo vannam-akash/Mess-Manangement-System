@@ -46,7 +46,7 @@ router.post("/login/staff", async (req, res) => {
 
     const token = await helper.getToken(staffMember._id);
 
-    const staffMemberToReturn = { ...JSON.stringify(staffMember), token };
+    const staffMemberToReturn = { ...staffMember.toJSON(), token };
     delete staffMemberToReturn.password;
 
     return res.status(200).json(staffMemberToReturn);

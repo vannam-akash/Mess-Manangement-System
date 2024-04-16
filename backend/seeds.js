@@ -41,22 +41,39 @@ const messes = [
         name: "Rajputana Hostel Mess-1",
         hostel: "Rajputana",
         price: {
-            breakfast: 0,
-            lunch: 0,
-            dinner: 0
+            breakfast: 20,
+            lunch: 40,
+            dinner: 40
         },
-        totalStudentsEnrolled: 5
+        totalStudentsEnrolled: 0
+    },
+    {
+        name: "Limbdi Hostel Mess-1",
+        hostel: "Limbdi",
+        price: {
+            breakfast: 20,
+            lunch: 40,
+            dinner: 40
+        },
+        totalStudentsEnrolled: 0
     }
 ];
 
 const staffs = [
     {
         fullName: "Raju Singh",
-        image: "koi bkl hi hoga jo isko img nahi samjhega",
-        phoneNo: "0123456789",
+        image: "<insert-img-url>",
+        phoneNo: "9889988998",
         password: "raju",
         isManager: true
-    }
+    },
+    {
+        fullName: "Ramesh Gaur",
+        image: "<insert-img-url>",
+        phoneNo: "1212121212",
+        password: "ramesh",
+        isManager: false
+    },
 ];
 
 module.exports = {messes, studs, staffs};

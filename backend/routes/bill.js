@@ -7,7 +7,7 @@ const passport = require("passport");
 // Get bill from Id
 router.get(
   "/:billId",
-  passport.authenticate("jwt", { session: false }),
+  passport.authenticate("student-jwt", { session: false }),
   async (req, res) => {
     try {
       const { billId } = req.params;
@@ -31,7 +31,7 @@ router.get(
 // Get bill for a student from Id
 router.get(
   "/:studentId/getBill",
-  passport.authenticate("jwt", { session: false }),
+  passport.authenticate("student-jwt", { session: false }),
   async (req, res) => {
     try {
       const { studentId } = req.params;
@@ -59,7 +59,7 @@ router.get(
 //Cancel a meal
 router.post(
   "/:studentId/cancel",
-  passport.authenticate("jwt", { session: false }),
+  passport.authenticate("student-jwt", { session: false }),
   async (req, res) => {
     try {
       const { studentId } = req.params;

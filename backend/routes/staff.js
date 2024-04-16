@@ -9,7 +9,7 @@ const passport = require("passport");
 // Get staff from Id
 router.get(
   "/:staffId",
-  passport.authenticate("jwt", { session: false }),
+  passport.authenticate("staff-jwt", { session: false }),
   async (req, res) => {
     try {
       const { staffId } = req.params;
@@ -36,7 +36,7 @@ router.get(
 // Assign Mess to a student
 router.post(
   "/assign/student",
-  passport.authenticate("jwt", { session: false }),
+  passport.authenticate("staff-jwt", { session: false }),
   async (req, res) => {
     try {
       const { messId, studentId } = req.body;
@@ -90,7 +90,7 @@ router.post(
 // Get all staff members of a Mess
 router.get(
   "/:messId",
-  passport.authenticate("jwt", { session: false }),
+  passport.authenticate("staff-jwt", { session: false }),
   async (req, res) => {
     try {
       const { messId } = req.params;

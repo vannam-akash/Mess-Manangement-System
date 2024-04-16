@@ -1,10 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import MessTable from "components/Tables/MessTable";
 import "../../components/Tables/MessTable.css"
-import { useLoaderData} from "react-router-dom";
+import { redirect, useLoaderData} from "react-router-dom";
 import { fetchStudentDetails } from "http";
-
-const studentId = process.env.REACT_APP_STUDENTID;
 
 const MessBill = () => {
   const mainRef = useRef();
@@ -50,6 +48,8 @@ const MessBill = () => {
 };
 
 export async function messBillLoader() {
+  const studentId = localStorage.getItem("id");
+  if(!studentId) return redirect("/students/login");
   const stud = fetchStudentDetails(studentId);
   return stud;
 }

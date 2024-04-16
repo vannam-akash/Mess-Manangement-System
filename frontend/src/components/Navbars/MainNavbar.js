@@ -16,6 +16,8 @@ import {
   Row,
   Col,
 } from "reactstrap";
+import mealIcon from "assets/img/icons/meal.png";
+
 
 const studentId = process.env.REACT_APP_STUDENTID;
 
@@ -42,7 +44,7 @@ const MainNavbar = () => {
   };
 
   const handleAuthClick = () => {
-    navigate("/login-page");
+    navigate("/students/login");
   };
 
   return (
@@ -85,11 +87,7 @@ const MainNavbar = () => {
                     </Link>
                   </Col>
                   <Col className="collapse-close" xs="6">
-                    <button
-                      className="navbar-toggler"
-                      id="navbar_global"
-                      onClick={toggleCollapse}
-                    >
+                    <button className="navbar-toggler" id="navbar_global">
                       <span />
                       <span />
                     </button>
@@ -118,9 +116,16 @@ const MainNavbar = () => {
                   </DropdownMenu>
                 </UncontrolledDropdown>
 
-                <NavItem className="text-white">
-                  <NavLink to="/mess-bill" tag={Link} className="text-white">
-                    Mess Bill
+                <NavItem className="">
+                  <NavLink to="/mess-bill" tag={Link} className="nav-link">
+                  <i className="fa fa-inr d-lg-none mr-2" />
+                  <span className="nav-link-inner--text">Mess Bill</span>
+                  </NavLink>
+                </NavItem>
+                <NavItem className="">
+                  <NavLink to="/cancel-meal" tag={Link} className="nav-link">
+                  <img src={mealIcon}></img>
+                  <span className="nav-link-inner--text">Cancel Meal</span>
                   </NavLink>
                 </NavItem>
               </Nav>

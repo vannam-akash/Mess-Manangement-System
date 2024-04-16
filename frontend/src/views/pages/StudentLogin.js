@@ -15,23 +15,21 @@ import {
   Col,
 } from "reactstrap";
 import StudentLoginForm from "components/Forms/StudentLoginForm";
-import StaffLoginForm from "components/Forms/StaffLoginForm";
-
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const mainRef = useRef();
-  const [loginType, setLoginType] = useState("staff"); // Default to Manager login
-
-  const handleLoginType = (type) => {
-    setLoginType(type);
-  };
-
+  const navigate = useNavigate();
   useEffect(() => {
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
     mainRef.current.scrollTop = 0;
   }, []);
 
+  function handleStaffClick() {
+    navigate("/staffs/login");
+  }
+  
   return (
     <>
       <main ref={mainRef}>
@@ -40,7 +38,7 @@ const Login = () => {
             <span />
             <span />
             <span />
-            <span /> 
+            <span />
             <span />
             <span />
             <span />
@@ -56,29 +54,23 @@ const Login = () => {
                     </div>
                     <div className="btn-wrapper text-center">
                       <Button
-                        className={
-                          loginType === "staff" ? "btn-1" : "btn-neutral"
-                        }
-                        color={loginType === "staff" ? "primary" : "default"}
-                        href="#pablo"
-                        onClick={() => handleLoginType("staff")}
+                        className={"btn-neutral"}
+                        color={"default"}
+                        onClick={handleStaffClick}
                       >
                         <span className="btn-inner--text">Mess Staff</span>
                       </Button>
                       <Button
-                        color={loginType === "student" ? "primary" : "default"}
-                        className={
-                          loginType === "student" ? "bnt-1" : "btn-neutral"
-                        }
-                        href="#pablo"
-                        onClick={() => handleLoginType("student")}
+                        className={"bnt-1"}
+                        color={"primary"}
+                        disabled
                       >
                         <span className="btn-inner--text">Student</span>
                       </Button>
                     </div>
                   </CardHeader>
                   <CardBody className="px-lg-5 py-lg-5">
-                    {loginType === "student"? <StudentLoginForm/>: <StaffLoginForm/>}
+                    <StudentLoginForm />
                   </CardBody>
                 </Card>
               </Col>

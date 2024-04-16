@@ -7,7 +7,7 @@ const passport = require("passport");
 // extras detail
 router.post(
   "/create",
-  passport.authenticate("jwt", { session: false }),
+  passport.authenticate("staff-jwt", { session: false }),
   async (req, res) => {
     try {
       const { rollNo, dish, price, quantity } = req.body;
@@ -39,7 +39,7 @@ router.post(
 // Get all extras and extrasBill of a student
 router.get(
   "/:studentId/get/all",
-  passport.authenticate("jwt", { session: false }),
+  passport.authenticate("student-jwt", { session: false }),
   async (req, res) => {
     try {
       const { studentId } = req.params;

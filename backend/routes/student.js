@@ -6,7 +6,7 @@ const passport = require("passport");
 // Get student from Id
 router.get(
   "/:studentId",
-  passport.authenticate("jwt", { session: false }),
+  passport.authenticate("student-jwt", { session: false }),
   async (req, res) => {
     try {
       const { studentId } = req.params;
@@ -30,7 +30,7 @@ router.get(
 // Get students with unassigned mess
 router.get(
   "/unassignedStudent",
-  passport.authenticate("jwt", { session: false }),
+  passport.authenticate("student-jwt", { session: false }),
   async (req, res) => {
     try {
       const students = await Student.find({ messEnrolled: null });
@@ -51,7 +51,7 @@ router.get(
 // Get all students enrolled in mess
 router.get(
   "/:messId/allStudents",
-  passport.authenticate("jwt", { session: false }),
+  passport.authenticate("student-jwt", { session: false }),
   async (req, res) => {
     try {
       const { messId } = req.params;

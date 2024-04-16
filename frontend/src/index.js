@@ -15,6 +15,8 @@ import Register from "views/examples/Register.js";
 import StudentProfile,{ studentProfileLoader} from "views/pages/StudentProfile";
 import MessBill,{ messBillLoader } from "views/pages/MessBill";
 import Root from "views/layouts/Root";
+import StaffProfile from "views/examples/StaffProfile";
+import Cancellation from "views/examples/Cancellation";
 
 const root = createRoot(document.getElementById("root"));
 const queryClient = new QueryClient();
@@ -54,6 +56,14 @@ const router = createBrowserRouter([
       {
         path: "register-page",
         element: <Register />,
+      },
+      {
+        path: "staffProfile-page",
+        element: <StaffProfile />,
+      },
+      {
+        path: "/canceled-meal",
+        element: <Cancellation/>,
       },
       {
         path: "mess-bill",

@@ -6,6 +6,7 @@ import {Card, Container} from "reactstrap";
 
 // functions
 import { fetchStudentDetails } from "../../http";
+import Data from "components/Data";
 
 function StudentProfile() {
   const mainRef = useRef();
@@ -74,6 +75,7 @@ function StudentProfile() {
                   <i className="ni education_hat mr-2" />
                   Email ID - {student.email}
                 </div>
+                <Data>Data here</Data>
               </div>
               </div>
             </Card>

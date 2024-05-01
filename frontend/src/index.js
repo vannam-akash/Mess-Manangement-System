@@ -29,9 +29,11 @@ import { studentLoginActions } from "components/Forms/StudentLoginForm";
 import { staffLoginActions } from "components/Forms/StaffLoginForm";
 import Cancellation from "views/pages/Cancellation";
 import { staffProfileLoader } from "views/pages/StaffProfile";
-import {checkAuthLoader} from "auth";
+import { checkAuthLoader } from "auth";
 import { checkStudAuthLoader } from "auth";
 import { checkStaffAuthLoader } from "auth";
+import Extras from "views/pages/Extras";
+
 
 const root = createRoot(document.getElementById("root"));
 const queryClient = new QueryClient();
@@ -96,6 +98,11 @@ const router = createBrowserRouter([
         path: "/cancel-meal",
         element: <Cancellation />,
       },
+      {
+        path: "/extra-meal",
+        element: <Extras />,
+      },
+
       {
         path: "staffProfile-page",
         element: <StaffProfile />,

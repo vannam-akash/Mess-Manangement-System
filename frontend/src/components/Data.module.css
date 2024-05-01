@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  justify-content: center; 
+}
+
+ .row1 {
+  display: flex;
+}
+
+.row2 {
+  display: flex;
+}
+
+.column1{
+  font-size: x-large;
+  margin: 10px;
+  justify-content: center;
+}
+
+/* .column2{
+  margin: 10px;
+  justify-content: center;
+} */

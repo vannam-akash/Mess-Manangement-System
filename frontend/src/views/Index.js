@@ -41,6 +41,7 @@ import Carousel from "./IndexSections/Carousel.js";
 import Icons from "./IndexSections/Icons.js";
 import Login from "./IndexSections/Login.js";
 import Download from "./IndexSections/Download.js";
+import MenuCard from "../components/Menu/MenuCard.js";
 
 function Index() {
   const mainRef = useRef();
@@ -55,6 +56,7 @@ function Index() {
     <>
       <main ref={mainRef}>
         <Hero />
+        <MenuCard></MenuCard>
         <Buttons />
         <Inputs />
         <section className="section">

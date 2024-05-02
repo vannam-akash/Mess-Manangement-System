@@ -116,6 +116,19 @@ const MainNavbar = () => {
                             </span>
                           </NavLink>
                         </NavItem>
+
+                        <NavItem>
+                          <NavLink
+                            to="/extra-meal"
+                            tag={Link}
+                            className="nav-link"
+                          >
+                            <i className="fa fa-hand-o-right d-lg-none" />
+                            <span className="nav-link-inner--text">
+                              Extra Meal
+                            </span>
+                          </NavLink>
+                        </NavItem>
                       </>
                     )}
                     {userType === "stud" && (

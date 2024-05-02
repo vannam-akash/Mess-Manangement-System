@@ -39,13 +39,13 @@ export function checkAuthLoader() {
 
 export function checkStudAuthLoader() {
   const user_type = getUserType();
-  if(window.location.pathname == "/students/login") return null;
+  if(window.location.pathname === "/students/login") return null;
   if(!user_type || user_type !== "stud") return redirect("/students/login");
 }
 
 export function checkStaffAuthLoader() {
   const user_type = getUserType();
-  if(window.location.pathname == "/staffs/login") return null;
+  if(window.location.pathname === "/staffs/login") return null;
   if(!user_type || user_type !== "staff") return redirect("/staffs/login");
   return null;
 }

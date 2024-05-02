@@ -1,0 +1,13 @@
+.search{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.searchBar{
+    width: 60vw;
+}
+.studentList{
+    /* background-color: orange; */
+    width: 100vw;
+    height: 100vh;
+}

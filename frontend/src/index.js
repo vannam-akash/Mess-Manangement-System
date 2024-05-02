@@ -25,6 +25,7 @@ import Root from "views/layouts/Root";
 import StaffProfile from "views/pages/StaffProfile";
 import StudentLogin from "views/pages/StudentLogin";
 import StaffLogin from "views/pages/StaffLogin";
+import AssignStudents from "views/pages/AssignStudents";
 import { studentLoginActions } from "components/Forms/StudentLoginForm";
 import { staffLoginActions } from "components/Forms/StaffLoginForm";
 import Cancellation from "views/pages/Cancellation";
@@ -95,6 +96,10 @@ const router = createBrowserRouter([
       {
         path: "/cancel-meal",
         element: <Cancellation />,
+      },
+      {
+        path:"/assign-students",
+        element:<AssignStudents/>
       },
       {
         path: "staffProfile-page",

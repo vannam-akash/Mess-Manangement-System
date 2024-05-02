@@ -1,0 +1,30 @@
+.container {
+  /* display: inline-block; */
+
+  text-align: center;
+  color: white;
+  padding: 20px;
+  background-color: #4c71c9;
+  border: 1px solid #0b0b0b;
+  border-radius: 5px;
+  width: 38%;
+  margin: 0 auto;
+  padding: 20px;
+  min-width: fit-content;
+}
+
+.container1 {
+  width: 40%; /* Set the width of the container */
+  margin: 0 auto; /* Center the container horizontally */
+  padding: 20px;
+  height: fit-content;
+  min-width: fit-content;
+}
+
+.form {
+  padding: 50px;
+}
+.btn {
+  width: 30%;
+  margin: auto;
+}

@@ -1,8 +1,8 @@
-import styles from "./Cancellation.module.css";
+import styles from "./Extras.module.css";
 import { useEffect, useRef } from "react";
 import { Card, Form, FormGroup, Input, Button, Label } from "reactstrap";
 
-const Cancellation = () => {
+const Extras = () => {
   const mainRef = useRef();
 
   useEffect(() => {
@@ -26,7 +26,7 @@ const Cancellation = () => {
         </div>
         <main ref={mainRef}>
           <section className="section section-shaped section-lg">
-            <div class={styles.container}>Cancellation form</div>
+            <div class={styles.container}>Extras form</div>
             <div class={styles.container1}>
               <Card className="shadow">
                 <Form className={styles.form}>
@@ -95,4 +95,4 @@ const Cancellation = () => {
   );
 };
 
-export default Cancellation;
+export default Extras;

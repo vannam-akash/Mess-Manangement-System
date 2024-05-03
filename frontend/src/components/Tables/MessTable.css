@@ -5,7 +5,10 @@
     margin: 0 auto; /* Center the table horizontally */
     background-color: #dfe1e4eb;
   }
-  
+  .table {
+    margin: 0;
+    padding: 0;
+  }
   /* Style the table headers */
   th {
     background-color: #4b35a5; /* Blue background */

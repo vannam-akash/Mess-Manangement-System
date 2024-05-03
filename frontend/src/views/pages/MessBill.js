@@ -52,7 +52,8 @@ const MessBill = () => {
 export async function messBillLoader() {
   const studentId = getId();
   if(!studentId) return redirect("/students/login");
-  const stud = fetchStudentDetails(studentId);
+  const stud = await fetchStudentDetails(studentId);
+  console.log(stud);
   return stud;
 }
 

@@ -103,8 +103,9 @@ const router = createBrowserRouter([
         path:"/assign-students",
         element:<AssignStudents/>
       },
+      {
         path: "/extra-meal",
-        element: <Extras />,
+        element: <Extras />
       },
 
       {

@@ -35,6 +35,7 @@ import { checkStudAuthLoader } from "auth";
 import { checkStaffAuthLoader } from "auth";
 import Extras from "views/pages/Extras";
 import EnrolledStudents from "views/pages/EnrolledStudents";
+import Error from "views/examples/Error";
 
 const root = createRoot(document.getElementById("root"));
 const queryClient = new QueryClient();
@@ -45,6 +46,7 @@ const router = createBrowserRouter([
     path: "/",
     element: <Root />,
     loader: checkAuthLoader,
+    errorElement: <Error/>,
     children: [
       {
         index: true,
@@ -125,11 +127,11 @@ const router = createBrowserRouter([
         element: <MessBill />,
         loader: messBillLoader,
       },
-    ],
-  },
-  {
-    path: "*",
-    element: <Navigate to="/" replace />,
+      // {
+      //   path: "error",
+      //   element: <Error/>,
+      // }
+    ]
   },
 ]);
 

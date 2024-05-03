@@ -34,7 +34,7 @@ import { checkAuthLoader } from "auth";
 import { checkStudAuthLoader } from "auth";
 import { checkStaffAuthLoader } from "auth";
 import Extras from "views/pages/Extras";
-
+import EnrolledStudents from "views/pages/EnrolledStudents";
 
 const root = createRoot(document.getElementById("root"));
 const queryClient = new QueryClient();
@@ -100,9 +100,14 @@ const router = createBrowserRouter([
         element: <Cancellation />,
       },
       {
-        path:"/assign-students",
-        element:<AssignStudents/>
+        path: "/assign-students",
+        element: <AssignStudents />,
       },
+      {
+        path: "/enrolled-students",
+        element: <EnrolledStudents />,
+      },
+      {
         path: "/extra-meal",
         element: <Extras />,
       },

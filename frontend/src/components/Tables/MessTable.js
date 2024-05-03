@@ -8,7 +8,7 @@ const MessTable = ({ mealTable }) => {
   return (
     <>
       <div className="TableContainer">
-        <Table bordered responsive>
+        <Table bordered responsive className="table">
           <thead>
             <tr>
               <th>Date & Day</th>

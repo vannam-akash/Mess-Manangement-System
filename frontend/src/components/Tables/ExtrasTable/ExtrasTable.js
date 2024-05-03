@@ -22,6 +22,16 @@ const extrasBill = [
 ];
 
 const ExtrasTable = () => {
+  
+  const calculateTotal = ()=>{
+    let total =0;
+
+    extrasBill.map((row)=>{
+      total+=parseFloat(row.price) * parseFloat(row.quantity) ;
+    })
+    return total;
+  }
+
   return (
     <>
       <div className={styles.TableContainer}>
@@ -47,6 +57,12 @@ const ExtrasTable = () => {
                 <td>{parseFloat(row.price) * parseFloat(row.quantity)}</td>
               </tr>
             ))}
+            <tr className={styles.totalRow}>
+              <td colSpan="5" >
+                Grand Total 
+              </td>
+              <td >{calculateTotal()}</td>
+            </tr>
           </tbody>
         </Table>
       </div>

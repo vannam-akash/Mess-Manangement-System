@@ -7,39 +7,39 @@ const menus = [
   messName: "North-Indian Mess",
   menus:{
   Monday: {
-    breakfast: 'Puri and potato curry',
-    lunch: 'Roti, Rice, Dal, vegetabel curry, Salad ',
-    dinner: 'Roti, Rice, Dal, Kidney-beans curry, Salad ',
+    breakfast: 'Puri and sabji',
+    lunch: 'Dal- Kaali urad, Sukhi sabji- bhindi, Gravy sabji- mushroom, Special- Pani Puri',
+    dinner: 'Dal- Dal makhani, Sukhi sabji- bhindi, Gravy sabji- Rajma, Special- Gulab Jamun',
   },
   Tuesday: {
     breakfast: 'Poha and Jalebi',
-    lunch: 'Roti, Rice, Dal, Dahi kadhi, Salad ',
-    dinner: 'Chole Bhature',
+    lunch: 'Dal- Mung dal, Sukhi sabji- Chana, Gravy sabji- Kadi, Special- Papad',
+    dinner: 'Dal- Masoor dal, Sukhi sabji- Patta gobi, Gravy sabji- Chhole, Special- Fruits',
   },
   Wednesday: {
-    breakfast: 'Yogurt with fruits',
-    lunch: 'Quinoa salad',
-    dinner: 'Tacos with guacamole',
+    breakfast: 'Sambhar Vada',
+    lunch: 'Dal- Dal makhni, Sukhi sabji- Karela, Gravy sabji- Soyabean, Special- Custard',
+    dinner: 'Dal- Kaali urad, Sukhi sabji- gobi, Gravy sabji- Paneer, Special- Watermelon',
   },
   Thursday: {
-    breakfast: 'Waffles with berries',
-    lunch: 'Shrimp pasta',
-    dinner: 'Roast chicken with vegetables',
+    breakfast: 'Bread Pakoda',
+    lunch: 'Dal- Kaali urad, Sukhi sabji- aalo gobi, Gravy sabji- Rajma, Special- Fruit Rayata',
+    dinner: 'Dal- Urad dal, Sukhi sabji- Mixed Veg, Gravy sabji- Soyabean, Special- Rasgulla',
   },
   Friday: {
-    breakfast: 'French toast',
-    lunch: 'Sushi rolls',
-    dinner: 'Vegetable curry with rice',
+    breakfast: 'Sandwich',
+    lunch: 'Dal- Arhar Dal, Sukhi sabji- gobi, Gravy sabji- Rajma, Special- Fruits',
+    dinner: 'Dal- Moong Dal, Sukhi sabji- aalo fry, Gravy sabji- Paneer, Special- Halwa',
   },
   Saturday: {
-    breakfast: 'Bagels with cream cheese',
-    lunch: 'BBQ ribs',
-    dinner: 'Pizza with toppings',
+    breakfast: 'Halwa and Chane',
+    lunch: 'Dal- Dal tadka, Sukhi sabji- Mix veg, Gravy sabji- Shani Paneer, Special- Dahi Vada, Sweet- Gulab jamun/ Ras malai',
+    dinner: 'OFF',
   },
   Sunday: {
-    breakfast: 'English muffins',
-    lunch: 'Caesar salad',
-    dinner: 'Steak with mashed potatoes',
+    breakfast: 'Aloo Paratha',
+    lunch: 'Dal- Hara chana, Sukhi sabji- Patta gobi, Gravy sabji- Chhole, Special- Sewai',
+    dinner: 'Dal- Dal Tadka, Sukhi sabji- Pyaz fry, Gravy sabji- Paneer, Special- Mixed Fruit Salad',
   },}
 },
   {
@@ -63,7 +63,7 @@ const menus = [
   Thursday: {
     breakfast: 'Dosa / Cheela',
     lunch: 'Dal- Arhar dal, Sukhi sabji- Mix veg, Gravy sabji- Rajma, Special- Fruit reyta / dahi',
-    dinner: 'Dal- Mix dal, Sukhi sabji- fried aloo, Special- Chole Bhature, Sweet- Barfi',
+    dinner: 'Dal- Mix dal, Sukhi sabji- fried aloo, Special- Chhole Bhature, Sweet- Barfi',
   },
   Friday: {
     breakfast: 'Bread Pakoda and Daliya',
@@ -77,7 +77,7 @@ const menus = [
   },
   Sunday: {
     breakfast: 'Aloo Paratha',
-    lunch: 'Dal- Hara chana, Sukhi sabji- Patta gobi, Gravy sabji- Chole, Special- Kheer',
+    lunch: 'Dal- Hara chana, Sukhi sabji- Patta gobi, Gravy sabji- Chhole, Special- Kheer',
     dinner: 'Dal- Arhar dal, Sukhi sabji- Beans, Gravy sabji- Rajma, Special- Aloo tikki/ Chaat',
   },}
 },
@@ -86,38 +86,38 @@ const menus = [
   menus:{
   Monday: {
     breakfast: 'Masala Dosa',
-    lunch: 'Chicken salad',
-    dinner: 'Spaghetti and meatballs',
+    lunch: 'Dal- Dal Fry, Sukhi sabji- Beans, Gravy sabji- Garlic Rasam, Special- Mixed Veg Raita',
+    dinner: 'Dal- Arhar dal, Sukhi sabji- Patta Gobi, Gravy sabji- Kofta, Special- Aloo tikki/ Chaat',
   },
   Tuesday: {
-    breakfast: 'Pancakes with syrup',
-    lunch: 'Vegetable stir-fry',
-    dinner: 'Grilled salmon with rice',
+    breakfast: 'Idli Sambhar',
+    lunch: 'Dal- Arhar dal, Sukhi sabji- Palak Pappu, Gravy sabji- Lemon Rasam, Special- Papad',
+    dinner: 'Dal- Tool dal, Sukhi sabji- Bhindi, Gravy sabji- Veg Kurma, Special- Biryani',
   },
   Wednesday: {
-    breakfast: 'Yogurt with fruits',
-    lunch: 'Quinoa salad',
-    dinner: 'Tacos with guacamole',
+    breakfast: 'Sambhar Vada',
+    lunch: 'Dal- Moong Dal, Sukhi sabji- Aloo kara poriyal, Gravy sabji- Rajma, Special- Kheer',
+    dinner: 'Dal- Arhar dal, Sukhi sabji- Beans, Gravy sabji- Kadi, Special- Uttapam',
   },
   Thursday: {
-    breakfast: 'Waffles with berries',
-    lunch: 'Shrimp pasta',
-    dinner: 'Roast chicken with vegetables',
+    breakfast: 'Onion Uthappam and Sambhar',
+    lunch: 'Dal- Dal Tadka, Sukhi sabji- Bhindi, Gravy sabji- Veg Kurma, Special- Gajar Halwa',
+    dinner: 'Dal- Toor dal, Sukhi sabji- Soyabean, Gravy sabji- Rajma, Special- Vada Pav',
   },
   Friday: {
-    breakfast: 'French toast',
-    lunch: 'Sushi rolls',
-    dinner: 'Vegetable curry with rice',
+    breakfast: 'Brown Bread and Omlet',
+    lunch: 'Dal- Arhar dal, Sukhi sabji- Aloo gobi, Gravy sabji- Rasam, Special- Fruit Salad',
+    dinner: 'Dal- Hara Chana, Sukhi sabji- Aloo Fry, Gravy sabji- Paneer Butter Masala, Special- Pav Bhaji',
   },
   Saturday: {
-    breakfast: 'Bagels with cream cheese',
-    lunch: 'BBQ ribs',
-    dinner: 'Pizza with toppings',
+    breakfast: 'Boiled moong sprouts and pongal vada',
+    lunch: 'Dal- Moong Dal, Sukhi sabji- Pyaz Fry, Gravy sabji- Rajma, Special- Potato Chips',
+    dinner: 'OFF',
   },
   Sunday: {
-    breakfast: 'English muffins',
-    lunch: 'Caesar salad',
-    dinner: 'Steak with mashed potatoes',
+    breakfast: 'Aloo masala and puri',
+    lunch: 'Dal- Dal Tadka, Sukhi sabji- Veg Poriyal, Gravy sabji- Rajma, Special- Gulab Jamun',
+    dinner: 'Dal- Arhar dal, Sukhi sabji- Aloo, Gravy sabji- Mixed Veg Curry, Special- Aloo tikki/ Chaat',
   },}
 }
 ];

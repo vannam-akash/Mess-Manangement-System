@@ -8,15 +8,11 @@ const passport = require("passport");
 
 // Get students with unassigned mess
 router.get(
-  "/unassignedStudent",
+  "/unassigned-students",
   passport.authenticate("staff-jwt", { session: false }),
   async (req, res) => {
     try {
       const students = await Student.find({ messEnrolled: null });
-      if (students.length === 0) {
-        return res.status(404).json({ error: "Unassigned Students not found" });
-      }
-
       return res.status(200).json(students);
     } catch (error) {
       console.log("Error fetching all the unassigned students");
@@ -27,7 +23,7 @@ router.get(
 
 // Assign Mess to a student
 router.post(
-  "/assign/student",
+  "/assign-student",
   passport.authenticate("staff-jwt", { session: false }),
   async (req, res) => {
     try {
@@ -93,10 +89,6 @@ router.get(
         return res.status(404).json({ error: "Staff not found" });
       }
 
-      if (staff.messEnrolled?.manager?.equals(staffId)) {
-        staff.isManager = true;
-      }
-
       delete staff.password;
       return res.status(200).json(staff);
     } catch (error) {
@@ -108,7 +100,7 @@ router.get(
 
 // Get all staff members of a Mess
 router.get(
-  "/:messId",
+  "/:messId/staffs",
   passport.authenticate("staff-jwt", { session: false }),
   async (req, res) => {
     try {

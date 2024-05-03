@@ -8,8 +8,9 @@ import {
   InputGroup,
 } from "reactstrap";
 import StudentsTable from "components/Tables/AssignStudentsTable/StudentsTable";
-import { useLoaderData } from "react-router-dom";
-import { getUnassignedStuds } from "../../api/student";
+import { redirect, useLoaderData } from "react-router-dom";
+import { getUnassignedStuds } from "../../api/staff";
+import { getUserType } from "auth";
 
 const AssignStudents = () => {
   const mainRef = useRef();
@@ -63,6 +64,9 @@ const AssignStudents = () => {
 export default AssignStudents;
 
 export const assignStudLoader = async () => {
+  const user = getUserType();
+  if(!user || user !== "staff") return redirect("/staff/login");
+  
   const studs = getUnassignedStuds();
   return studs;
 }

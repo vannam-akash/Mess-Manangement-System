@@ -16,16 +16,4 @@ export async function fetchStudentDetails(studentId) {
   }
 }
 
-export async function fetchStaffDetails(staffId) {
-  try {
-    const getStudURL = `${url}/staffs/${staffId}`;
-    const {data:staff} = await axios.get(getStudURL,{
-      headers:{
-        'Authorization': 'Bearer '+ getToken()
-      }
-    });
-    return staff;
-  } catch (error) {
-    throw new Error(error.message);
-  }
-}
+

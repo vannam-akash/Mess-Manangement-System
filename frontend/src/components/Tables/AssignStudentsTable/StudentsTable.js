@@ -26,8 +26,8 @@ const StudentsTable = () => {
   };
   return (
     <>
-    <div className="flashMsg">
-    {flashMessageVisible && (
+      <div className="flashMsg">
+        {flashMessageVisible && (
           <UncontrolledAlert color="success" fade={false}>
             <span className="alert-inner--icon">
               <i className="ni ni-like-2" />
@@ -38,10 +38,9 @@ const StudentsTable = () => {
             </span>
           </UncontrolledAlert>
         )}
-    </div>
+      </div>
       <div className="TableContainer">
-        
-        <Table bordered responsive>
+        <Table bordered responsive className="table">
           <thead>
             <tr>
               <th>Sr No.</th>

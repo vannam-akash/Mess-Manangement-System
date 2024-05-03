@@ -20,7 +20,7 @@ router.get(
         return res.status(404).json({ error: "Staff not found" });
       }
 
-      if (staff.messEnrolled?.manager.equals(staffId)) {
+      if (staff.messEnrolled?.manager?.equals(staffId)) {
         staff.isManager = true;
       }
 

@@ -21,7 +21,7 @@ MenuCard.css
   }
   
   .menu-table th {
-    background-color: #f2f2f2;
+    background-color: #4b35a5;
     font-weight: bold;
     text-align: center;
   }
@@ -31,8 +31,21 @@ MenuCard.css
   }
   
   .menu-heading {
-    margin-bottom: 10px;
+    
     text-align: center;
     font-size: 24px;
+  }
+  tbody tr:nth-child(Tuesday) {
+    background-color: #f9fafb; /* Light gray background for even rows */
+  }
+  .equal-width {
+    width: 30%; /* set the width to 33.33% for equal width columns */
+    text-align: center; /* optional: center the text in each column */
+  }
+
+  .mess-name {
+    text-align: center;
+    font-size: 2rem;
+    padding: 1rem 0;
   }
   

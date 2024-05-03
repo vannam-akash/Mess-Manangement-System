@@ -33,7 +33,8 @@ import { checkStudAuthLoader } from "auth";
 import { checkStaffAuthLoader } from "auth";
 import Extras from "views/pages/Extras";
 import EnrolledStudents from "views/pages/EnrolledStudents";
-import Error from "views/examples/Error";
+import Error from "components/Error404/Error";
+//import {Error} from "components/Error404/Error404.jsx"
 
 const root = createRoot(document.getElementById("root"));
 const queryClient = new QueryClient();
@@ -118,7 +119,7 @@ const router = createBrowserRouter([
       },
       {
         path: "mess-bill",
-        element: <MessBill />,
+        element: <MessBill />,  
         loader: messBillLoader,
       },
     ]

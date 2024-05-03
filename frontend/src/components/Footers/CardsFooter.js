@@ -133,7 +133,7 @@ function CardsFooter() {
                     href="https://www.creative-tim.com?ref=adsr-footer"
                     target="_blank"
                   >
-                    Creative Tim
+                    UGP Team
                   </NavLink>
                 </NavItem>
                 <NavItem>

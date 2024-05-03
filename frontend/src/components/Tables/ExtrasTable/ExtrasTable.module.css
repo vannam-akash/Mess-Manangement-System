@@ -12,7 +12,7 @@
 }
 
 tr{
-    font-size: medium;
+  font-size: medium;
 }
 /* Style the table headers */
 th {
@@ -33,12 +33,14 @@ tbody tr:nth-child(even) {
   padding: 1rem;
   border-color: #dee2e6; /* Light gray border color */
 }
+.totalRow td{
+  font-size: 1.5rem;
+}
 
 /* Style the hover effect */
 tbody tr:hover,
 tbody tr:hover td:hover {
   background-color: #b9c5d8; /* Light blue on hover for the first and selected cells */
 }
-.btn {
-  padding: 0.5rem 1.5rem;
-}
+
+

@@ -1,0 +1,44 @@
+/* MessTable.css */
+/* Set maximum width and center the table horizontally */
+
+.TableContainer {
+  max-width: 60%;
+  margin: 0 auto; /* Center the table horizontally */
+  background-color: #dfe1e4eb;
+}
+.table {
+  margin: 0;
+  padding: 0;
+}
+
+tr{
+    font-size: medium;
+}
+/* Style the table headers */
+th {
+  background-color: #4b35a5; /* Blue background */
+  color: #fff; /* White text */
+  text-align: center;
+}
+
+/* Style the table rows alternately */
+tbody tr:nth-child(even) {
+  background-color: #f9fafb; /* Light gray background for even rows */
+}
+
+/* Style the table cells */
+.TableContainer td {
+  vertical-align: middle;
+  text-align: center;
+  padding: 1rem;
+  border-color: #dee2e6; /* Light gray border color */
+}
+
+/* Style the hover effect */
+tbody tr:hover,
+tbody tr:hover td:hover {
+  background-color: #b9c5d8; /* Light blue on hover for the first and selected cells */
+}
+.btn {
+  padding: 0.5rem 1.5rem;
+}

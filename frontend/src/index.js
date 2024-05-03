@@ -35,6 +35,8 @@ import Extras from "views/pages/Extras";
 import EnrolledStudents from "views/pages/EnrolledStudents";
 import Error from "components/Error404/Error";
 //import {Error} from "components/Error404/Error404.jsx"
+import ExtrasBill from "views/pages/ExtrasBill";
+import Error from "views/examples/Error";
 
 const root = createRoot(document.getElementById("root"));
 const queryClient = new QueryClient();
@@ -107,7 +109,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/extra-meal",
-        element: <Extras />
+        element: <Extras />,
+      },
+      {
+        path: "/extra-bill",
+        element: <ExtrasBill />,
       },
       {
         path: "staffProfile-page",

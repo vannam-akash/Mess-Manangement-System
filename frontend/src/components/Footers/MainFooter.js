@@ -61,7 +61,7 @@ function MainFooter() {
                 Follow us
               </UncontrolledTooltip>
               <Button
-                className="btn-icon-only rounded-circle ml-1"
+                className="btn-icon-only rounded-circle ml-1 "
                 color="facebook"
                 href="https://www.facebook.com/"
                 id="tooltip837440414"
@@ -110,10 +110,10 @@ function MainFooter() {
               <div className=" copyright">
                 © {new Date().getFullYear()}{" "}
                 <a
-                  href="https://www.creative-tim.com?ref=adsr-footer"
+                  href="https://github.com/vannam-akash/ugp_project"
                   target="_blank"
                 >
-                  Creative Tim
+                  UGP Team
                 </a>
                 .
               </div>

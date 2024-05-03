@@ -1,0 +1,10 @@
+.title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: xx-large;
+    font-weight:bolder;
+    margin-bottom: 2vw;
+}
+

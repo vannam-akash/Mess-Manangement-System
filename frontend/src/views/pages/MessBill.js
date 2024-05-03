@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import MessTable from "components/Tables/MessTable";
-import "../../components/Tables/MessTable.css"
+import MessTable from "components/Tables/MessTable/MessTable.js";
 import { redirect, useLoaderData} from "react-router-dom";
 import { fetchStudentDetails } from "http";
 import { getId } from "auth";
@@ -41,7 +40,7 @@ const MessBill = () => {
             </p>
           </div>
           {!student.messEnrolled && <p className="student-info" >Not enrolled in a mess.</p>}
-          {student.messEnrolled && <MessTable mealTable={student.bill} />}
+          {/* {student.messEnrolled && <MessTable mealTable={student.bill} />} */}
         </section>
       </main>
       </section>

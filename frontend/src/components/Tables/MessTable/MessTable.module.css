@@ -1,0 +1,54 @@
+/* MessTable.css */
+/* Set maximum width and center the table horizontally */
+.TableContainer {
+  max-width: 60%;
+  margin: 0 auto; /* Center the table horizontally */
+  background-color: #dfe1e4eb;
+}
+
+/* Style the table headers */
+th {
+  background-color: #4b35a5; /* Blue background */
+  color: #fff; /* White text */
+}
+
+/* Style the table rows alternately */
+tbody tr:nth-child(even) {
+  background-color: #f9fafb; /* Light gray background for even rows */
+}
+
+/* Style the table cells */
+td {
+  border-color: #dee2e6; /* Light gray border color */
+}
+
+/* Style the hover effect */
+tbody tr:hover td:first-child,
+tbody tr:hover td:hover {
+  background-color: #b9c5d8; /* Light blue on hover for the first and selected cells */
+}
+
+/* MessTable.css */
+
+/* Center the student-info div horizontally */
+.student-info {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 500;
+  max-width: 60%;
+  margin-left: auto; /* Center horizontally */
+  margin-right: auto;
+  margin-bottom: 50px;
+  text-align: center; /* Center text */
+}
+
+/* Style the student name and roll no. */
+.student-info .student-details {
+  display: inline-block; /* Display in one line */
+  margin-bottom: 10px; /* Add space below */
+}
+
+/* Style the month and year */
+.student-info .date-details {
+  display: block; /* Display on separate lines */
+}

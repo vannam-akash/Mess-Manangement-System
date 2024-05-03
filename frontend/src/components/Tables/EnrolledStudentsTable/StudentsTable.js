@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./StudentsTable.css";
+import  styles from "./StudentsTable.module.css";
 
 import { Table } from "reactstrap";
 
@@ -13,16 +13,16 @@ const enrolledStudentsList = [
   { fullName: "Aditya Das", rollNo: "21135003" , extrasAmt:"2000", messAmt:"500000"},
   { fullName: "Naman Khetan", rollNo: "21135086", extrasAmt:"5000", messAmt:"1000000" },
   { fullName: "Aditya Das", rollNo: "21135003" , extrasAmt:"2000", messAmt:"500000"},
-  { fullName: "Naman Khetan", rollNo: "21135086", extrasAmt:"5000", messAmt:"1000000" },
+  { fullName: "Naman Khetan", rollNo: "21135086", extrasAmt:"5000", messAmt:"2000" },
 ];
 
 const StudentsTable = () => {
   return (
     <>
     
-      <div className="TableContainer">
+      <div className={styles.TableContainer}>
         
-        <Table bordered responsive className="table" >
+        <Table bordered responsive className={styles.table} >
           <thead>
             <tr>
               <th>Sr No.</th>

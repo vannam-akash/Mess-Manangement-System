@@ -76,6 +76,7 @@ export async function studentLoginActions({ request: req }) {
     const {data} = await axios.post(loginUrl, loginData);
     id = data._id;
     setStudAuth(data.token, data._id);
+    console.log(data);
   } catch (error) {
     console.log(error);
   }

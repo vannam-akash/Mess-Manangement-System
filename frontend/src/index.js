@@ -6,8 +6,6 @@ import {
   createBrowserRouter,
 } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import AuthProvider from "react-auth-kit";
-import createStore from "react-auth-kit/createStore";
 
 import "assets/vendor/nucleo/css/nucleo.css";
 import "assets/vendor/font-awesome/css/font-awesome.min.css";
@@ -25,7 +23,7 @@ import Root from "views/layouts/Root";
 import StaffProfile from "views/pages/StaffProfile";
 import StudentLogin from "views/pages/StudentLogin";
 import StaffLogin from "views/pages/StaffLogin";
-import AssignStudents from "views/pages/AssignStudents";
+import AssignStudents, {assignStudLoader} from "views/pages/AssignStudents";
 import { studentLoginActions } from "components/Forms/StudentLoginForm";
 import { staffLoginActions } from "components/Forms/StaffLoginForm";
 import Cancellation from "views/pages/Cancellation";
@@ -35,6 +33,10 @@ import { checkStudAuthLoader } from "auth";
 import { checkStaffAuthLoader } from "auth";
 import Extras from "views/pages/Extras";
 import EnrolledStudents from "views/pages/EnrolledStudents";
+import Error from "components/Error404/Error";
+//import {Error} from "components/Error404/Error404.jsx"
+import ExtrasBill from "views/pages/ExtrasBill";
+// import Error from "views/examples/Error";
 
 const root = createRoot(document.getElementById("root"));
 const queryClient = new QueryClient();
@@ -45,6 +47,7 @@ const router = createBrowserRouter([
     path: "/",
     element: <Root />,
     loader: checkAuthLoader,
+    errorElement: <Error/>,
     children: [
       {
         index: true,
@@ -100,18 +103,19 @@ const router = createBrowserRouter([
         element: <Cancellation />,
       },
       {
-        path: "/assign-students",
-        element: <AssignStudents />,
-      },
-      {
-        path: "/enrolled-students",
-        element: <EnrolledStudents />,
+        path:"/assign-students",
+        element:<AssignStudents/>,
+        loader: assignStudLoader
       },
       {
         path: "/extra-meal",
-        element: <Extras />
+        element: <Extras />,
       },
-    
+      {
+        path: "/extra-bill",
+        element: <ExtrasBill />,
+      },
+
       {
         path: "staffProfile-page",
         element: <StaffProfile />,
@@ -122,28 +126,14 @@ const router = createBrowserRouter([
       },
       {
         path: "mess-bill",
-        element: <MessBill />,
+        element: <MessBill />,  
         loader: messBillLoader,
       },
-    ],
-  },
-  {
-    path: "*",
-    element: <Navigate to="/" replace />,
+    ]
   },
 ]);
-
-const AuthStore = createStore({
-  authName: "_auth",
-  authType: "cookie",
-  cookieDomain: window.location.hostname,
-  cookieSecure: window.location.protocol === "https:",
-});
-
 root.render(
   <QueryClientProvider client={queryClient}>
-    <AuthProvider store={AuthStore}>
       <RouterProvider router={router} />
-    </AuthProvider>
   </QueryClientProvider>
 );

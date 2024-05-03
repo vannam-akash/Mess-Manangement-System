@@ -6,28 +6,20 @@ const Bill = require("../models/Bill");
 const router = express.Router();
 const passport = require("passport");
 
-// Get staff from Id
+// Get students with unassigned mess
 router.get(
-  "/:staffId",
+  "/unassignedStudent",
   passport.authenticate("staff-jwt", { session: false }),
   async (req, res) => {
     try {
-      const { staffId } = req.params;
-
-      const staff = await Staff.findById(staffId).populate("messEnrolled");
-
-      if (!staff) {
-        return res.status(404).json({ error: "Staff not found" });
+      const students = await Student.find({ messEnrolled: null });
+      if (students.length === 0) {
+        return res.status(404).json({ error: "Unassigned Students not found" });
       }
 
-      if (staff.messEnrolled?.manager.equals(staffId)) {
-        staff.isManager = true;
-      }
-
-      delete staff.password;
-      return res.status(200).json(staff);
+      return res.status(200).json(students);
     } catch (error) {
-      console.error("Error fetching staff", error);
+      console.log("Error fetching all the unassigned students");
       return res.status(500).json({ error: "Internal Server Error" });
     }
   }
@@ -59,7 +51,6 @@ router.post(
       }
 
       alreadyAdded = false;
-      for (let i = 0; i < mess.students.length; i++) {}
       mess.students.map((id) => {
         if (id.equals(studentId)) {
           alreadyAdded = true;
@@ -75,13 +66,41 @@ router.post(
 
       // Assign mess to student and save
       student.messEnrolled = messId;
-      await student.save();
-
+      
       const bill = await Bill.create({ student: studentId });
-
+      student.bill = bill._id;
+      await student.save();
+      
       return res.status(200).json({ message: "Mess assigned successfully" });
     } catch (error) {
       console.error("Error assigning mess to student:", error);
+      return res.status(500).json({ error: "Internal Server Error" });
+    }
+  }
+);
+
+// Get staff from Id
+router.get(
+  "/:staffId",
+  passport.authenticate("staff-jwt", { session: false }),
+  async (req, res) => {
+    try {
+      const { staffId } = req.params;
+
+      const staff = await Staff.findById(staffId).populate("messEnrolled");
+
+      if (!staff) {
+        return res.status(404).json({ error: "Staff not found" });
+      }
+
+      if (staff.messEnrolled?.manager?.equals(staffId)) {
+        staff.isManager = true;
+      }
+
+      delete staff.password;
+      return res.status(200).json(staff);
+    } catch (error) {
+      console.error("Error fetching staff", error);
       return res.status(500).json({ error: "Internal Server Error" });
     }
   }
@@ -94,9 +113,8 @@ router.get(
   async (req, res) => {
     try {
       const { messId } = req.params;
-
+      
       const mess = await Mess.findById(messId).populate("staffs");
-
       if (!mess) {
         return res.status(404).json({ error: "Mess not found" });
       }

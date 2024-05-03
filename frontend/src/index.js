@@ -6,8 +6,6 @@ import {
   createBrowserRouter,
 } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import AuthProvider from "react-auth-kit";
-import createStore from "react-auth-kit/createStore";
 
 import "assets/vendor/nucleo/css/nucleo.css";
 import "assets/vendor/font-awesome/css/font-awesome.min.css";
@@ -25,7 +23,7 @@ import Root from "views/layouts/Root";
 import StaffProfile from "views/pages/StaffProfile";
 import StudentLogin from "views/pages/StudentLogin";
 import StaffLogin from "views/pages/StaffLogin";
-import AssignStudents from "views/pages/AssignStudents";
+import AssignStudents, {assignStudLoader} from "views/pages/AssignStudents";
 import { studentLoginActions } from "components/Forms/StudentLoginForm";
 import { staffLoginActions } from "components/Forms/StaffLoginForm";
 import Cancellation from "views/pages/Cancellation";
@@ -101,12 +99,13 @@ const router = createBrowserRouter([
       },
       {
         path:"/assign-students",
-        element:<AssignStudents/>
+        element:<AssignStudents/>,
+        loader: assignStudLoader
       },
+      {
         path: "/extra-meal",
         element: <Extras />,
       },
-
       {
         path: "staffProfile-page",
         element: <StaffProfile />,
@@ -127,18 +126,8 @@ const router = createBrowserRouter([
     element: <Navigate to="/" replace />,
   },
 ]);
-
-const AuthStore = createStore({
-  authName: "_auth",
-  authType: "cookie",
-  cookieDomain: window.location.hostname,
-  cookieSecure: window.location.protocol === "https:",
-});
-
 root.render(
   <QueryClientProvider client={queryClient}>
-    <AuthProvider store={AuthStore}>
       <RouterProvider router={router} />
-    </AuthProvider>
   </QueryClientProvider>
 );

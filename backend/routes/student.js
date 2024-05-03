@@ -3,6 +3,7 @@ const router = express.Router();
 const Student = require("../models/Student");
 const passport = require("passport");
 
+
 // Get student from Id
 router.get(
   "/:studentId",
@@ -27,31 +28,10 @@ router.get(
   }
 );
 
-// Get students with unassigned mess
-router.get(
-  "/unassignedStudent",
-  passport.authenticate("student-jwt", { session: false }),
-  async (req, res) => {
-    try {
-      const students = await Student.find({ messEnrolled: null });
-
-      if (students.length === 0) {
-        return res.status(404).json({ error: "Unassigned Students not found" });
-      }
-
-      return res.status(200).json(students);
-    } catch (error) {
-      console.error("Error fetching all the unassigned students");
-      return res.status(500).json({ error: "Internal Server Error" });
-    }
-  }
-);
-
-
 // Get all students enrolled in mess
 router.get(
   "/:messId/allStudents",
-  passport.authenticate("student-jwt", { session: false }),
+  passport.authenticate("staff-jwt", { session: false }),
   async (req, res) => {
     try {
       const { messId } = req.params;

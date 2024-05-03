@@ -1,20 +1,9 @@
 import React, { useState } from "react";
-import "./StudentsTable.css";
+import styles from "./StudentsTable.module.css";
 
 import { Table, Button, UncontrolledAlert } from "reactstrap";
 
-const unassignedStudentsList = [
-  { fullName: "Aditya Das", rollNo: "21135003" },
-  { fullName: "Naman Khetan", rollNo: "21135086" },
-  { fullName: "Aditya Das", rollNo: "21135003" },
-  { fullName: "Naman Khetan", rollNo: "21135086" },
-  { fullName: "Aditya Das", rollNo: "21135003" },
-  { fullName: "Naman Khetan", rollNo: "21135086" },
-  { fullName: "Aditya Das", rollNo: "21135003" },
-  { fullName: "Naman Khetan", rollNo: "21135086" },
-];
-
-const StudentsTable = () => {
+const StudentsTable = ({ studs }) => {
   const [flashMessageVisible, setflashMessageVisible] = useState(false);
 
   const handleAssignClick = () => {
@@ -26,8 +15,8 @@ const StudentsTable = () => {
   };
   return (
     <>
-    <div className="flashMsg">
-    {flashMessageVisible && (
+      <div className={styles.flashMsg}>
+        {flashMessageVisible && (
           <UncontrolledAlert color="success" fade={false}>
             <span className="alert-inner--icon">
               <i className="ni ni-like-2" />
@@ -38,9 +27,8 @@ const StudentsTable = () => {
             </span>
           </UncontrolledAlert>
         )}
-    </div>
-      <div className="TableContainer">
-        
+      </div>
+      <div className={styles.TableContainer}>
         <Table bordered responsive>
           <thead>
             <tr>
@@ -51,14 +39,14 @@ const StudentsTable = () => {
             </tr>
           </thead>
           <tbody>
-            {unassignedStudentsList?.map((row, index) => (
-              <tr key={index}>
+            {studs?.map((row, index) => (
+              <tr className="" key={index}>
                 <td>{`${index + 1}`}</td>
                 <td>{row.fullName}</td>
                 <td>{row.rollNo}</td>
                 <td>
                   <Button
-                    className="btn"
+                    className={styles.btn}
                     color="primary"
                     type="button"
                     onClick={handleAssignClick}

@@ -6,23 +6,14 @@ import {
   InputGroupAddon,
   InputGroupText,
   InputGroup,
-  Container,
-  Row,
-  Col,
-  Card,
-  Form,
-  Button,
-  Label,
 } from "reactstrap";
-import classnames from "classnames";
-import MainFooter from "components/Footers/MainFooter";
 import StudentsTable from "components/Tables/AssignStudentsTable/StudentsTable";
-import { redirect, useLoaderData } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
+import { getUnassignedStuds } from "../../api/student";
 
 const AssignStudents = () => {
   const mainRef = useRef();
-  const student = useLoaderData();
-  console.log(student);
+  const students = useLoaderData();
 
   useEffect(() => {
     document.documentElement.scrollTop = 0;
@@ -44,12 +35,8 @@ const AssignStudents = () => {
         </div>
         <main ref={mainRef}>
           <section className="section section-shaped section-lg">
-            <div class={styles.search}>
-              <FormGroup
-              // className={classnames({
-              //   focused: this.state.searchFocused,
-              // })}
-              >
+            <div className={styles.search}>
+              <FormGroup>
                 <InputGroup className={`${styles.searchBar} mb-4`}>
                   <InputGroupAddon addonType="prepend">
                     <InputGroupText>
@@ -59,14 +46,12 @@ const AssignStudents = () => {
                   <Input
                     placeholder="Search"
                     type="text"
-                    // onFocus={(e) => this.setState({ searchFocused: true })}
-                    // onBlur={(e) => this.setState({ searchFocused: false })}
                   />
                 </InputGroup>
               </FormGroup>
             </div>
             <div className={styles.studentList}>
-              <StudentsTable />
+              <StudentsTable studs={students} />
             </div>
           </section>
         </main>
@@ -76,3 +61,8 @@ const AssignStudents = () => {
 };
 
 export default AssignStudents;
+
+export const assignStudLoader = async () => {
+  const studs = getUnassignedStuds();
+  return studs;
+}

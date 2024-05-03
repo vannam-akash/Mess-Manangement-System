@@ -1,18 +1,48 @@
+/*!
+
+=========================================================
+* Argon Design System React - v1.1.2
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/argon-design-system-react
+* Copyright 2023 Creative Tim (https://www.creative-tim.com)
+* Licensed under MIT (https://github.com/creativetimofficial/argon-design-system-react/blob/master/LICENSE.md)
+
+* Coded by Creative Tim
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+*/
+import React from "react";
+// nodejs library that concatenates classes
+import classnames from "classnames";
 import styles from "./Extras.module.css";
-import { useEffect, useRef } from "react";
-import { Card, Form, FormGroup, Input, Button, Label } from "reactstrap";
+// reactstrap components
+import {
+  FormGroup,
+  Input,
+  InputGroupAddon,
+  InputGroupText,
+  InputGroup,
+  Container,
+  Row,
+  Col,
+  Button,
+} from "reactstrap";
 
-const Extras = () => {
-  const mainRef = useRef();
+class Extras extends React.Component {
+  state = {};
+  handleSubmit = (event) => {
+    event.preventDefault();
+    // Add your form submission logic here
+    console.log("Form submitted");
+  };
 
-  useEffect(() => {
-    document.documentElement.scrollTop = 0;
-    document.scrollingElement.scrollTop = 0;
-    mainRef.current.scrollTop = 0;
-  }, []);
-
-  return (
-    <>
+  render() {
+    return (
+      <>
       <section className="section section-shaped section-lg">
         <div className="shape shape-style-1 bg-gradient-primary">
           <span />
@@ -24,75 +54,86 @@ const Extras = () => {
           <span />
           <span />
         </div>
-        <main ref={mainRef}>
-          <section className="section section-shaped section-lg">
-            <div class={styles.container}>Extras form</div>
-            <div class={styles.container1}>
-              <Card className="shadow">
-                <Form className={styles.form}>
+
+        <section className="section pb-0 section-components">
+          {/* <div className={styles.formBody}> */}
+          <Container className={`${styles.formBody} mb-5`}>
+            {/* Inputs */}
+            <h3 className="h4 text-success text-white font-weight-bold mb-4">
+              Extras Form
+            </h3>
+            <div className="rows">
+              <Row>
+                <Col lg="4" sm="6">
                   <FormGroup>
-                    <Input placeholder="Enter date" type="date" />
+                    <Input placeholder="Student Id" type="number" />
                   </FormGroup>
+                  <FormGroup
+                    className={classnames({
+                      focused: this.state.searchFocused,
+                    })}
+                  ></FormGroup>
+                </Col>
+              </Row>
+
+              <Row>
+                <Col lg="4" sm="6">
                   <FormGroup>
-                    <div className="mb-3">
-                      <small className="text-uppercase font-weight-bold">
-                        Type of Meal
-                      </small>
-                    </div>
-                    <div className="custom-control custom-radio mb-3">
-                      <Input
-                        className="custom-control-input"
-                        id="customRadio1"
-                        name="custom-radio-1"
-                        type="radio"
-                      />
-                      <Label
-                        className="custom-control-label"
-                        htmlFor="customRadio1"
-                      >
-                        <span>Breakfast</span>
-                      </Label>
-                    </div>
-                    <div className="custom-control custom-radio mb-3">
-                      <Input
-                        className="custom-control-input"
-                        id="customRadio2"
-                        name="custom-radio-1"
-                        type="radio"
-                      />
-                      <Label
-                        className="custom-control-label"
-                        htmlFor="customRadio2"
-                      >
-                        <span>Lunch</span>
-                      </Label>
-                    </div>
-                    <div className="custom-control custom-radio mb-3">
-                      <Input
-                        className="custom-control-input"
-                        id="customRadio3"
-                        name="custom-radio-1"
-                        type="radio"
-                      />
-                      <Label
-                        className="custom-control-label"
-                        htmlFor="customRadio3"
-                      >
-                        <span>Dinner</span>
-                      </Label>
-                    </div>
+                    <Input placeholder="Dish ordered" type="text" />
                   </FormGroup>
-                  <Button color="primary" className={`btn-1`}>
+                  <FormGroup
+                    className={classnames({
+                      focused: this.state.searchFocused,
+                    })}
+                  ></FormGroup>
+                </Col>
+              </Row>
+              <Row>
+                <Col lg="4" sm="6">
+                  <FormGroup>
+                    <Input placeholder="Price" type="number" />
+                  </FormGroup>
+                  <FormGroup
+                    className={classnames({
+                      focused: this.state.searchFocused,
+                    })}
+                  ></FormGroup>
+                </Col>
+              </Row>
+              <Row>
+                <Col lg="4" sm="6">
+                  <FormGroup>
+                    <Input placeholder="Quantity ordered" type="number" />
+                  </FormGroup>
+                  <FormGroup
+                    className={classnames({
+                      focused: this.state.searchFocused,
+                    })}
+                  ></FormGroup>
+                </Col>
+              </Row>
+
+              <Row className="justify-content-center">
+                <Col lg="4" sm="6">
+                  <Button
+                    className="btn-1 text-success"
+                    // color="success"
+                    outline
+                    type="submit"
+                   
+                  >
                     Submit
                   </Button>
-                </Form>
-              </Card>
+                </Col>
+              </Row>
             </div>
-          </section>
-        </main>
-      </section>
-    </>
-  );
-};
+          </Container>
+          {/* </div> */}
+        </section>
+        </section>
+      </>
+    );
+  }
+}
 
 export default Extras;

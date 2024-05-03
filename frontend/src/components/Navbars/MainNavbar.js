@@ -26,7 +26,6 @@ const MainNavbar = () => {
   const navigate = useNavigate();
   const id = getId();
   const userType = useRouteLoaderData("root");
-  console.log(userType);
 
   useEffect(() => {
     let headroom = new Headroom(document.getElementById("navbar-main"));

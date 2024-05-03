@@ -1,14 +1,14 @@
 import React from "react";
 import { Table } from "reactstrap";
-import "./MessTable.css";
+import styles from "./MessTable.module.css"
 
 const MessTable = ({ mealTable }) => {
   console.log(mealTable);
 
   return (
     <>
-      <div className="TableContainer">
-        <Table bordered responsive className="table">
+      <div className={styles.TableContainer}>
+        <Table bordered responsive>
           <thead>
             <tr>
               <th>Date & Day</th>

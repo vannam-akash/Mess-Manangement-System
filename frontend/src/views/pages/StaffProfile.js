@@ -7,6 +7,7 @@ import { Card, Row, Col, Container } from "reactstrap";
 import "./StaffProfile.css";
 import { fetchStaffDetails } from "api/staff";
 import { useLoaderData } from "react-router-dom";
+import StaffList from "../../components/Tables/StaffList/StaffList.js"
 
 
 function StaffProfile() {
@@ -76,7 +77,11 @@ function StaffProfile() {
                   <i className="ni education_hat mr-2" />
                   Email ID - {student.email}
                 </div> */}
+                <div>
+                  <h4 className="mt-5">Staff List</h4>
+                </div>
               </div>
+              <StaffList></StaffList>
               </div>
             </Card>
           </Container>

@@ -41,7 +41,7 @@ const Error = () => {
 				<div className={styles.msg}>
 				<p>Sorry, we couldn't find this page.</p>
 				<p>But dont worry, you can find plenty of other things on our homepage.</p>
-				<a  href="http://localhost:3000/">Back to homepage</a>
+				<a className={styles.underlined} href="http://localhost:3000/">Back to homepage</a>
 				</div>
 			</section>
 

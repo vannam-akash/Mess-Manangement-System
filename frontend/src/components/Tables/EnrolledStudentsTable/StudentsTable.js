@@ -37,8 +37,8 @@ const StudentsTable = () => {
             {enrolledStudentsList?.map((row, index) => (
               <tr key={index}>
                 <td>{`${index + 1}`}</td>
-                <td>{row.rollNo}</td>
                 <td>{row.fullName}</td>
+                <td>{row.rollNo}</td>
                 <td>{row.extrasAmt}</td>
                 <td>{row.messAmt}</td>
                 <td>{parseFloat(row.extrasAmt) + parseFloat(row.messAmt)}</td>

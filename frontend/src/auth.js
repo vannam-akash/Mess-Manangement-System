@@ -1,9 +1,10 @@
 import { redirect } from "react-router-dom";
 
-export function setStaffAuth(token, staffId){
+export function setStaffAuth(token, staffId, messId){
   delAuth();
   localStorage.setItem("token", token);
   localStorage.setItem("id", staffId);
+  localStorage.setItem("mess_id", messId)
   localStorage.setItem("user_type", "staff");
 }
 
@@ -26,6 +27,10 @@ export function getToken() {
 
 export function getId() {
   return localStorage.getItem("id");
+}
+
+export function getMessId() {
+  return localStorage.getItem("mess_id");
 }
 
 export function getUserType() {

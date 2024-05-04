@@ -69,7 +69,9 @@ export async function staffLoginActions({ request: req }) {
   try {
     const {data} = await axios.post(loginUrl, loginData);
     id = data._id;
-    setStaffAuth(data.token, data._id);
+    console.log(data);
+    
+    setStaffAuth(data.token, data._id, data.messEnrolled);
   } catch (error) {
     console.log(error);
   }

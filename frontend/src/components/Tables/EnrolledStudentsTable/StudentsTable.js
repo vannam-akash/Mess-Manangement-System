@@ -3,20 +3,7 @@ import  styles from "./StudentsTable.module.css";
 
 import { Table } from "reactstrap";
 
-const enrolledStudentsList = [
-  { fullName: "Aditya Das", rollNo: "21135003" , extrasAmt:"2000", messAmt:"500000"},
-  { fullName: "Naman Khetan", rollNo: "21135086", extrasAmt:"5000", messAmt:"1000000" },
-  { fullName: "Aditya Das", rollNo: "21135003" , extrasAmt:"2000", messAmt:"500000"},
-  { fullName: "Naman Khetan", rollNo: "21135086", extrasAmt:"5000", messAmt:"1000000" },
-  { fullName: "Aditya Das", rollNo: "21135003" , extrasAmt:"2000", messAmt:"500000"},
-  { fullName: "Naman Khetan", rollNo: "21135086", extrasAmt:"5000", messAmt:"1000000" },
-  { fullName: "Aditya Das", rollNo: "21135003" , extrasAmt:"2000", messAmt:"500000"},
-  { fullName: "Naman Khetan", rollNo: "21135086", extrasAmt:"5000", messAmt:"1000000" },
-  { fullName: "Aditya Das", rollNo: "21135003" , extrasAmt:"2000", messAmt:"500000"},
-  { fullName: "Naman Khetan", rollNo: "21135086", extrasAmt:"5000", messAmt:"2000" },
-];
-
-const StudentsTable = () => {
+const StudentsTable = ({studs}) => {
   return (
     <>
     
@@ -34,14 +21,14 @@ const StudentsTable = () => {
             </tr>
           </thead>
           <tbody>
-            {enrolledStudentsList?.map((row, index) => (
+            {studs?.map((row, index) => (
               <tr key={index}>
                 <td>{`${index + 1}`}</td>
                 <td>{row.rollNo}</td>
                 <td>{row.fullName}</td>
-                <td>{row.extrasAmt}</td>
-                <td>{row.messAmt}</td>
-                <td>{parseFloat(row.extrasAmt) + parseFloat(row.messAmt)}</td>
+                <td>{0}</td>
+                <td>{0}</td>
+                <td>{0}</td>
               </tr>
             ))}
           </tbody>

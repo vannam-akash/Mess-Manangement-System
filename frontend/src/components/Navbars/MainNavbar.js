@@ -105,13 +105,13 @@ const MainNavbar = () => {
                       <>
                         <NavItem>
                           <NavLink
-                            to="/mess-bill"
+                            to="/enrolled-students"
                             tag={Link}
                             className="nav-link"
                           >
                             <i className="fa fa-hand-o-right d-lg-none mr-2" />
                             <span className="nav-link-inner--text">
-                              Mess Bill
+                              Enrolled Students
                             </span>
                           </NavLink>
                         </NavItem>
@@ -122,27 +122,68 @@ const MainNavbar = () => {
                             tag={Link}
                             className="nav-link"
                           >
-                            <i className="fa fa-hand-o-right d-lg-none" />
+                            <i className="fa fa-hand-o-right d-lg-none mr-2" />
                             <span className="nav-link-inner--text">
-                              Extra Meal
+                              Extras form
+                            </span>
+                          </NavLink>
+                        </NavItem>
+
+                        <NavItem>
+                          <NavLink
+                            to="/assign-students"
+                            tag={Link}
+                            className="nav-link"
+                          >
+                            <i className="fa fa-hand-o-right d-lg-none mr-2" />
+                            <span className="nav-link-inner--text">
+                              Assign Students
                             </span>
                           </NavLink>
                         </NavItem>
                       </>
                     )}
                     {userType === "stud" && (
-                      <NavItem>
-                        <NavLink
-                          to="/cancel-meal"
-                          tag={Link}
-                          className="nav-link"
-                        >
-                          <i className="fa fa-hand-o-right d-lg-none" />
-                          <span className="nav-link-inner--text">
-                            Cancel Meal
-                          </span>
-                        </NavLink>
-                      </NavItem>
+                      <>
+                        <NavItem>
+                          <NavLink
+                            to="/cancel-meal"
+                            tag={Link}
+                            className="nav-link"
+                          >
+                            <i className="fa fa-hand-o-right d-lg-none" />
+                            <span className="nav-link-inner--text">
+                              Cancel Meal
+                            </span>
+                          </NavLink>
+                        </NavItem>
+
+                        <NavItem>
+                          <NavLink
+                            to="/extra-bill"
+                            tag={Link}
+                            className="nav-link"
+                          >
+                            <i className="fa fa-hand-o-right d-lg-none" />
+                            <span className="nav-link-inner--text">
+                              Extras Bill
+                            </span>
+                          </NavLink>
+                        </NavItem>
+
+                        <NavItem>
+                          <NavLink
+                            to="/mess-bill"
+                            tag={Link}
+                            className="nav-link"
+                          >
+                            <i className="fa fa-hand-o-right d-lg-none" />
+                            <span className="nav-link-inner--text">
+                              Mess Bill
+                            </span>
+                          </NavLink>
+                        </NavItem>
+                      </>
                     )}
                   </Nav>
                   <Nav
@@ -150,40 +191,21 @@ const MainNavbar = () => {
                     navbar
                   >
                     <LogoutButton />
-                    {userType === "stud" && (
-                      <>
-                        <NavItem>
-                          <NavLink
-                            id="stud"
-                            to={`/students/${id}`}
-                            className="ml-4"
-                            color="default"
-                          >
-                            <i
-                              className="fa fa-user fa-2x mt-2"
-                              aria-hidden="true"
-                            ></i>
-                          </NavLink>
-                        </NavItem>
-                      </>
-                    )}
-                    {userType === "staff" && (
-                      <>
-                        <NavItem>
-                          <NavLink
-                            id="staff-profile"
-                            to={`/staffs/${id}`}
-                            className="ml-4"
-                            color="link"
-                          >
-                            <i
-                              className="fa fa-user fa-2x mt-2"
-                              aria-hidden="true"
-                            />
-                          </NavLink>
-                        </NavItem>
-                      </>
-                    )}
+                    <NavItem>
+                      <NavLink
+                        id="stud"
+                        to={`/${
+                          userType === "stud" ? "students" : "staffs"
+                        }/${id}`}
+                        className="ml-4"
+                        color="default"
+                      >
+                        <i
+                          className="fa fa-user fa-2x mt-2"
+                          aria-hidden="true"
+                        ></i>
+                      </NavLink>
+                    </NavItem>
                   </Nav>
                 </>
               )}

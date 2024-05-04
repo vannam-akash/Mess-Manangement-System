@@ -2,6 +2,7 @@ import MainNavbar from "components/Navbars/MainNavbar.js";
 import MainFooter from "components/Footers/MainFooter.js";
 import React, { useEffect, useRef } from "react";
 import styles from "./Error.module.css"
+import { Link } from "react-router-dom";
 
 
 
@@ -37,11 +38,11 @@ const Error = () => {
 			</section> */}
 
 			<section className={styles.msg}>
-				<h1>ERROR 404</h1>
+				<h1>ERROR!</h1>
 				<div className={styles.msg}>
 				<p>Sorry, we couldn't find this page.</p>
 				<p>But dont worry, you can find plenty of other things on our homepage.</p>
-				<a  href="http://localhost:3000/">Back to homepage</a>
+				<Link  to="/">Back to homepage</Link>
 				</div>
 			</section>
 

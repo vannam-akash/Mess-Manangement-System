@@ -13,30 +13,31 @@ import "assets/scss/argon-design-system-react.scss?v1.1.0";
 
 import Index from "views/Index.js";
 import Landing from "views/examples/Landing.js";
-import Login from "views/pages/Login.js";
 import Register from "views/examples/Register.js";
 import StudentProfile, {
   studentProfileLoader,
-} from "views/pages/StudentProfile";
-import MessBill, { messBillLoader } from "views/pages/MessBill";
+} from "views/pages/StudentProfile/StudentProfile";
+import MessBill, { messBillLoader } from "views/pages/MessBill/MessBill";
 import Root from "views/layouts/Root";
-import StaffProfile from "views/pages/StaffProfile";
-import StudentLogin from "views/pages/StudentLogin";
-import StaffLogin from "views/pages/StaffLogin";
-import AssignStudents, {assignStudLoader} from "views/pages/AssignStudents";
+import StaffProfile from "views/pages/StaffProfile/StaffProfile";
+import StudentLogin from "views/pages/StudentLogin/StudentLogin";
+import StaffLogin from "views/pages/StaffLogin/StaffLogin";
+import AssignStudents, {
+  assignStudLoader,
+} from "views/pages/AssignStudents/AssignStudents";
 import { studentLoginActions } from "components/Forms/StudentLoginForm";
 import { staffLoginActions } from "components/Forms/StaffLoginForm";
-import Cancellation from "views/pages/Cancellation";
-import { staffProfileLoader } from "views/pages/StaffProfile";
+import Cancellation from "views/pages/Cancellation/Cancellation";
+import { staffProfileLoader } from "views/pages/StaffProfile/StaffProfile";
 import { checkAuthLoader } from "auth";
 import { checkStudAuthLoader } from "auth";
 import { checkStaffAuthLoader } from "auth";
-import Extras from "views/pages/Extras";
-import EnrolledStudents from "views/pages/EnrolledStudents";
-import Error from "components/Error404/Error";
-//import {Error} from "components/Error404/Error404.jsx"
-import ExtrasBill from "views/pages/ExtrasBill";
-// import Error from "views/examples/Error";
+import Extras from "views/pages/Extras/Extras";
+import EnrolledStudents, {
+  enrolledStudsLoader,
+} from "views/pages/EnrolledStudents/EnrolledStudents";
+import Error from "views/pages/Error/Error";
+import ExtrasBill from "views/pages/ExtrasBill/ExtrasBill";
 
 const root = createRoot(document.getElementById("root"));
 const queryClient = new QueryClient();
@@ -47,7 +48,7 @@ const router = createBrowserRouter([
     path: "/",
     element: <Root />,
     loader: checkAuthLoader,
-    errorElement: <Error/>,
+    errorElement: <Error />,
     children: [
       {
         index: true,
@@ -87,35 +88,27 @@ const router = createBrowserRouter([
         action: staffLoginActions,
       },
       {
-        path: "login-page",
-        element: <Login />,
-      },
-      {
-        path: "landing-page",
-        element: <Landing />,
-      },
-      {
-        path: "register-page",
-        element: <Register />,
-      },
-      {
         path: "/cancel-meal",
         element: <Cancellation />,
       },
       {
-        path:"/assign-students",
-        element:<AssignStudents/>,
-        loader: assignStudLoader
+        path: "/assign-students",
+        element: <AssignStudents />,
+        loader: assignStudLoader,
       },
       {
         path: "/extra-meal",
         element: <Extras />,
       },
       {
+        path: "/enrolled-students",
+        element: <EnrolledStudents />,
+        loader: enrolledStudsLoader,
+      },
+      {
         path: "/extra-bill",
         element: <ExtrasBill />,
       },
-
       {
         path: "staffProfile-page",
         element: <StaffProfile />,
@@ -126,14 +119,22 @@ const router = createBrowserRouter([
       },
       {
         path: "mess-bill",
-        element: <MessBill />,  
+        element: <MessBill />,
         loader: messBillLoader,
       },
-    ]
+      {
+        path: "landing-page",
+        element: <Landing />,
+      },
+      {
+        path: "register-page",
+        element: <Register />,
+      },
+    ],
   },
 ]);
 root.render(
   <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
+    <RouterProvider router={router} />
   </QueryClientProvider>
 );

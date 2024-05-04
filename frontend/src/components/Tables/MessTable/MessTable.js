@@ -1,31 +1,109 @@
-import React from "react";
-import { Table } from "reactstrap";
-import styles from "./MessTable.module.css"
+import React, { useState } from "react";
+import styles from "./MessTable.module.css";
 
-const MessTable = ({ mealTable }) => {
-  console.log(mealTable);
+import { Table } from "reactstrap";
+
+const messBill = [
+  [2, 1, 0, 1],
+  [3, 1, 0, 1],
+  [4, 1, 0, 0],
+  [5, 0, 1, 1],
+  [6, 1, 1, -1],
+  [7, 0, 1, 1],
+  [1, 1, 1, 1],
+  [2, 1, 0, 1],
+  [3, 1, 0, 1],
+  [4, 1, 0, 0],
+  [5, 0, 1, 1],
+  [6, 1, 1, -1],
+  [7, 0, 1, 1],
+  [1, 1, 1, 1],
+  [2, 1, 0, 1],
+  [3, 1, 0, 1],
+  [4, 1, 0, 0],
+  [5, 0, 1, 1],
+  [6, 1, 1, -1],
+  [7, 0, 1, 1],
+  [1, 1, 1, 1],
+  [2, 1, 0, 1],
+  [3, 1, 0, 1],
+  [4, 1, 0, 0],
+  [5, 0, 1, 1],
+  [6, 1, 1, -1],
+  [7, 0, 1, 1],
+];
+
+const days = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+
+const MessTable = () => {
+  const calculateTotal = () => {
+    let total = 0;
+
+    messBill.map((row) => {
+      total += row[1] * 22.85 + row[2] * 45.71 + (row[3] === 1 ? 1 : 0) * 45.71;
+    });
+    return total.toFixed(2);
+  };
 
   return (
     <>
       <div className={styles.TableContainer}>
-        <Table bordered responsive>
+        <Table bordered responsive className={styles.table}>
           <thead>
             <tr>
+              <th>Sr No.</th>
               <th>Date & Day</th>
-              <th>Breakfast</th>
-              <th>Lunch</th>
-              <th>Dinner</th>
+              <th>Breakfast @22.85</th>
+              <th>Lunch @45.71</th>
+              <th>Dinner @45.71</th>
+              <th>Total</th>
             </tr>
           </thead>
           <tbody>
-            {mealTable?.map((row, index) => (
+            {messBill?.map((row, index) => (
               <tr key={index}>
                 <td>{`${index + 1}`}</td>
-                <td>{row[0]}</td>
-                <td>{row[1]}</td>
-                <td>{row[2]}</td>
+                {/* Have to write the date in this column as well */}
+                <td>{days[row[0] % 7]}</td>
+                <td className={row[1] ? styles.yes : styles.no}>
+                  {row[1] ? "Yes" : "No"}
+                </td>
+                <td className={row[2] ? styles.yes : styles.no}>
+                  {row[2] ? "Yes" : "No"}
+                </td>
+                <td
+                  className={
+                    row[3] === 1
+                      ? styles.yes
+                      : row[3] === 0
+                      ? styles.no
+                      : styles.closed
+                  }
+                >
+                  {row[3] === 1 ? "Yes" : row[3] === 0 ? "No" : ""}
+                </td>
+
+                <td>
+                  {(
+                    row[1] * 22.85 +
+                    row[2] * 45.71 +
+                    (row[3] === 1 ? 1 : 0) * 45.71
+                  ).toFixed(2)}
+                </td>
               </tr>
             ))}
+            <tr className={styles.totalRow}>
+              <td colSpan="5">Grand Total</td>
+              <td>{calculateTotal()}</td>
+            </tr>
           </tbody>
         </Table>
       </div>

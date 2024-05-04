@@ -1,15 +1,25 @@
+import React, { useState } from "react";
+import classnames from "classnames";
 import styles from "./Cancellation.module.css";
-import { useEffect, useRef } from "react";
-import { Card, Form, FormGroup, Input, Button, Label } from "reactstrap";
+import {
+  Card,
+  CardBody,
+  CardHeader,
+  FormGroup,
+  Input,
+  Button,
+  Container,
+  Row,
+  Col,
+} from "reactstrap";
+import { Form } from "react-router-dom";
+import { addExtras } from "api/staff";
+import ExtrasForm from "components/ExtrasForm/ExtrasForm";
+import CancellationForm from "components/CancellationForm/CancellationForm";
 
-const Cancellation = () => {
-  const mainRef = useRef();
-
-  useEffect(() => {
-    document.documentElement.scrollTop = 0;
-    document.scrollingElement.scrollTop = 0;
-    mainRef.current.scrollTop = 0;
-  }, []);
+const Extras = () => {
+  // You can use state hooks to manage state if needed (e.g., searchFocused).
+  const [searchFocused, setSearchFocused] = useState(false);
 
   return (
     <>
@@ -24,75 +34,28 @@ const Cancellation = () => {
           <span />
           <span />
         </div>
-        <main ref={mainRef}>
-          <section className="section section-shaped section-lg">
-            <div className={styles.container}>Cancellation form</div>
-            <div className={styles.container1}>
-              <Card className="shadow">
-                <Form className={styles.form}>
-                  <FormGroup>
-                    <Input placeholder="Enter date" type="date" />
-                  </FormGroup>
-                  <FormGroup>
-                    <div className="mb-3">
-                      <small className="text-uppercase font-weight-bold">
-                        Type of Meal
-                      </small>
-                    </div>
-                    <div className="custom-control custom-radio mb-3">
-                      <Input
-                        className="custom-control-input"
-                        id="customRadio1"
-                        name="custom-radio-1"
-                        type="radio"
-                      />
-                      <Label
-                        className="custom-control-label"
-                        htmlFor="customRadio1"
-                      >
-                        <span>Breakfast</span>
-                      </Label>
-                    </div>
-                    <div className="custom-control custom-radio mb-3">
-                      <Input
-                        className="custom-control-input"
-                        id="customRadio2"
-                        name="custom-radio-1"
-                        type="radio"
-                      />
-                      <Label
-                        className="custom-control-label"
-                        htmlFor="customRadio2"
-                      >
-                        <span>Lunch</span>
-                      </Label>
-                    </div>
-                    <div className="custom-control custom-radio mb-3">
-                      <Input
-                        className="custom-control-input"
-                        id="customRadio3"
-                        name="custom-radio-1"
-                        type="radio"
-                      />
-                      <Label
-                        className="custom-control-label"
-                        htmlFor="customRadio3"
-                      >
-                        <span>Dinner</span>
-                      </Label>
-                    </div>
-                  </FormGroup>
-                  <Button color="primary" className={`btn-1`}>
-                    Submit
-                  </Button>
-                </Form>
-              </Card>
-            </div>
-          </section>
-        </main>
+
+        <section className="section pb-0 section-components">
+          <Container className={`${styles.container} pt-lg-7`}>
+                <Card className={`${styles.card} bg-secondary shadow border-0`}>
+                  {/* Cancellation Form from component */}
+                  <CardBody className={`${styles.cardBody} px-lg-5 py-lg-5`}>
+                    <CancellationForm />
+                  </CardBody>
+                </Card>
+          </Container>
+        </section>
       </section>
     </>
   );
 };
 
-export default Cancellation;
+export default Extras;
+
+export async function extrasActions({ request: req }) {
+  const formData = await req.formData();
+  const extrasData = Object.fromEntries(formData.entries());
+  console.log(extrasData);
+  // const added = await addExtras(extrasData);
+  // if(!added) throw new Error("Failed to add extras! Please try again....");
+}

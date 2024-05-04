@@ -1,34 +1,36 @@
 .container {
-  border: 2px solid black;
-  border-radius: 50px;
-  padding: 10px;
-  margin-bottom: 20px;
-  
-    padding-left: 25px;
-    padding-right: 20px;
-    width: 85%;
-  margin: 0 auto;
-  margin-top: 20px;
-  background-color: rgb(76, 76, 227);
+  border: 2px solid #ccc; /* Change border color to a lighter shade */
+  border-radius: 20px; /* Reduced border-radius for a softer look */
+  padding: 20px; /* Increased padding for better spacing */
+  width: 85%; /* Adjusted width */
+  margin: 20px auto; /* Combined margin properties */
+  background-color: #f0f0f0; /* Light gray background color */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Added a subtle shadow for depth */
 }
 
-.row2 {
-  color: white;
+.row1, .row2 {
+  color: #333; /* Darkened text color for better readability */
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between; /* Changed to space-between for even spacing */
+  align-items: center; /* Align items vertically in the center */
   margin-bottom: 10px;
-  font-size: large;
+  font-size: 1rem; /* Adjusted font size for better consistency */
 }
+
 .row1 {
-  color: white;
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 10px;
-  font-size: xx-large;
+  font-size: 2rem; /* Increased font size for row1 */
 }
 
-.column1,
-.column2 {
-  flex: 1;
+.column1, .column2 {
+  flex: 1; /* Equal flex for all columns */
   text-align: center;
+}
+
+.column1:nth-child(4),
+.column1:nth-child(5) {
+  flex: 1.4; /* Adjusted flex for the last two columns to allocate more space */
+}
+.column2:nth-child(4),
+.column2:nth-child(5) {
+  flex: 1.4; /* Adjusted flex for the last two columns to allocate more space */
 }

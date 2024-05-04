@@ -82,8 +82,6 @@ const StudentLoginForm = () => {
               type="number"
               name="rollNo"
               className={styles.input}
-              // value={formData.rollNo}
-              // onChange={handleChange}
             />
           </InputGroup>
           {/* {errors.rollNo && <div className="text-danger">{errors.rollNo}</div>} */}
@@ -100,11 +98,9 @@ const StudentLoginForm = () => {
               type="password"
               autoComplete="off"
               name="password"
-              // value={formData.password}
-              // onChange={handleChange}
             />
           </InputGroup>
-          {/* {errors.password && <div className="text-danger">{errors.password}</div>} */}
+          
         </FormGroup>
         <div className="text-center">
           <Button className="my-4" color="primary" type="submit">

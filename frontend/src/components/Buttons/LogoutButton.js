@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { delAuth } from "auth";
 import { Button } from "reactstrap";
+import { UserTypeContext } from "components/UserTypeContext/UserTypeProvider";
 
 function LogoutButton() {
+  const { setUserType } = useContext(UserTypeContext);
   const navigate = useNavigate();
   function handleSubmit(event) {
     event.preventDefault();
     delAuth();
-    window.location.reload();
+    setUserType(null);
     navigate("/");
   }
   return (

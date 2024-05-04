@@ -16,19 +16,19 @@
 }
 
 /* Style for table rows */
-tr {
+.TableContainer tr {
   font-size: medium; /* Set font size for better readability */
 }
 
 /* Style the table headers */
-th {
+.TableContainer th {
   background-color: #4b35a5; /* Dark purple background */
   color: #fff; /* White text */
   text-align: center;
 }
 
 /* Style the table rows alternately */
-tbody tr:nth-child(even) {
+.TableContainer tr:nth-child(even) {
   background-color: #f9fafb; /* Light gray background for even rows */
 }
 

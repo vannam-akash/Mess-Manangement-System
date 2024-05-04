@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import {useLoaderData} from "react-router-dom";
 
 // reactstrap components
@@ -8,8 +8,10 @@ import {Card, Container} from "reactstrap";
 import { fetchStudentDetails } from "api/student";
 import Data from "components/Data";
 import { checkStudAuthLoader } from "auth";
+import { UserTypeContext } from "components/UserTypeContext/UserTypeProvider";
 
 function StudentProfile() {
+  const { setUserType } = useContext(UserTypeContext);
   const mainRef = useRef();
   const student = useLoaderData();
   
@@ -17,6 +19,7 @@ function StudentProfile() {
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
     mainRef.current.scrollTop = 0;
+    setUserType("stud");
   });
 
   return (

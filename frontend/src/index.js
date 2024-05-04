@@ -30,8 +30,6 @@ import { staffLoginActions } from "components/Forms/StaffLoginForm/StaffLoginFor
 import Cancellation from "views/pages/Cancellation/Cancellation";
 import { staffProfileLoader } from "views/pages/StaffProfile/StaffProfile";
 import { checkAuthLoader } from "auth";
-import { checkStudAuthLoader } from "auth";
-import { checkStaffAuthLoader } from "auth";
 import Extras from "views/pages/Extras/Extras";
 import EnrolledStudents, {
   enrolledStudsLoader,
@@ -41,6 +39,7 @@ import ExtrasBill, {
   extrasBillLoader,
 } from "views/pages/ExtrasBill/ExtrasBill";
 import { extrasAction } from "components/Forms/ExtrasForm/ExtrasForm";
+import { UserTypeProvider } from "components/UserTypeContext/UserTypeProvider";
 
 const root = createRoot(document.getElementById("root"));
 const queryClient = new QueryClient();
@@ -138,6 +137,8 @@ const router = createBrowserRouter([
 ]);
 root.render(
   <QueryClientProvider client={queryClient}>
-    <RouterProvider router={router} />
+    <UserTypeProvider>
+      <RouterProvider router={router} />
+    </UserTypeProvider>
   </QueryClientProvider>
 );

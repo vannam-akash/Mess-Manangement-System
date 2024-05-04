@@ -132,7 +132,7 @@ const Menu = () => {
 
       {index.map((idx) => 
 
-      <table className="menu-table">
+      <table className="menu-table" key={idx}>
         <thead>
           <tr>
             <th colSpan="4" className="mess-name">

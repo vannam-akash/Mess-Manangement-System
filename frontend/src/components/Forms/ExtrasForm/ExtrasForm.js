@@ -107,9 +107,7 @@ export async function extrasAction({ request: req }) {
   checkStaffAuthLoader();
   const formData = await req.formData();
   const extrasData = Object.fromEntries(formData.entries());
-  console.log(extrasData);
   const added = await addExtras(extrasData);
-  console.log(added);
   if(added) {
     return {
       success: true,

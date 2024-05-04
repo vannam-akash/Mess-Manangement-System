@@ -9,19 +9,21 @@ import {
   Label,
 } from "reactstrap";
 import styles from "./CancellationForm.module.css";
-import { Form, redirect } from "react-router-dom";
+import { Form } from "react-router-dom";
+import Datepicker from "components/Inputs/DatePicker";
+import { checkStudAuthLoader } from "auth";
 
 const CancellationForm = () => {
   return (
     <>
       <div className={`${styles.title} text-center mb-4`}>
-        <small>Cancel a meal</small>
+        <small>Cancel Meal</small>
       </div>
 
       <Form method="POST">
         {/* Roll Number of Student */}
         <FormGroup>
-          <Input className={styles.date} placeholder="Enter date" type="date" />
+          <Datepicker />
         </FormGroup>
         <FormGroup>
           <div className="mb-3">
@@ -75,3 +77,12 @@ const CancellationForm = () => {
 };
 
 export default CancellationForm;
+
+export async function cancelActions({ request: req }) {
+  checkStudAuthLoader();
+  console.log("cancel form");
+  const formData = await req.formData();
+  const cancelData = Object.fromEntries(formData.entries());
+  console.log(cancelData);
+  return null;
+}

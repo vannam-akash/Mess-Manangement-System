@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   Link,
   NavLink,
@@ -19,18 +19,24 @@ import {
 } from "reactstrap";
 import LogoutButton from "components/Buttons/LogoutButton";
 import { getId } from "auth";
+import { UserTypeContext } from "components/UserTypeContext/UserTypeProvider";
 
 const MainNavbar = () => {
   const [collapseClasses, setCollapseClasses] = useState("");
   const [collapseOpen, setCollapseOpen] = useState(false);
   const navigate = useNavigate();
   const id = getId();
-  const userType = useRouteLoaderData("root");
+  const { userType: user } = useContext(UserTypeContext);
+  const [userType, setUserType] = useState(user);
 
   useEffect(() => {
     let headroom = new Headroom(document.getElementById("navbar-main"));
     headroom.init();
   }, []);
+
+  useEffect(()=>{
+    setUserType(user);
+  },[user])
 
   const onExiting = () => {
     setCollapseClasses("collapsing-out");
@@ -61,7 +67,7 @@ const MainNavbar = () => {
               <img
                 alt="..."
                 src={require("assets/img/logos/logo_gola_only.png")}
-                style={{height: "70px"}}
+                style={{ height: "70px" }}
               />
             </NavbarBrand>
             <button
@@ -85,7 +91,7 @@ const MainNavbar = () => {
                       <img
                         alt="..."
                         src={require("assets/img/logos/Logo rounded white.png")}
-                        style={{height: "70px"}}
+                        style={{ height: "70px" }}
                       />
                     </Link>
                   </Col>

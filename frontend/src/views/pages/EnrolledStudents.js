@@ -44,7 +44,7 @@ const EnrolledStudents = () => {
         </div>
         <main ref={mainRef}>
           <section className="section section-shaped section-lg">
-            <div class={styles.title}>Students Enrolled</div>
+            <div className={styles.title}>Students Enrolled</div>
             <div className={styles.studentList}>
              <StudentsTable/>
             </div>

@@ -1,0 +1,22 @@
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: xx-large;
+  font-weight: bolder;
+  margin-bottom: 3%;
+}
+.details {
+  color: white;
+  margin: 0 auto;
+  width: 80%;
+  padding-bottom: 2rem;
+  font-size: large;
+  font-weight: 800;
+}
+
+/* Apply margin-bottom to all child elements except the last one */
+.details > *:not(:last-child) {
+  margin-bottom: 0.5rem; /* Adjust as needed */
+}

@@ -1,22 +1,28 @@
 /* MessTable.css */
-/* Set maximum width and center the table horizontally */
 
+/* Set maximum width and center the table horizontally */
 .TableContainer {
-  max-width: 60%;
+  max-width: 80%; /* Increase maximum width for better readability */
   margin: 0 auto; /* Center the table horizontally */
-  background-color: #dfe1e4eb;
+  background-color: #dfe1e4eb; /* Light gray background */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Add a subtle shadow for depth */
+  border-radius: 8px; /* Add a slight border radius for rounded corners */
 }
+
+/* Remove margin and padding from the table */
 .table {
   margin: 0;
   padding: 0;
 }
 
-tr{
-  font-size: medium;
+/* Style for table rows */
+tr {
+  font-size: medium; /* Set font size for better readability */
 }
+
 /* Style the table headers */
 th {
-  background-color: #4b35a5; /* Blue background */
+  background-color: #4b35a5; /* Dark purple background */
   color: #fff; /* White text */
   text-align: center;
 }
@@ -33,8 +39,12 @@ tbody tr:nth-child(even) {
   padding: 1rem;
   border-color: #dee2e6; /* Light gray border color */
 }
-.totalRow td{
-  font-size: 1.5rem;
+
+/* Style the total row */
+tr.totalRow {
+  background-color: #ffccbc; /* Light orange background for the total row */
+  font-weight: bold; /* Make the text bold */
+  
 }
 
 /* Style the hover effect */
@@ -42,5 +52,3 @@ tbody tr:hover,
 tbody tr:hover td:hover {
   background-color: #b9c5d8; /* Light blue on hover for the first and selected cells */
 }
-
-

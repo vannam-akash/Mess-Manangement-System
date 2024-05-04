@@ -5,7 +5,7 @@
   margin: 0 auto; /* Center the table horizontally */
   background-color: #f2f2f2; /* Light gray background */
   border-radius: 8px; /* Add a slight border radius for rounded corners */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Add a subtle shadow for depth */
 }
 
 /* Remove margin and padding from the table */
@@ -32,7 +32,7 @@ th {
 /* Style the table cells */
 .TableContainer td {
   text-align: center;
-  padding: 10px; /* Add padding to the cells */
+  padding: 0.7rem; /* Add padding to the cells */
   border-bottom: 1px solid #ddd; /* Add bottom border to separate rows */
 }
 

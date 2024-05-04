@@ -7,7 +7,7 @@ import { Card, Row, Col, Container } from "reactstrap";
 import "./StaffProfile.css";
 import { fetchStaffDetails } from "api/staff";
 import { useLoaderData } from "react-router-dom";
-import StaffList from "../../components/Tables/StaffList/StaffList.js"
+import StaffList from "../../../components/Tables/StaffList/StaffList.js"
 
 
 function StaffProfile() {

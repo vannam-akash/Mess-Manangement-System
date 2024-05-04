@@ -20,3 +20,6 @@ a{
 p{
     font-size: 1.4rem;
 }
+.underlined {
+    text-decoration: underline;
+  }

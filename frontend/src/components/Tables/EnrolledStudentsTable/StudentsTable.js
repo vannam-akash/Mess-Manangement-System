@@ -24,7 +24,6 @@ const StudentsTable = ({studs}) => {
             {studs?.map((row, index) => (
               <tr key={index}>
                 <td>{`${index + 1}`}</td>
-                <td>{row.rollNo}</td>
                 <td>{row.fullName}</td>
                 <td>{0}</td>
                 <td>{0}</td>

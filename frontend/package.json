@@ -62,7 +62,8 @@
     "react-scripts": "5.0.1",
     "reactstrap": "8.10.0",
     "sass": "1.62.1",
-    "tsparticles": "^3.3.0"
+    "tsparticles": "^3.3.0",
+    "yup": "^1.4.0"
   },
   "peerDependencies": {
     "react": ">=16.0.0",

@@ -15,15 +15,60 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import {setStudAuth} from "auth";
 
+// import * as yup from 'yup';
+// import { validationSchema } from './validationSchema.js';
+
 const url = process.env.REACT_APP_API_URL;
 
 const StudentLoginForm = () => {
+
+  // const [formData, setFormData] = useState({ rollNo: '', password: '' });
+  // const [errors, setErrors] = useState({});
+  // const navigate = useNavigate();
+
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setFormData((prevData) => ({
+  //     ...prevData,
+  //     [name]: value,
+  //   }));
+  // };
+
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault();
+
+  //   try {
+  //     await validationSchema.validate(formData, { abortEarly: false });
+  //     // Validation passed, proceed with form submission
+  //     studentLoginActions(formData);
+  //   } catch (validationErrors) {
+  //     // Validation failed, update errors state
+  //     const newErrors = {};
+  //     validationErrors.inner.forEach((error) => {
+  //       newErrors[error.path] = error.message;
+  //     });
+  //     setErrors(newErrors);
+  //   }
+  // };
+
+  // const studentLoginActions = async (formData) => {
+  //   const loginUrl = `${url}/auth/login/student`;
+  //   try {
+  //     const { data } = await axios.post(loginUrl, formData);
+  //     setStudAuth(data.token, data._id);
+  //     console.log(data);
+  //     navigate(`/students/${data._id}`);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   return (
     <>
       <div className="text-center mb-4">
         <small>Student Credentials:</small>
       </div>
+      {/* <Form method="POST" onSubmit={handleSubmit}> */}
       <Form method="POST">
         <FormGroup className="mb-3">
           <InputGroup className="input-group-alternative">
@@ -37,8 +82,11 @@ const StudentLoginForm = () => {
               type="number"
               name="rollNo"
               className={styles.input}
+              // value={formData.rollNo}
+              // onChange={handleChange}
             />
           </InputGroup>
+          {/* {errors.rollNo && <div className="text-danger">{errors.rollNo}</div>} */}
         </FormGroup>
         <FormGroup>
           <InputGroup className="input-group-alternative">
@@ -52,8 +100,11 @@ const StudentLoginForm = () => {
               type="password"
               autoComplete="off"
               name="password"
+              // value={formData.password}
+              // onChange={handleChange}
             />
           </InputGroup>
+          {/* {errors.password && <div className="text-danger">{errors.password}</div>} */}
         </FormGroup>
         <div className="text-center">
           <Button className="my-4" color="primary" type="submit">

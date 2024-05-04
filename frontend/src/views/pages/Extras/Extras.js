@@ -1,14 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classnames from "classnames";
 import styles from "./Extras.module.css";
 import { FormGroup, Input, Button, Container, Row, Col } from "reactstrap";
 import { Form } from "react-router-dom";
 import { addExtras } from "api/staff";
+import { toast } from "react-toastify";
 
 const Extras = () => {
   // You can use state hooks to manage state if needed (e.g., searchFocused).
   const [searchFocused, setSearchFocused] = useState(false);
 
+  useEffect(() => {
+    toast.info("See your extra dishes here.")
+  })
   return (
     <>
       <section className="section section-shaped section-lg">

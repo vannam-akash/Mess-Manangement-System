@@ -19,6 +19,7 @@ import MainFooter from "components/Footers/MainFooter";
 import { redirect, useLoaderData } from "react-router-dom";
 import StudentsTable from "components/Tables/EnrolledStudentsTable/StudentsTable";
 import MessTable from "components/Tables/MessTable/MessTable";
+import { toast } from "react-toastify";
 
 const MessBill = () => {
   const mainRef = useRef();
@@ -29,6 +30,7 @@ const MessBill = () => {
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
     mainRef.current.scrollTop = 0;
+    toast.info("This is your mess diets bill.")
   }, []);
   return (
     <>

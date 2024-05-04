@@ -10,6 +10,7 @@ import {
 } from "reactstrap";
 import StudentLoginForm from "components/Forms/StudentLoginForm";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const mainRef = useRef();
@@ -18,6 +19,7 @@ const Login = () => {
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
     mainRef.current.scrollTop = 0;
+    toast.info("Please login as a student.")
   }, []);
 
   function handleStaffClick() {

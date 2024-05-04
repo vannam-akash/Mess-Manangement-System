@@ -38,12 +38,12 @@ function MainFooter() {
           <Row className=" row-grid align-items-center mb-5">
             <Col lg="6">
               <h3 className=" text-primary font-weight-heavy mb-2">
-                Mess Management Portal.
+                Mess Management System.
               </h3>
               <h5 className=" mb-0 font-weight-light">
-                Simplify meal management at IIT BHU with ease.
+                Simplify meal management at IIT (BHU) Varanasi with ease.
               </h5>
-              <h5 className=" mb-0 font-weight-light">IIT BHU <br></br> Varanasi, India</h5>
+              <h5 className=" mb-0 font-weight-light">IIT (BHU) Varanasi <br></br> Varanasi, Uttar Pradesh, India — 221005</h5>
             </Col>
             <Col className="text-lg-center btn-wrapper" lg="6">
               <Button
@@ -133,7 +133,7 @@ function MainFooter() {
                     href="https://iitbhu.ac.in/"
                     target="_blank"
                   >
-                    IIT BHU, Varanasi
+                    IIT (BHU) Varanasi
                   </NavLink>
                 </NavItem>
 

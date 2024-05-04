@@ -4,6 +4,7 @@ import { redirect, useLoaderData } from "react-router-dom";
 import StudentsTable from "components/Tables/EnrolledStudentsTable/StudentsTable";
 import { checkStaffAuthLoader, getMessId, getUserType } from "auth";
 import { getEnrolledStuds } from "api/staff";
+import { toast } from "react-toastify";
 
 const EnrolledStudents = () => {
   const mainRef = useRef();
@@ -13,6 +14,7 @@ const EnrolledStudents = () => {
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
     mainRef.current.scrollTop = 0;
+    toast.info("These are all the enrolled students in this mess.")
   }, []);
   return (
     <>

@@ -38,6 +38,8 @@ import EnrolledStudents, {
 } from "views/pages/EnrolledStudents/EnrolledStudents";
 import Error from "views/pages/Error/Error";
 import ExtrasBill from "views/pages/ExtrasBill/ExtrasBill";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const root = createRoot(document.getElementById("root"));
 const queryClient = new QueryClient();
@@ -135,6 +137,7 @@ const router = createBrowserRouter([
 ]);
 root.render(
   <QueryClientProvider client={queryClient}>
+    <ToastContainer position="top-center" autoClose={2000} />
     <RouterProvider router={router} />
   </QueryClientProvider>
 );

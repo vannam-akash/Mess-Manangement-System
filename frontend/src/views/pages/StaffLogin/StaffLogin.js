@@ -17,6 +17,7 @@ import {
 import StaffLoginForm from "components/Forms/StaffLoginForm";
 import { redirect, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const url = process.env.REACT_APP_API_URL;
 
@@ -27,6 +28,7 @@ const Login = () => {
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
     mainRef.current.scrollTop = 0;
+    toast.info("Please login as a staff.")
   }, []);
 
   function handleStudentClick() {

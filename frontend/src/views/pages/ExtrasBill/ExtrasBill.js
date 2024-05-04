@@ -19,6 +19,7 @@ import MainFooter from "components/Footers/MainFooter";
 import { redirect, useLoaderData } from "react-router-dom";
 import StudentsTable from "components/Tables/EnrolledStudentsTable/StudentsTable";
 import ExtrasTable from "components/Tables/ExtrasTable/ExtrasTable";
+import { toast } from "react-toastify";
 
 const ExtrasBill = () => {
   const mainRef = useRef();
@@ -29,6 +30,7 @@ const ExtrasBill = () => {
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
     mainRef.current.scrollTop = 0;
+    toast.info("This is your extra dishes bill.")
   }, []);
   return (
     <>

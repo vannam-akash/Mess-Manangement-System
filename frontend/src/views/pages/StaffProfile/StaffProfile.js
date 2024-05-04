@@ -7,6 +7,7 @@ import { Card, Row, Col, Container } from "reactstrap";
 import "./StaffProfile.css";
 import { fetchStaffDetails } from "api/staff";
 import { useLoaderData } from "react-router-dom";
+import { toast } from "react-toastify";
 
 
 function StaffProfile() {
@@ -17,6 +18,7 @@ function StaffProfile() {
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
     mainRef.current.scrollTop = 0;
+    toast.success("Wow! You have successfully logged in as a staff.")
   });
 
   return (

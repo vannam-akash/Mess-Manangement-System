@@ -1,6 +1,7 @@
 import styles from "./Cancellation.module.css";
 import { useEffect, useRef } from "react";
 import { Card, Form, FormGroup, Input, Button, Label } from "reactstrap";
+import { toast } from "react-toastify";
 
 const Cancellation = () => {
   const mainRef = useRef();
@@ -9,6 +10,7 @@ const Cancellation = () => {
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
     mainRef.current.scrollTop = 0;
+    toast.info("Cancel your mess diets here.")
   }, []);
 
   return (

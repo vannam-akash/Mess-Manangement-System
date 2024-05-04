@@ -3,10 +3,14 @@ import MainFooter from "components/Footers/MainFooter.js";
 import React, { useEffect, useRef } from "react";
 import styles from "./Error.module.css"
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 
 
 const Error = () => {
+	useEffect(() => {
+		toast.error("Oops! An error occured.")
+	})
 	return (
 		<>
 

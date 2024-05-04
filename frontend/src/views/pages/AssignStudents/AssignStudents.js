@@ -11,6 +11,7 @@ import StudentsTable from "components/Tables/AssignStudentsTable/StudentsTable";
 import { redirect, useLoaderData } from "react-router-dom";
 import { getUnassignedStuds } from "../../../api/staff";
 import { getUserType } from "auth";
+import { toast } from "react-toastify";
 
 const AssignStudents = () => {
   const mainRef = useRef();
@@ -20,6 +21,7 @@ const AssignStudents = () => {
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
     mainRef.current.scrollTop = 0;
+    toast.info("Assign students to their respective messes here.")
   }, []);
   return (
     <>

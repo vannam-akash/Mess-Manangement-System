@@ -7,6 +7,7 @@ import {Card, Container} from "reactstrap";
 // functions
 import { fetchStudentDetails } from "../../../http";
 import Data from "components/Data";
+import { toast } from "react-toastify";
 
 function StudentProfile() {
   const mainRef = useRef();
@@ -16,6 +17,7 @@ function StudentProfile() {
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
     mainRef.current.scrollTop = 0;
+    toast.success("Wow! You have successfully logged in as a student.")
   });
 
   return (

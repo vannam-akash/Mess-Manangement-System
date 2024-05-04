@@ -5,13 +5,19 @@ import { Button, Container, Row, Col, UncontrolledCarousel } from "reactstrap";
 
 const items = [
   {
-    src: require("assets/img/theme/img-1-1200x1000.jpg"),
+    src: require("assets/img/theme/mess0.jpg"),
     altText: "",
     caption: "",
     header: "",
   },
   {
-    src: require("assets/img/theme/img-2-1200x1000.jpg"),
+    src: require("assets/img/theme/mess2.jpg"),
+    altText: "",
+    caption: "",
+    header: "",
+  },
+  {
+    src: require("assets/img/theme/mess3.jpg"),
     altText: "",
     caption: "",
     header: "",
@@ -34,20 +40,11 @@ function Carousel() {
           <Row className="justify-content-between align-items-center">
             <Col className="mb-5 mb-lg-0" lg="5">
               <h1 className="text-white font-weight-light">
-                Bootstrap carousel
+                Mess Management
               </h1>
               <p className="lead text-white mt-4">
-                Argon Design System comes with four pre-built pages to help you
-                get started faster. You can change the text and images and
-                you're good to go.
+              Discover our innovative Mess Management System for IIT BHU Varanasi. We modernize mess services, streamline billing, and prioritize user convenience. Experience efficient meal management tailored for our vibrant community's dynamic needs
               </p>
-              <Button
-                className="btn-white mt-4"
-                color="default"
-                href="https://demos.creative-tim.com/argon-design-system-react/#/documentation/alerts?ref=adsr-landing-page"
-              >
-                See all components
-              </Button>
             </Col>
             <Col className="mb-lg-auto" lg="6">
               <div className="rounded shadow-lg overflow-hidden transform-perspective-right">

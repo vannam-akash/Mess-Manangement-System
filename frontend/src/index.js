@@ -25,8 +25,8 @@ import StaffLogin from "views/pages/StaffLogin/StaffLogin";
 import AssignStudents, {
   assignStudLoader,
 } from "views/pages/AssignStudents/AssignStudents";
-import { studentLoginActions } from "components/Forms/StudentLoginForm";
-import { staffLoginActions } from "components/Forms/StaffLoginForm";
+import { studentLoginActions } from "components/Forms/StudentLoginForm/StudentLoginForm";
+import { staffLoginActions } from "components/Forms/StaffLoginForm/StaffLoginForm";
 import Cancellation from "views/pages/Cancellation/Cancellation";
 import { staffProfileLoader } from "views/pages/StaffProfile/StaffProfile";
 import { checkAuthLoader } from "auth";
@@ -37,7 +37,10 @@ import EnrolledStudents, {
   enrolledStudsLoader,
 } from "views/pages/EnrolledStudents/EnrolledStudents";
 import Error from "views/pages/Error/Error";
-import ExtrasBill from "views/pages/ExtrasBill/ExtrasBill";
+import ExtrasBill, {
+  extrasBillLoader,
+} from "views/pages/ExtrasBill/ExtrasBill";
+import { extrasAction } from "components/Forms/ExtrasForm/ExtrasForm";
 
 const root = createRoot(document.getElementById("root"));
 const queryClient = new QueryClient();
@@ -97,6 +100,7 @@ const router = createBrowserRouter([
       {
         path: "/extra-meal",
         element: <Extras />,
+        action: extrasAction,
       },
       {
         path: "/enrolled-students",
@@ -106,6 +110,7 @@ const router = createBrowserRouter([
       {
         path: "/extra-bill",
         element: <ExtrasBill />,
+        loader: extrasBillLoader,
       },
       {
         path: "staffProfile-page",
@@ -117,7 +122,7 @@ const router = createBrowserRouter([
       },
       {
         path: "mess-bill",
-        element: <MessBill />,  
+        element: <MessBill />,
         loader: messBillLoader,
       },
       {

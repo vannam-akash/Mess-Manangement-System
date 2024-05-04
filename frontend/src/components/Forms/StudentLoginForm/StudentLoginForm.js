@@ -10,7 +10,7 @@ import {
 import {Form, redirect} from "react-router-dom";
 
 
-import styles from "./Login.module.css";
+import styles from "../Login.module.css"
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import {setStudAuth} from "auth";

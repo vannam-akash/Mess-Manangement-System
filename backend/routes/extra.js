@@ -11,7 +11,7 @@ router.post(
   async (req, res) => {
     try {
       const { rollNo, dish, price, quantity } = req.body;
-
+      
       const student = await Student.findOne({ rollNo: rollNo });
 
       if (!student) {
@@ -28,10 +28,10 @@ router.post(
       student.extrasTaken.push(extra._id);
       await student.save();
 
-      return res.status(200);
+      return res.status(200).json({message : "Added Extra to the student"});
     } catch (error) {
       console.error("Error updating extras", error);
-      return res.status(500).json({ error: "Internal Server Error" });
+      return res.status(500).json({ok: false, error: "Internal Server Error" });
     }
   }
 );

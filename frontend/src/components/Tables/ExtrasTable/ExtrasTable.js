@@ -21,16 +21,27 @@ const extrasBill = [
   { date: "03-05-2024", dish: "Paneer Rice", price: "20", quantity: "4" },
 ];
 
-const ExtrasTable = () => {
-  
-  const calculateTotal = ()=>{
-    let total =0;
+function formatDate(str) {
+  let date = new Date(str);
+  const day = date.getDate();
+  const month = date.getMonth() + 1;
+  const year = date.getFullYear();
 
-    extrasBill.map((row)=>{
-      total+=parseFloat(row.price) * parseFloat(row.quantity) ;
-    })
+  const formattedDay = String(day).padStart(2, '0');
+  const formattedMonth = String(month).padStart(2, '0');
+
+  return `${formattedDay}/${formattedMonth}/${year}`;
+}
+
+const ExtrasTable = ({ extras }) => {
+  const calculateTotal = () => {
+    let total = 0;
+    extras?.map((extra) => {
+      total += parseFloat(extra.price) * parseFloat(extra.quantity);
+    });
+    // console.log(total);
     return total;
-  }
+  };
 
   return (
     <>
@@ -47,21 +58,19 @@ const ExtrasTable = () => {
             </tr>
           </thead>
           <tbody>
-            {extrasBill?.map((row, index) => (
+            {extras?.map((extra, index) => (
               <tr key={index}>
-                <td>{`${index + 1}`}</td>
-                <td>{row.date}</td>
-                <td>{row.dish}</td>
-                <td>{row.price}</td>
-                <td>{row.quantity}</td>
-                <td>{parseFloat(row.price) * parseFloat(row.quantity)}</td>
+                <td>{index + 1}</td>
+                <td>{formatDate(extra.date)}</td>
+                <td>{extra.dish}</td>
+                <td>{extra.price}</td>
+                <td>{extra.quantity}</td>
+                <td>{parseFloat(extra.price) * parseFloat(extra.quantity)}</td>
               </tr>
             ))}
             <tr className={styles.totalRow}>
-              <td colSpan="5" >
-                Grand Total 
-              </td>
-              <td >{calculateTotal()}</td>
+              <td colSpan="5">Grand Total</td>
+              <td>{calculateTotal()}</td>
             </tr>
           </tbody>
         </Table>

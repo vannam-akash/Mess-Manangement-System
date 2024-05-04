@@ -1,25 +1,11 @@
-import React, { useState } from "react";
-import classnames from "classnames";
-import styles from "./Extras.module.css";
-import {
-  Card,
-  CardBody,
-  CardHeader,
-  FormGroup,
-  Input,
-  Button,
-  Container,
-  Row,
-  Col,
-} from "reactstrap";
-import { Form } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Card, CardBody, Container, Row, Col } from "reactstrap";
+import ExtrasForm from "components/Forms/ExtrasForm/ExtrasForm";
+import { checkStaffAuthLoader } from "auth";
 import { addExtras } from "api/staff";
-import ExtrasForm from "components/ExtrasForm/ExtrasForm";
 
 const Extras = () => {
-  // You can use state hooks to manage state if needed (e.g., searchFocused).
-  const [searchFocused, setSearchFocused] = useState(false);
-
+  
   return (
     <>
       <section className="section section-shaped section-lg">
@@ -55,10 +41,3 @@ const Extras = () => {
 
 export default Extras;
 
-export async function extrasActions({ request: req }) {
-  const formData = await req.formData();
-  const extrasData = Object.fromEntries(formData.entries());
-  console.log(extrasData);
-  // const added = await addExtras(extrasData);
-  // if(!added) throw new Error("Failed to add extras! Please try again....");
-}

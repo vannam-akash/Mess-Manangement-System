@@ -7,7 +7,7 @@ import {
   InputGroup,
   Button,
 } from "reactstrap";
-import styles from "./Login.module.css";
+import styles from "../Login.module.css";
 import axios from "axios";
 import {setStaffAuth} from "auth";
 import { Form, redirect } from "react-router-dom";
@@ -62,7 +62,6 @@ export default StaffLoginForm;
 export async function staffLoginActions({ request: req }) {
   const formData = await req.formData();
   const loginData = Object.fromEntries(formData.entries());
-  console.log(loginData);
   
   const loginUrl = `${url}/auth/login/staff`;
   let id = null;

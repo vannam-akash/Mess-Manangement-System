@@ -14,7 +14,7 @@ import {
   Row,
   Col,
 } from "reactstrap";
-import StaffLoginForm from "components/Forms/StaffLoginForm";
+import StaffLoginForm from "components/Forms/StaffLoginForm/StaffLoginForm";
 import { redirect, useNavigate } from "react-router-dom";
 import axios from "axios";
 

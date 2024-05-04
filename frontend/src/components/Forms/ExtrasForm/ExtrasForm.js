@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   FormGroup,
   Input,
@@ -8,9 +8,14 @@ import {
   Button,
 } from "reactstrap";
 import styles from "./ExtrasForm.module.css";
-import { Form, redirect } from "react-router-dom";
+import { Form, redirect, useActionData } from "react-router-dom";
+import { checkStaffAuthLoader } from "auth";
+import { addExtras } from "api/staff";
 
 const ExtrasForm = () => {
+  const data = useActionData();
+  if(data) console.log(data);
+  
   return (
     <>
       <div className={`${styles.title} text-center mb-4`}>
@@ -31,11 +36,8 @@ const ExtrasForm = () => {
               type="number"
               name="rollNo"
               className={styles.input}
-              // value={formData.rollNo}
-              // onChange={handleChange}
             />
           </InputGroup>
-          {/* {errors.rollNo && <div className="text-danger">{errors.rollNo}</div>} */}
         </FormGroup>
 
         {/* Dish Name ordered as Extra */}
@@ -49,7 +51,7 @@ const ExtrasForm = () => {
             <Input
               placeholder="Dish Name"
               type="text"
-              name="dishName"
+              name="dish"
               className={styles.input}
             />
           </InputGroup>
@@ -66,13 +68,10 @@ const ExtrasForm = () => {
             <Input
               placeholder="Quantity"
               type="number"
-              name="qty"
+              name="quantity"
               className={styles.input}
-              // value={formData.rollNo}
-              // onChange={handleChange}
             />
           </InputGroup>
-          {/* {errors.rollNo && <div className="text-danger">{errors.rollNo}</div>} */}
         </FormGroup>
 
         {/* Price of ordered dish */}
@@ -88,11 +87,8 @@ const ExtrasForm = () => {
               type="number"
               name="price"
               className={styles.input}
-              // value={formData.rollNo}
-              // onChange={handleChange}
             />
           </InputGroup>
-          {/* {errors.rollNo && <div className="text-danger">{errors.rollNo}</div>} */}
         </FormGroup>
 
         <div className="text-center">
@@ -106,3 +102,22 @@ const ExtrasForm = () => {
 };
 
 export default ExtrasForm;
+
+export async function extrasAction({ request: req }) {
+  checkStaffAuthLoader();
+  const formData = await req.formData();
+  const extrasData = Object.fromEntries(formData.entries());
+  console.log(extrasData);
+  const added = await addExtras(extrasData);
+  console.log(added);
+  if(added) {
+    return {
+      success: true,
+      message: "Successfully added extras."
+    }
+  }
+  return {
+    success: false,
+    message: "Failed to add extras..."
+  };
+}

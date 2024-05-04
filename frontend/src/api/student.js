@@ -16,3 +16,17 @@ export async function fetchStudentDetails() {
     throw new Error(error.message);
   }
 }
+
+export async function getExtras() {
+  const studentId = getId();
+  try {
+    const { data } = await axios.get(`${url}/extras/${studentId}/get/all`, {
+      headers: {
+        Authorization: "Bearer " + getToken(),
+      },
+    });
+    return data;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+}

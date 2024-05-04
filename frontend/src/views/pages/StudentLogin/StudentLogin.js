@@ -8,7 +8,7 @@ import {
   Row,
   Col,
 } from "reactstrap";
-import StudentLoginForm from "components/Forms/StudentLoginForm";
+import StudentLoginForm from "components/Forms/StudentLoginForm/StudentLoginForm";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {

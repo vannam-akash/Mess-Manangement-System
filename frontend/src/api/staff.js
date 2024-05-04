@@ -78,16 +78,16 @@ export async function getEnrolledStuds() {
 
 export async function addExtras(extrasData) {
   try {
-    const res = await axios.post(`${url}/extras/create`, extrasData, {
+    const {data} = await axios.post(`${url}/extras/create`, extrasData, {
       headers: {
         Authorization: "Bearer " + getToken(),
       },
     });
-    if (res.status === 200) {
-      window.location.reload();
+    if(!data.error) {
+      console.log(data.message);
       return true;
     }
-    throw new Error("Failed to add extras to student! Please try again...")
+    // else throw new Error(data.error)
   } catch (error) {
     console.log(error);
     return false;

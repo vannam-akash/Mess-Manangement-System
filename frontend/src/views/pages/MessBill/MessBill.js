@@ -1,29 +1,13 @@
 import styles from "./MessBill.module.css";
 import { useEffect, useRef } from "react";
-import {
-  FormGroup,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
-  Container,
-  Row,
-  Col,
-  Card,
-  Form,
-  Button,
-  Label,
-} from "reactstrap";
-import classnames from "classnames";
-import MainFooter from "components/Footers/MainFooter";
-import { redirect, useLoaderData } from "react-router-dom";
-import StudentsTable from "components/Tables/EnrolledStudentsTable/StudentsTable";
+import { useLoaderData } from "react-router-dom";
 import MessTable from "components/Tables/MessTable/MessTable";
+import { checkStudAuthLoader, getId } from "auth";
+import { fetchStudentDetails } from "api/student";
 
 const MessBill = () => {
   const mainRef = useRef();
   const student = useLoaderData();
-  console.log(student);
 
   useEffect(() => {
     document.documentElement.scrollTop = 0;
@@ -45,15 +29,15 @@ const MessBill = () => {
         </div>
         <main ref={mainRef}>
           <section className="section section-shaped section-lg">
-            <div className={styles.title}>Your Mess Bill</div>
+            <div className={styles.title}>Mess Bill</div>
             <div className={styles.details}>
 
-            <div className={styles.name}>Name : Aditya Das</div>
-            <div className={styles.roll}>Roll No : 21135003</div>
-            <div className={styles.hostel}>Hostel : Morvi Hostel</div>
+            <div className={styles.name}>Name : {student.fullName}</div>
+            <div className={styles.roll}>Roll No : {student.rollNo} </div>
+            <div className={styles.hostel}>Hostel : {student.hostel} </div>
             </div>
             <div className={styles.studentList}>
-             <MessTable/>
+             <MessTable bill={student.bill}/>
             </div>
           </section>
         </main>
@@ -63,3 +47,10 @@ const MessBill = () => {
 };
 
 export default MessBill;
+
+export async function messBillLoader() {
+  checkStudAuthLoader();
+  const stud = await fetchStudentDetails();
+  return stud;
+
+}

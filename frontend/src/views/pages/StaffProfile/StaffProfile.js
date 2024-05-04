@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 
 // reactstrap components
-import { Card, Row, Col, Container } from "reactstrap";
+import { Card, Container } from "reactstrap";
 
 // core components
 import "./StaffProfile.css";

@@ -43,12 +43,11 @@ const days = [
   "Saturday",
 ];
 
-const MessTable = () => {
+const MessTable = ({bill}) => {
   const calculateTotal = () => {
     let total = 0;
-
-    messBill.map((row) => {
-      total += row[1] * 22.85 + row[2] * 45.71 + (row[3] === 1 ? 1 : 0) * 45.71;
+    bill.mealLogs.map((row) => {
+      total += row[1] * (bill.price.breakfast) + row[2] * (bill.price.lunch) + (row[3] === 1 ? 1 : 0) * (bill.price.dinner);
     });
     return total.toFixed(2);
   };
@@ -61,14 +60,14 @@ const MessTable = () => {
             <tr>
               <th>Sr No.</th>
               <th>Date & Day</th>
-              <th>Breakfast @22.85</th>
-              <th>Lunch @45.71</th>
-              <th>Dinner @45.71</th>
+              <th>Breakfast @{bill.price.breakfast}</th>
+              <th>Lunch @{bill.price.lunch}</th>
+              <th>Dinner @{bill.price.dinner}</th>
               <th>Total</th>
             </tr>
           </thead>
           <tbody>
-            {messBill?.map((row, index) => (
+            {bill.mealLogs?.map((row, index) => (
               <tr key={index}>
                 <td>{`${index + 1}`}</td>
                 {/* Have to write the date in this column as well */}

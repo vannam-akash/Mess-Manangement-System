@@ -4,30 +4,6 @@ const Student = require("../models/Student");
 const Bill = require("../models/Bill");
 const passport = require("passport");
 
-// Get bill from Id
-router.get(
-  "/:billId",
-  passport.authenticate("student-jwt", { session: false }),
-  async (req, res) => {
-    try {
-      const { billId } = req.params;
-
-      const bill = await Bill.findById(billId);
-
-      if (!bill) {
-        return res
-          .status(404)
-          .json({ error: "Mess Bill not found for this student" });
-      }
-
-      return res.status(200).json(bill);
-    } catch (error) {
-      console.error("Error fetching bill for the student", error);
-      return res.status(500).json({ error: "Internal Server Error" });
-    }
-  }
-);
-
 // Get bill for a student from Id
 router.get(
   "/:studentId/getBill",
@@ -110,6 +86,30 @@ router.post(
         .json({ message: "Meal cancelled successfully", billId: bill._id });
     } catch (error) {
       console.error("Error cancelling the meal", error);
+      return res.status(500).json({ error: "Internal Server Error" });
+    }
+  }
+);
+
+// Get bill from Id
+router.get(
+  "/:billId",
+  passport.authenticate("student-jwt", { session: false }),
+  async (req, res) => {
+    try {
+      const { billId } = req.params;
+
+      const bill = await Bill.findById(billId);
+
+      if (!bill) {
+        return res
+          .status(404)
+          .json({ error: "Mess Bill not found for this student" });
+      }
+
+      return res.status(200).json(bill);
+    } catch (error) {
+      console.error("Error fetching bill for the student", error);
       return res.status(500).json({ error: "Internal Server Error" });
     }
   }

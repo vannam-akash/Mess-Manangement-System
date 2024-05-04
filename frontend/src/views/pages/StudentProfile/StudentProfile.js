@@ -5,13 +5,14 @@ import {useLoaderData} from "react-router-dom";
 import {Card, Container} from "reactstrap";
 
 // functions
-import { fetchStudentDetails } from "../../../http";
+import { fetchStudentDetails } from "api/student";
 import Data from "components/Data";
+import { checkStudAuthLoader } from "auth";
 
 function StudentProfile() {
   const mainRef = useRef();
   const student = useLoaderData();
-
+  
   useEffect(() => {
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
@@ -75,7 +76,7 @@ function StudentProfile() {
                   <i className="ni education_hat mr-2" />
                   Email ID - {student.email}
                 </div>
-                <Data>Data here</Data>
+                <Data/>
               </div>
               </div>
             </Card>
@@ -86,10 +87,11 @@ function StudentProfile() {
   );
 }
 
-export async function studentProfileLoader({request:req, params}) {
-  const {id} = params;
-  const stud = await fetchStudentDetails(id);
-  return stud;
-}
 
 export default StudentProfile;
+
+export async function studentProfileLoader() {
+  checkStudAuthLoader();
+  const stud = await fetchStudentDetails();
+  return stud;
+}

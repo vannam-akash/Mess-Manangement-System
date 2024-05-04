@@ -56,7 +56,6 @@ const router = createBrowserRouter([
       },
       {
         path: "students",
-        loader: checkStudAuthLoader,
         children: [
           {
             path: ":id",
@@ -73,7 +72,6 @@ const router = createBrowserRouter([
       },
       {
         path: "staffs",
-        loader: checkStaffAuthLoader,
         children: [
           {
             path: ":id",
@@ -120,7 +118,7 @@ const router = createBrowserRouter([
       {
         path: "mess-bill",
         element: <MessBill />,  
-        // loader: messBillLoader,
+        loader: messBillLoader,
       },
       {
         path: "landing-page",

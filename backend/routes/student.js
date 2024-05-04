@@ -3,7 +3,6 @@ const router = express.Router();
 const Student = require("../models/Student");
 const passport = require("passport");
 
-
 // Get student from Id
 router.get(
   "/:studentId",
@@ -12,8 +11,7 @@ router.get(
     try {
       const { studentId } = req.params;
 
-      const student = await Student.findById(studentId);
-      console.log(student);
+      const student = await Student.findById(studentId).populate("bill").populate("extrasTaken");
 
       if (!student) {
         return res.status(404).json({ error: "Student not found" });
@@ -27,6 +25,5 @@ router.get(
     }
   }
 );
-
 
 module.exports = router;

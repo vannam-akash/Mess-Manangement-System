@@ -6,6 +6,7 @@ const authRoutes = require("./routes/auth");
 const studentRoutes = require("./routes/student");
 const staffRoutes = require("./routes/staff");
 const extraRoutes = require("./routes/extra");
+const messRoutes = require("./routes/mess");
 const billRoutes = require("./routes/bill");
 require("./passport");
 
@@ -25,7 +26,9 @@ app.get("/", (req, res) => {
 app.use("/auth", authRoutes);
 app.use("/students", studentRoutes);
 app.use("/staffs", staffRoutes);
-app.use("/bill", billRoutes);
+app.use("/bills", billRoutes);
+app.use("/messes", messRoutes);
+app.use("/extras", extraRoutes);
 
 // Server
 app.listen(port, () => {

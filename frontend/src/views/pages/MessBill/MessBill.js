@@ -1,4 +1,4 @@
-import styles from "./EnrolledStudents.module.css";
+import styles from "./MessBill.module.css";
 import { useEffect, useRef } from "react";
 import {
   FormGroup,
@@ -45,7 +45,13 @@ const MessBill = () => {
         </div>
         <main ref={mainRef}>
           <section className="section section-shaped section-lg">
-            <div class={styles.title}>Students Enrolled</div>
+            <div className={styles.title}>Your Mess Bill</div>
+            <div className={styles.details}>
+
+            <div className={styles.name}>Name : Aditya Das</div>
+            <div className={styles.roll}>Roll No : 21135003</div>
+            <div className={styles.hostel}>Hostel : Morvi Hostel</div>
+            </div>
             <div className={styles.studentList}>
              <MessTable/>
             </div>

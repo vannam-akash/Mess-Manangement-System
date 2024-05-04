@@ -9,7 +9,7 @@ import {
 } from "reactstrap";
 import StudentsTable from "components/Tables/AssignStudentsTable/StudentsTable";
 import { redirect, useLoaderData } from "react-router-dom";
-import { getUnassignedStuds } from "../../api/staff";
+import { getUnassignedStuds } from "../../../api/staff";
 import { getUserType } from "auth";
 
 const AssignStudents = () => {

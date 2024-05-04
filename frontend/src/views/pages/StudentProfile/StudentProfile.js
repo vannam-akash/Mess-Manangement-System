@@ -5,7 +5,7 @@ import {useLoaderData} from "react-router-dom";
 import {Card, Container} from "reactstrap";
 
 // functions
-import { fetchStudentDetails } from "../../http";
+import { fetchStudentDetails } from "../../../http";
 import Data from "components/Data";
 
 function StudentProfile() {

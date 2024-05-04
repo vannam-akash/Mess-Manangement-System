@@ -28,7 +28,7 @@ router.post(
       student.extrasTaken.push(extra._id);
       await student.save();
 
-      return res.status(200).json(extra);
+      return res.status(200);
     } catch (error) {
       console.error("Error updating extras", error);
       return res.status(500).json({ error: "Internal Server Error" });

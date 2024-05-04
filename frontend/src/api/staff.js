@@ -1,4 +1,4 @@
-import { getToken } from "auth";
+import { getMessId, getToken } from "auth";
 import axios from "axios";
 const url = process.env.REACT_APP_API_URL;
 
@@ -22,7 +22,7 @@ export async function assignStudent(staffId, studId) {
     };
 
     // Make the POST request
-    const res = await axios.post(`${url}/staffs/assign-students`, reqData, {
+    const res = await axios.post(`${url}/messes/assign-student`, reqData, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -58,10 +58,38 @@ export async function fetchStaffDetails(staffId) {
 
 export async function getUnassignedStuds() {
   const token = getToken();
-  const { data } = await axios.get(`${url}/staffs/unassigned-students`, {
+  const { data } = await axios.get(`${url}/messes/unassigned-students`, {
     headers: {
       Authorization: "Bearer " + token,
     },
   });
   return data;
+}
+
+export async function getEnrolledStuds() {
+  const messId = getMessId();
+  const { data: studs } = await axios.get(`${url}/messes/${messId}/students`, {
+    headers: {
+      Authorization: "Bearer " + getToken(),
+    },
+  });
+  return studs;
+}
+
+export async function addExtras(extrasData) {
+  try {
+    const res = await axios.post(`${url}/extras/create`, extrasData, {
+      headers: {
+        Authorization: "Bearer " + getToken(),
+      },
+    });
+    if (res.status === 200) {
+      window.location.reload();
+      return true;
+    }
+    throw new Error("Failed to add extras to student! Please try again...")
+  } catch (error) {
+    console.log(error);
+    return false;
+  }
 }

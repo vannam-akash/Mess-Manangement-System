@@ -60,7 +60,8 @@ const MainNavbar = () => {
             <NavbarBrand className="mr-lg-5" to="/" tag={Link}>
               <img
                 alt="..."
-                src={require("assets/img/brand/argon-react-white.png")}
+                src={require("assets/img/logos/logo_gola_only.png")}
+                style={{height: "70px"}}
               />
             </NavbarBrand>
             <button
@@ -83,7 +84,8 @@ const MainNavbar = () => {
                     <Link to="/">
                       <img
                         alt="..."
-                        src={require("assets/img/brand/argon-react.png")}
+                        src={require("assets/img/logos/Logo rounded white.png")}
+                        style={{height: "70px"}}
                       />
                     </Link>
                   </Col>

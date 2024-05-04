@@ -31,9 +31,12 @@ MenuCard.css
   }
   
   .menu-heading {
-    
+    color: black;
     text-align: center;
-    font-size: 24px;
+    font-size: 3rem;
+    margin-top: 5vh;
+    text-decoration: underline;
+    
   }
   tbody tr:nth-child(Tuesday) {
     background-color: #f9fafb; /* Light gray background for even rows */
@@ -48,4 +51,3 @@ MenuCard.css
     font-size: 2rem;
     padding: 1rem 0;
   }
-  

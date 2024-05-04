@@ -47,15 +47,17 @@ class Hero extends React.Component {
                     <img
                       alt="..."
                       className="img-fluid"
-                      src={require("assets/img/brand/argon-react-white.png")}
-                      style={{ width: "200px" }}
+                      src={require("assets/img/logos/Logo nexawhite.png")}
+                      style={{ maxHeight: "110px", margin:"5vh 0"}}
                     />
                     <p className="lead text-white">
-                      A beautiful Design System for Bootstrap 4. It's Free and
-                      Open Source.
+                    Efficient Billing, Happy Dining.
+                    </p>
+                    <p className="lead text-white">
+                    Seamless, Convenient, and Smart: Managing Messes Made Easy at IIT BHU
                     </p>
                     <div className="btn-wrapper mt-5">
-                      <Button
+                      {/* <Button
                         className="btn-white btn-icon mb-3 mb-sm-0"
                         color="default"
                         href="https://www.creative-tim.com/product/argon-design-system-react?ref=adsr-landing-page"
@@ -80,9 +82,9 @@ class Hero extends React.Component {
                           <span className="text-warning mr-1">Star us</span>
                           on Github
                         </span>
-                      </Button>
+                      </Button> */}
                     </div>
-                    <div className="mt-5">
+                    {/* <div className="mt-5">
                       <small className="text-white font-weight-bold mb-0 mr-2">
                         *proudly coded by
                       </small>
@@ -92,7 +94,7 @@ class Hero extends React.Component {
                         style={{ height: "28px" }}
                         src={require("assets/img/brand/creativetim-white-slim.png")}
                       />
-                    </div>
+                    </div> */}
                   </Col>
                 </Row>
               </div>

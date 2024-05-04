@@ -1,54 +1,65 @@
 /* MessTable.css */
 /* Set maximum width and center the table horizontally */
 .TableContainer {
-  max-width: 60%;
+  max-width: 80%; /* Increase maximum width for better readability */
   margin: 0 auto; /* Center the table horizontally */
-  background-color: #dfe1e4eb;
+  background-color: #f2f2f2; /* Light gray background */
+  border-radius: 8px; /* Add a slight border radius for rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Add a subtle shadow for depth */
+}
+
+/* Remove margin and padding from the table */
+.table {
+  margin: 0;
+  padding: 0;
+  border-collapse: collapse; /* Collapse the borders for a cleaner look */
+  width: 100%; /* Make the table fill its container */
+}
+
+/* Style for table rows */
+tr {
+  font-size: 1rem; /* Set font size for better readability */
 }
 
 /* Style the table headers */
 th {
-  background-color: #4b35a5; /* Blue background */
+  background-color: #4b35a5; /* Dark purple background */
   color: #fff; /* White text */
-}
-
-/* Style the table rows alternately */
-tbody tr:nth-child(even) {
-  background-color: #f9fafb; /* Light gray background for even rows */
+  text-align: center;
+  padding: 12px; /* Add padding to the header cells */
 }
 
 /* Style the table cells */
-td {
-  border-color: #dee2e6; /* Light gray border color */
+.TableContainer td {
+  text-align: center;
+  padding: 0.7rem; /* Add padding to the cells */
+  border-bottom: 1px solid #ddd; /* Add bottom border to separate rows */
 }
 
 /* Style the hover effect */
-tbody tr:hover td:first-child,
-tbody tr:hover td:hover {
-  background-color: #b9c5d8; /* Light blue on hover for the first and selected cells */
+tbody tr:hover {
+  background-color: #d90c0c; /* Lighter background color on hover */
 }
 
-/* MessTable.css */
-
-/* Center the student-info div horizontally */
-.student-info {
-  color: white;
-  font-size: 1.5rem;
-  font-weight: 500;
-  max-width: 60%;
-  margin-left: auto; /* Center horizontally */
-  margin-right: auto;
-  margin-bottom: 50px;
-  text-align: center; /* Center text */
+/* Conditional styling for Yes and No */
+td.yes {
+  background-color: rgb(115, 225, 115); /* Green background for Yes cells */
+  font-weight: bold; /* Make the text bold */
 }
 
-/* Style the student name and roll no. */
-.student-info .student-details {
-  display: inline-block; /* Display in one line */
-  margin-bottom: 10px; /* Add space below */
+td.no {
+  background-color: rgb(225, 115, 115); /* Red background for No cells */
+  font-weight: bold; /* Make the text bold */
+}
+  
+
+/* Style the total row */
+tr.totalRow {
+  background-color: #ffccbc; /* Light orange background for the total row */
+  font-weight: bold; /* Make the text bold */
+  
 }
 
-/* Style the month and year */
-.student-info .date-details {
-  display: block; /* Display on separate lines */
+td.closed{
+  background-color: #a3a1a1;
 }

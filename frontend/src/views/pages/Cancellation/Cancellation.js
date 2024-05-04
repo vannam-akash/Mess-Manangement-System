@@ -26,8 +26,8 @@ const Cancellation = () => {
         </div>
         <main ref={mainRef}>
           <section className="section section-shaped section-lg">
-            <div class={styles.container}>Cancellation form</div>
-            <div class={styles.container1}>
+            <div className={styles.container}>Cancellation form</div>
+            <div className={styles.container1}>
               <Card className="shadow">
                 <Form className={styles.form}>
                   <FormGroup>

@@ -2,9 +2,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 .searchBar{
-    width: 60vw;
+    width: 80vw;
+    margin: 0 auto ;
+}
+.placeholder{
+    font-size: large;
 }
 .studentList{
     /* background-color: orange; */

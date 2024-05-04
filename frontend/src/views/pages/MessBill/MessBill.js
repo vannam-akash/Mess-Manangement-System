@@ -1,8 +1,24 @@
-import React, { useEffect, useRef } from "react";
-import MessTable from "components/Tables/MessTable/MessTable.js";
-import { redirect, useLoaderData} from "react-router-dom";
-import { fetchStudentDetails } from "http";
-import { getId } from "auth";
+import styles from "./MessBill.module.css";
+import { useEffect, useRef } from "react";
+import {
+  FormGroup,
+  Input,
+  InputGroupAddon,
+  InputGroupText,
+  InputGroup,
+  Container,
+  Row,
+  Col,
+  Card,
+  Form,
+  Button,
+  Label,
+} from "reactstrap";
+import classnames from "classnames";
+import MainFooter from "components/Footers/MainFooter";
+import { redirect, useLoaderData } from "react-router-dom";
+import StudentsTable from "components/Tables/EnrolledStudentsTable/StudentsTable";
+import MessTable from "components/Tables/MessTable/MessTable";
 
 const MessBill = () => {
   const mainRef = useRef();
@@ -14,46 +30,36 @@ const MessBill = () => {
     document.scrollingElement.scrollTop = 0;
     mainRef.current.scrollTop = 0;
   }, []);
-
   return (
     <>
       <section className="section section-shaped section-lg">
-          <div className="shape shape-style-1 bg-gradient-primary">
-            <span />
-            <span />
-            <span />
-            <span /> 
-            <span />
-            <span />
-            <span />
-            <span />
-          </div>
-      <main ref={mainRef}>
-        <section className="section section-shaped section-lg">
-          <div >
-            <p className="student-info">
-              <b>Student Name:</b> {student.fullName}
-              <br />
-              <b>Roll No.:</b> {student.rollNo}
-              <br />
-              <b>Month:</b> {"April"}, {"2024"}
-            </p>
-          </div>
-          {!student.messEnrolled && <p className="student-info" >Not enrolled in a mess.</p>}
-          {/* {student.messEnrolled && <MessTable mealTable={student.bill} />} */}
-        </section>
-      </main>
+        <div className="shape shape-style-1 bg-gradient-primary">
+          <span />
+          <span />
+          <span />
+          <span />
+          <span />
+          <span />
+          <span />
+          <span />
+        </div>
+        <main ref={mainRef}>
+          <section className="section section-shaped section-lg">
+            <div className={styles.title}>Your Mess Bill</div>
+            <div className={styles.details}>
+
+            <div className={styles.name}>Name : Aditya Das</div>
+            <div className={styles.roll}>Roll No : 21135003</div>
+            <div className={styles.hostel}>Hostel : Morvi Hostel</div>
+            </div>
+            <div className={styles.studentList}>
+             <MessTable/>
+            </div>
+          </section>
+        </main>
       </section>
     </>
   );
 };
-
-export async function messBillLoader() {
-  const studentId = getId();
-  if(!studentId) return redirect("/students/login");
-  const stud = await fetchStudentDetails(studentId);
-  console.log(stud);
-  return stud;
-}
 
 export default MessBill;

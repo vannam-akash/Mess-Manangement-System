@@ -47,6 +47,7 @@ const AssignStudents = () => {
                   <Input
                     placeholder="Search"
                     type="text"
+                    className={styles.placeholder}
                   />
                 </InputGroup>
               </FormGroup>

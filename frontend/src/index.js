@@ -119,8 +119,8 @@ const router = createBrowserRouter([
       },
       {
         path: "mess-bill",
-        element: <MessBill />,
-        loader: messBillLoader,
+        element: <MessBill />,  
+        // loader: messBillLoader,
       },
       {
         path: "landing-page",

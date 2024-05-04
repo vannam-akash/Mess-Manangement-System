@@ -40,7 +40,7 @@ const StudentsTable = ({ studs }) => {
         )}
       </div>
       <div className={styles.TableContainer}>
-        <Table bordered responsive>
+        <Table bordered responsive className={styles.table}>
           <thead>
             <tr>
               <th>Sr No.</th>

@@ -45,7 +45,7 @@ const ExtrasBill = () => {
         </div>
         <main ref={mainRef}>
           <section className="section section-shaped section-lg">
-            <div class={styles.title}>Extras Bill</div>
+            <div className={styles.title}>Extras Bill</div>
             <div className={styles.studentList}>
               <ExtrasTable/>
             </div>

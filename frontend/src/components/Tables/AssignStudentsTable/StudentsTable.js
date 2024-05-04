@@ -1,14 +1,23 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import styles from "./StudentsTable.module.css";
 
 import { Table, Button, UncontrolledAlert } from "reactstrap";
+import { assignStudent } from "api/staff";
+import { getId } from "auth";
 
 const StudentsTable = ({ studs }) => {
   const [flashMessageVisible, setflashMessageVisible] = useState(false);
+  const added = useRef(false);
+  const msg = useRef("Nothing");
 
-  const handleAssignClick = () => {
+  const handleAssignClick = async (studId) => {
+    const staffId = getId();
+    added.current = await assignStudent(staffId, studId);
+    console.log(added);
+    msg.current = added.current
+      ? "Successfully assigned student to mess"
+      : "Failed to assign student to mess";
     setflashMessageVisible(true);
-
     setTimeout(() => {
       setflashMessageVisible(false);
     }, 5000);
@@ -17,14 +26,16 @@ const StudentsTable = ({ studs }) => {
     <>
       <div className={styles.flashMsg}>
         {flashMessageVisible && (
-          <UncontrolledAlert color="success" fade={false}>
+          <UncontrolledAlert
+            color={added.current ? "success" : "danger"}
+            fade={false}
+          >
             <span className="alert-inner--icon">
-              <i className="ni ni-like-2" />
+              <i
+                className={`ni ni-${added.current ? "like-2" : "support-16"}`}
+              />
             </span>
-            <span className="alert-inner--text ml-1">
-              <strong>Success!</strong> Roll No. <strong>21135003</strong>{" "}
-              assigned to mess!
-            </span>
+            <span className="alert-inner--text ml-1">{msg.current}</span>
           </UncontrolledAlert>
         )}
       </div>
@@ -39,17 +50,17 @@ const StudentsTable = ({ studs }) => {
             </tr>
           </thead>
           <tbody>
-            {studs?.map((row, index) => (
+            {studs?.map((stud, index) => (
               <tr className="" key={index}>
                 <td>{`${index + 1}`}</td>
-                <td>{row.fullName}</td>
-                <td>{row.rollNo}</td>
+                <td>{stud.fullName}</td>
+                <td>{stud.rollNo}</td>
                 <td>
                   <Button
                     className={styles.btn}
                     color="primary"
                     type="button"
-                    onClick={handleAssignClick}
+                    onClick={() => handleAssignClick(stud._id)}
                   >
                     Assign
                   </Button>

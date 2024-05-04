@@ -1,30 +1,18 @@
+/* Cancellation.module.css */
+
+/* Container styles */
 .container {
-  /* display: inline-block; */
-
-  text-align: center;
-  color: white;
-  padding: 20px;
-  background-color: #4c71c9;
-  border: 1px solid #0b0b0b;
-  border-radius: 5px;
-  width: 38%;
-  margin: 0 auto;
-  padding: 20px;
-  min-width: fit-content;
+  padding-top: 50px; /* Adjusted top padding */
 }
 
-.container1 {
-  width: 40%; /* Set the width of the container */
-  margin: 0 auto; /* Center the container horizontally */
-  padding: 20px;
-  height: fit-content;
-  min-width: fit-content;
+/* Card styles */
+.card {
+  background-color: #f8f9fa; /* Light gray background */
+  border: none; /* Removed border */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); /* Added subtle shadow */
 }
 
-.form{
-  padding: 50px;
-}
-.btn{
-  width: 30%;
-  margin: auto;
+/* CardBody styles */
+.cardBody {
+  padding: 2rem; /* Increased padding for better spacing */
 }

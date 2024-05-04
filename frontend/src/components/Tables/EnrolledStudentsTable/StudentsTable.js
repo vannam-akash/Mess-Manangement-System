@@ -25,6 +25,7 @@ const StudentsTable = ({studs}) => {
               <tr key={index}>
                 <td>{`${index + 1}`}</td>
                 <td>{row.fullName}</td>
+                <td>{row.rollNo}</td>
                 <td>{0}</td>
                 <td>{0}</td>
                 <td>{0}</td>

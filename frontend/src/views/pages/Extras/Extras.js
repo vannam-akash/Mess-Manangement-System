@@ -1,9 +1,20 @@
 import React, { useState } from "react";
 import classnames from "classnames";
 import styles from "./Extras.module.css";
-import { FormGroup, Input, Button, Container, Row, Col } from "reactstrap";
+import {
+  Card,
+  CardBody,
+  CardHeader,
+  FormGroup,
+  Input,
+  Button,
+  Container,
+  Row,
+  Col,
+} from "reactstrap";
 import { Form } from "react-router-dom";
 import { addExtras } from "api/staff";
+import ExtrasForm from "components/ExtrasForm/ExtrasForm";
 
 const Extras = () => {
   // You can use state hooks to manage state if needed (e.g., searchFocused).
@@ -24,86 +35,17 @@ const Extras = () => {
         </div>
 
         <section className="section pb-0 section-components">
-          <Container className={`${styles.formBody} mb-5`}>
-            <h3 className="h4 text-success text-white font-weight-bold mb-4">
-              Extras Form
-            </h3>
-            <Form method="POST">
-              <div className="rows">
-                <Row>
-                  <Col lg="4" sm="6">
-                    <FormGroup>
-                      <Input
-                        placeholder="Roll Number"
-                        type="number"
-                        name="rollNo"
-                      />
-                    </FormGroup>
-                    <FormGroup
-                      className={classnames({
-                        focused: searchFocused,
-                      })}
-                    />
-                  </Col>
-                </Row>
-                <Row>
-                  <Col lg="4" sm="6">
-                    <FormGroup>
-                      <Input
-                        placeholder="Dish ordered"
-                        type="text"
-                        name="dish"
-                      />
-                    </FormGroup>
-                    <FormGroup
-                      className={classnames({
-                        focused: searchFocused,
-                      })}
-                    />
-                  </Col>
-                </Row>
-                <Row>
-                  <Col lg="4" sm="6">
-                    <FormGroup>
-                      <Input placeholder="Price" type="number" name="price" />
-                    </FormGroup>
-                    <FormGroup
-                      className={classnames({
-                        focused: searchFocused,
-                      })}
-                    />
-                  </Col>
-                </Row>
-                <Row>
-                  <Col lg="4" sm="6">
-                    <FormGroup>
-                      <Input
-                        placeholder="Quantity ordered"
-                        type="number"
-                        name="quantity"
-                      />
-                    </FormGroup>
-                    <FormGroup
-                      className={classnames({
-                        focused: searchFocused,
-                      })}
-                    />
-                  </Col>
-                </Row>
-                <Row className="justify-content-center">
-                  <Col lg="4" sm="6">
-                    <Button
-                      className="btn-1"
-                      color="white"
-                      outline
-                      type="button"
-                    >
-                      Submit
-                    </Button>
-                  </Col>
-                </Row>
-              </div>
-            </Form>
+          <Container className="pt-lg-7">
+            <Row className="justify-content-center">
+              <Col lg="5">
+                <Card className="bg-secondary shadow border-0">
+                  {/* Extras Form from component */}
+                  <CardBody className="px-lg-5 py-lg-5">
+                    <ExtrasForm />
+                  </CardBody>
+                </Card>
+              </Col>
+            </Row>
           </Container>
         </section>
       </section>

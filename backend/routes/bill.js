@@ -20,11 +20,11 @@ router.get(
           .json({ error: "Mess Bill not found for this student" });
       }
 
-      const { breakfastBill, lunchBill, dinnerBill } = bill.calculateBill();
+      const { breakfastBill, lunchBill, dinnerBill, totalBill } = bill.calculateBill();
 
       return res
         .status(200)
-        .json({ bill, breakfastBill, lunchBill, dinnerBill });
+        .json({ bill, breakfastBill, lunchBill, dinnerBill, totalBill });
     } catch (error) {
       console.error("Error fetching bill", error);
       return res.status(500).json({ error: "Internal Server Error" });

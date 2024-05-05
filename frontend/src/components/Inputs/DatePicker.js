@@ -21,7 +21,7 @@ const Datepicker = () => {
             inputProps={{
               placeholder: "Date of Cancel",
             }}
-            className={"nothing"}
+            name="date"
             timeFormat={false}
           />
         </InputGroup>

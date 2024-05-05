@@ -1,45 +1,26 @@
 import { getMessId, getToken } from "auth";
 import axios from "axios";
+import { json } from "react-router-dom";
 const url = process.env.REACT_APP_API_URL;
 
 export async function assignStudent(staffId, studId) {
-  try {
-    // Get the token and staff details
-    const token = getToken();
-    if (!token) {
-      throw new Error("Failed to retrieve token");
-    }
-
-    const staff = await fetchStaffDetails(staffId);
-    if (!staff) {
-      throw new Error("Please Login as Mess Staff...");
-    }
-
-    // Prepare the request data
-    const reqData = {
-      messId: staff.messEnrolled,
-      studentId: studId,
-    };
-
-    // Make the POST request
-    const res = await axios.post(`${url}/messes/assign-student`, reqData, {
+  const token = getToken();
+  const reqData = {
+    messId: getMessId(),
+    studentId: studId,
+  };
+  const res = await axios
+    .post(`${url}/messes/assign-student`, reqData, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
+    })
+    .catch((error) => {
+      console.log(error);
+      throw json({title: "Failed to assign student to mess.", msg: error.response.data.error},{status: 403});
     });
-
-    // Check if the request was successful
-    if (res.status !== 200) {
-      throw new Error(`Failed to assign student to mess!`);
-    }
-
-    // Return true if the request succeeded
+    console.log(res);
     return true;
-  } catch (error) {
-    // Log the error and return false
-    console.error("An error occurred:", error.message);
-    return false;
-  }
 }
 
 export async function fetchStaffDetails(staffId) {
@@ -68,22 +49,35 @@ export async function getUnassignedStuds() {
 
 export async function getEnrolledStuds() {
   const messId = getMessId();
-  const { data: studs } = await axios.get(`${url}/messes/${messId}/students`, {
-    headers: {
-      Authorization: "Bearer " + getToken(),
-    },
-  });
+  const { data: studs } = await axios
+    .get(`${url}/messes/${messId}/students`, {
+      headers: {
+        Authorization: "Bearer " + getToken(),
+      },
+    })
+    .catch((error) => {
+      if (error.response) {
+        console.log(error.response.data.error);
+        throw json(
+          {
+            title: "Failed loading students assigned to mess.",
+            msg: error.response.data.error,
+          },
+          { status: 400 }
+        );
+      }
+    });
   return studs;
 }
 
 export async function addExtras(extrasData) {
   try {
-    const {data} = await axios.post(`${url}/extras/create`, extrasData, {
+    const { data } = await axios.post(`${url}/extras/create`, extrasData, {
       headers: {
         Authorization: "Bearer " + getToken(),
       },
     });
-    if(!data.error) {
+    if (!data.error) {
       console.log(data.message);
       return true;
     }

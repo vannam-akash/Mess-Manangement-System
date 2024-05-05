@@ -19,6 +19,7 @@ export function delAuth(){
   localStorage.removeItem("token");
   localStorage.removeItem("id");
   localStorage.removeItem("user_type");
+  localStorage.removeItem("mess_id ");
 }
 
 export function getToken() {

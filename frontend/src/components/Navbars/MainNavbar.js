@@ -18,25 +18,21 @@ import {
   Col,
 } from "reactstrap";
 import LogoutButton from "components/Buttons/LogoutButton";
-import { getId } from "auth";
-import { UserTypeContext } from "components/UserTypeContext/UserTypeProvider";
+import { getId, getUserType } from "auth";
+import styles from "./MainNavbar.module.css";
+
 
 const MainNavbar = () => {
   const [collapseClasses, setCollapseClasses] = useState("");
   const [collapseOpen, setCollapseOpen] = useState(false);
   const navigate = useNavigate();
   const id = getId();
-  const { userType: user } = useContext(UserTypeContext);
-  const [userType, setUserType] = useState(user);
+  const userType = useRouteLoaderData("root");
 
   useEffect(() => {
     let headroom = new Headroom(document.getElementById("navbar-main"));
     headroom.init();
   }, []);
-
-  useEffect(()=>{
-    setUserType(user);
-  },[user])
 
   const onExiting = () => {
     setCollapseClasses("collapsing-out");

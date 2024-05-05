@@ -1,18 +1,35 @@
 import MainNavbar from "components/Navbars/MainNavbar.js";
 import MainFooter from "components/Footers/MainFooter.js";
 import React, { useEffect, useRef } from "react";
-import styles from "./Error.module.css"
-import { Link } from "react-router-dom";
-
-
+import styles from "./Error.module.css";
+import { Link, useRouteError } from "react-router-dom";
+import { Badge, Button, Card, CardBody, UncontrolledAlert } from "reactstrap";
 
 const Error = () => {
-	return (
-		<>
+  const error = useRouteError();
+  console.log(error);
+  console.log(error.status);
+  console.log(error.data);
+  console.log(error.data);
 
-		<MainNavbar />
+  let title = "An error occurred!";
+  let msg = "Something went wrong!";
 
-		<section className="section section-shaped section-lg">
+  if (error.status > 200) {
+    title = error.data.title;
+    msg = error.data.msg;
+  }
+
+  if (error.status === 404) {
+    title = "Not found!";
+    msg = "Could not find resource or page.";
+  }
+
+  return (
+    <>
+      <MainNavbar />
+
+      <section className="section section-shaped section-lg">
         <div className="shape shape-style-1 bg-gradient-primary">
           <span />
           <span />
@@ -23,34 +40,33 @@ const Error = () => {
           <span />
           <span />
         </div>
-
-			{/* <section className="flex items-center h-full p-16 bg-gray-900 text-gray-100">
-				<div className="container flex flex-col items-center justify-center px-5 mx-auto my-8">
-					<div className="max-w-md text-center">
-						<h2 className="mb-8 font-extrabold text-9xl text-gray-600">
-							<span className="sr-only">Error</span><h1>404</h1>
-						</h2>
-						<p className="text-2xl font-semibold md:text-3xl">Sorry, we couldn't find this page.</p>
-						<p className="mt-4 mb-8 text-gray-400">But dont worry, you can find plenty of other things on our homepage.</p>
-						<a rel="noopener noreferrer" href="http://localhost:3000/" className="px-8 py-3 font-semibold rounded bg-violet-400 text-gray-900">Back to homepage</a>
-					</div>
-				</div>
-			</section> */}
-
-			<section className={styles.msg}>
-				<h1>ERROR!</h1>
-				<div className={styles.msg}>
-				<p>Sorry, we couldn't find this page.</p>
-				<p>But dont worry, you can find plenty of other things on our homepage.</p>
-				<Link  to="/">Back to homepage</Link>
-				</div>
-			</section>
-
-			
-
-			</section>
-			<MainFooter />
-		</>)
-}
+        <Card className="shadow border-0 w-50 mx-auto mt-5 text-center">
+          <CardBody className="py-5">
+            <div className="icon icon-shape icon-shape-danger rounded-circle mb-4">
+              <i className="ni ni-settings" />
+            </div>
+            <h2 className="text-danger text-uppercase">
+              Oops! An Error Occurred
+            </h2>
+            <h5 className=" mt-3">{title}</h5>
+            <h6 className=" mt-3">{msg}</h6>
+            <Button className="mt-4" color="danger" to="/" tag={Link}>
+              Go to Home
+            </Button>
+          </CardBody>
+        </Card>
+        {/* <section className={styles.sec}>
+          <div>
+            <h3>{title}</h3>
+            <p className={styles.p}>{msg}</p>
+            <Link className={styles.link} to="/">
+              Home
+            </Link>
+          </div>
+        </section> */}
+      </section>
+      <MainFooter />
+    </>
+  );
+};
 export default Error;
-

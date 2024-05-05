@@ -48,7 +48,7 @@ router.post("/login/staff", async (req, res) => {
 
     const staffMemberToReturn = { ...staffMember.toJSON(), token };
     delete staffMemberToReturn.password;
-
+    
     return res.status(200).json(staffMemberToReturn);
   } catch (error) {
     console.error("Error logging in: ", error);

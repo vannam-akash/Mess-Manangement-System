@@ -5,7 +5,7 @@ const staffSchema = new mongoose.Schema({
   messEnrolled: {
     type: mongoose.Types.ObjectId,
     ref: "Mess",
-    // required: true,
+    required: true,
   },
   image: {
     type: String,

@@ -27,7 +27,10 @@ import AssignStudents, {
 } from "views/pages/AssignStudents/AssignStudents";
 import { studentLoginActions } from "components/Forms/StudentLoginForm/StudentLoginForm";
 import { staffLoginActions } from "components/Forms/StaffLoginForm/StaffLoginForm";
-import Cancellation from "views/pages/Cancellation/Cancellation";
+import Cancellation, {
+  cancelActions,
+} from "views/pages/Cancellation/Cancellation";
+// import {cancelActions} from "components/Forms/CancellationForm/CancellationForm";
 import { staffProfileLoader } from "views/pages/StaffProfile/StaffProfile";
 import { checkAuthLoader } from "auth";
 import Extras from "views/pages/Extras/Extras";
@@ -39,7 +42,7 @@ import ExtrasBill, {
   extrasBillLoader,
 } from "views/pages/ExtrasBill/ExtrasBill";
 import { extrasAction } from "components/Forms/ExtrasForm/ExtrasForm";
-import { UserTypeProvider } from "components/UserTypeContext/UserTypeProvider";
+import { logoutActions } from "components/Buttons/LogoutButton";
 
 const root = createRoot(document.getElementById("root"));
 const queryClient = new QueryClient();
@@ -88,36 +91,37 @@ const router = createBrowserRouter([
         action: staffLoginActions,
       },
       {
-        path: "/cancel-meal",
-        element: <Cancellation />,
+        path: "logout",
+        action: logoutActions
       },
       {
-        path: "/assign-students",
+        path: "cancel-meal",
+        element: <Cancellation />,
+        action: cancelActions,
+      },
+      {
+        path: "assign-students",
         element: <AssignStudents />,
         loader: assignStudLoader,
       },
       {
-        path: "/extra-meal",
+        path: "extra-meal",
         element: <Extras />,
         action: extrasAction,
       },
       {
-        path: "/enrolled-students",
+        path: "enrolled-students",
         element: <EnrolledStudents />,
         loader: enrolledStudsLoader,
       },
       {
-        path: "/extra-bill",
+        path: "extra-bill",
         element: <ExtrasBill />,
         loader: extrasBillLoader,
       },
       {
         path: "staffProfile-page",
         element: <StaffProfile />,
-      },
-      {
-        path: "/canceled-meal",
-        element: <Cancellation />,
       },
       {
         path: "mess-bill",
@@ -137,8 +141,6 @@ const router = createBrowserRouter([
 ]);
 root.render(
   <QueryClientProvider client={queryClient}>
-    <UserTypeProvider>
       <RouterProvider router={router} />
-    </UserTypeProvider>
   </QueryClientProvider>
 );

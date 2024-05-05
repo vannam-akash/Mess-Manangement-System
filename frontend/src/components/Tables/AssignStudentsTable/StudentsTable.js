@@ -12,11 +12,7 @@ const StudentsTable = ({ studs }) => {
 
   const handleAssignClick = async (studId) => {
     const staffId = getId();
-    added.current = await assignStudent(staffId, studId);
-    console.log(added);
-    msg.current = added.current
-      ? "Successfully assigned student to mess"
-      : "Failed to assign student to mess";
+    await assignStudent(staffId, studId);
     setflashMessageVisible(true);
     setTimeout(() => {
       setflashMessageVisible(false);
@@ -26,16 +22,11 @@ const StudentsTable = ({ studs }) => {
     <>
       <div className={styles.flashMsg}>
         {flashMessageVisible && (
-          <UncontrolledAlert
-            color={added.current ? "success" : "danger"}
-            fade={false}
-          >
+          <UncontrolledAlert color="success" fade={false}>
             <span className="alert-inner--icon">
-              <i
-                className={`ni ni-${added.current ? "like-2" : "support-16"}`}
-              />
+              <i className="ni ni-like-2" />
             </span>
-            <span className="alert-inner--text ml-1">{msg.current}</span>
+            <span className="alert-inner--text ml-1"><strong>Successfully</strong>, assigned student to mess!</span>
           </UncontrolledAlert>
         )}
       </div>

@@ -3,6 +3,7 @@ const Student = require("./models/Student");
 const Mess = require("./models/Mess");
 const Staff = require("./models/Staff");
 const { studs, messes, staffs } = require("./seeds");
+const { seedFunc } = require("./utils/seedFunc");
 
 const mongoConnect = async () => {
   try {
@@ -11,30 +12,11 @@ const mongoConnect = async () => {
         process.env.MONGO_USERNAME +
         ":" +
         process.env.MONGO_PASSWORD +
-        "@cluster0.kvbyjp9.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
-      {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      }
+        "@cluster0.kvbyjp9.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
     );
-    console.log("Successfully connected to MongoDB!");
 
-    // db.once("open", async () => {
-    //   try {
-    // const db = mongoose.connection;
-    // Insert seed data into the collection
-    // await db.dropDatabase();
-    // await Student.insertMany(studs);
-    // await Mess.insertMany(messes);
-    // await Staff.insertMany(staffs);
-    // console.log("Student, Mess, Staff data inserted successfully");
-    //   } catch (err) {
-    //     console.error("Error seeding student data:", err);
-    //   } finally {
-    //     // Close the connection
-    //     mongoose.disconnect();
-    //   }
-    // });
+    console.log("Successfully connected to MongoDB!");
+    // seedFunc();
   } catch (err) {
     console.error("Error while connecting to MongoDB:", err);
   }

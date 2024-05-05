@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Card, CardBody, Container, Row, Col } from "reactstrap";
 import CancellationForm from "components/Forms/CancellationForm/CancellationForm";
+import { checkStudAuthLoader } from "auth";
+import { cancelMeal } from "api/student";
 
 const Extras = () => {
-  
   return (
     <>
       <section className="section section-shaped section-lg">
@@ -39,3 +40,15 @@ const Extras = () => {
 
 export default Extras;
 
+
+export async function cancelActions({ request: req }) {
+  checkStudAuthLoader();
+  console.log("cancel form");
+  const formData = await req.formData();
+  let cancelData = Object.fromEntries(formData.entries());
+  const [yyyy, mm, dd] = cancelData.date.split('-');
+  cancelData.date = dd+"-"+mm+"-"+yyyy;
+  const data = await cancelMeal(cancelData);
+  console.log(data);
+  return null;
+}

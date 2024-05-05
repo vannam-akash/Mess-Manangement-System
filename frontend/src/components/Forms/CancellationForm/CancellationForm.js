@@ -1,19 +1,15 @@
 import React from "react";
-import {
-  FormGroup,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
-  Button,
-  Label,
-} from "reactstrap";
+import { FormGroup, Input, Button, Label, InputGroup, InputGroupAddon, InputGroupText } from "reactstrap";
 import styles from "./CancellationForm.module.css";
 import { Form } from "react-router-dom";
 import Datepicker from "components/Inputs/DatePicker";
 import { checkStudAuthLoader } from "auth";
 
 const CancellationForm = () => {
+  function handleClick(event) {
+    event.preventDefault();
+    console.log("inside handle click");
+  }
   return (
     <>
       <div className={`${styles.title} text-center mb-4`}>
@@ -21,12 +17,24 @@ const CancellationForm = () => {
       </div>
 
       <Form method="POST">
-        {/* Roll Number of Student */}
-        <FormGroup>
-          <Datepicker />
+
+        <FormGroup className="mb-3">
+          <InputGroup className="input-group-alternative">
+            <InputGroupAddon addonType="prepend">
+              <InputGroupText>
+                <i className="fa fa-phone" />
+              </InputGroupText>
+            </InputGroupAddon>
+            <Input
+              placeholder="Date to Cancel"
+              type="date"
+              name="date"
+              className={styles.input}
+            />
+          </InputGroup>
         </FormGroup>
         <FormGroup>
-          <div className="mb-3">
+          <div className="mt-4 mb-2">
             <small className="text-uppercase font-weight-bold">
               Type of Meal
             </small>
@@ -35,8 +43,9 @@ const CancellationForm = () => {
             <Input
               className="custom-control-input"
               id="customRadio1"
-              name="custom-radio-1"
+              name="mealType"
               type="radio"
+              value="Breakfast"
             />
             <Label className="custom-control-label" htmlFor="customRadio1">
               <span>Breakfast</span>
@@ -46,8 +55,9 @@ const CancellationForm = () => {
             <Input
               className="custom-control-input"
               id="customRadio2"
-              name="custom-radio-1"
+              name="mealType"
               type="radio"
+              value="Lunch"
             />
             <Label className="custom-control-label" htmlFor="customRadio2">
               <span>Lunch</span>
@@ -57,8 +67,9 @@ const CancellationForm = () => {
             <Input
               className="custom-control-input"
               id="customRadio3"
-              name="custom-radio-1"
+              name="mealType"
               type="radio"
+              value="Dinner"
             />
             <Label className="custom-control-label" htmlFor="customRadio3">
               <span>Dinner</span>
@@ -77,12 +88,3 @@ const CancellationForm = () => {
 };
 
 export default CancellationForm;
-
-export async function cancelActions({ request: req }) {
-  checkStudAuthLoader();
-  console.log("cancel form");
-  const formData = await req.formData();
-  const cancelData = Object.fromEntries(formData.entries());
-  console.log(cancelData);
-  return null;
-}

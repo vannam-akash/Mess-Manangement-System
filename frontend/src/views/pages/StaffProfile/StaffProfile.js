@@ -7,10 +7,8 @@ import { Card, Container } from "reactstrap";
 import { fetchStaffDetails } from "api/staff";
 import { useLoaderData } from "react-router-dom";
 import StaffList from "../../../components/Tables/StaffList/StaffList.js"
-import { UserTypeContext } from "components/UserTypeContext/UserTypeProvider";
 
 function StaffProfile() {
-  const { setUserType } = useContext(UserTypeContext);
   const mainRef = useRef();
   const staff = useLoaderData();
 
@@ -18,7 +16,6 @@ function StaffProfile() {
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
     mainRef.current.scrollTop = 0;
-    setUserType("staff");
   });
 
   return (

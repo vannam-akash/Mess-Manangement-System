@@ -20,7 +20,8 @@ router.get(
           .json({ error: "Mess Bill not found for this student" });
       }
 
-      const { breakfastBill, lunchBill, dinnerBill, totalBill } = bill.calculateBill();
+      const { breakfastBill, lunchBill, dinnerBill, totalBill } =
+        bill.calculateBill();
 
       return res
         .status(200)
@@ -40,6 +41,8 @@ router.post(
     try {
       const { studentId } = req.params;
       const { date, mealType } = req.body;
+      if (!date || !mealType)
+        return res.status(404).json({ error: "Invalid cancel data" });
 
       const bill = await Bill.findOne({ student: studentId });
 
@@ -50,7 +53,7 @@ router.post(
       }
 
       // Date on which a meal is to be cancelled
-      const { dd, mm, yyyy } = date.split("-");
+      const [dd, mm, yyyy] = date.split("-");
       const cancelDate = new Date(yyyy, mm - 1, dd);
       const cancelDayOfMonth = cancelDate.getDate();
       const cancelMonth = cancelDate.getMonth();
@@ -60,7 +63,7 @@ router.post(
       const dayOfMonth = today.getDate();
       const hr = today.getHours();
       const month = today.getMonth();
-
+      let meal = null;
       if (mealType === "Breakfast") meal = 1;
       else if (mealType === "Lunch") meal = 2;
       else if (mealType === "Dinner") meal = 3;
@@ -69,6 +72,7 @@ router.post(
       }
 
       if (
+        (cancelMonth !== month) ||
         (dayOfMonth > cancelDayOfMonth && cancelMonth === month) ||
         (dayOfMonth === cancelDayOfMonth - 1 && hr < 22)
       ) {
@@ -80,13 +84,15 @@ router.post(
 
       bill.mealLogs[cancelDayOfMonth - 1][meal] = 0;
       await bill.save();
+      console.log(bill);
+      
 
       return res
         .status(200)
         .json({ message: "Meal cancelled successfully", billId: bill._id });
     } catch (error) {
-      console.error("Error cancelling the meal", error);
-      return res.status(500).json({ error: "Internal Server Error" });
+      console.log(error);
+      return res.status(500).json({ error });
     }
   }
 );

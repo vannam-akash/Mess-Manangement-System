@@ -44,6 +44,7 @@ const days = [
 ];
 
 const MessTable = ({bill}) => {
+  console.log(bill);
   const calculateTotal = () => {
     let total = 0;
     bill.mealLogs.map((row) => {

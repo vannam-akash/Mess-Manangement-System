@@ -1,24 +1,15 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import {
   Button,
   Card,
   CardHeader,
   CardBody,
-  FormGroup,
-  Form,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
   Container,
   Row,
   Col,
 } from "reactstrap";
 import StaffLoginForm from "components/Forms/StaffLoginForm/StaffLoginForm";
-import { redirect, useNavigate } from "react-router-dom";
-import axios from "axios";
-
-const url = process.env.REACT_APP_API_URL;
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const mainRef = useRef();

@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
 import { Card, CardBody, Container, Row, Col } from "reactstrap";
 import CancellationForm from "components/Forms/CancellationForm/CancellationForm";
 import { checkStudAuthLoader } from "auth";
 import { cancelMeal } from "api/student";
+import { toast } from "sonner";
+import { redirect } from "react-router-dom";
 
 const Extras = () => {
   return (
@@ -50,5 +51,6 @@ export async function cancelActions({ request: req }) {
   cancelData.date = dd+"-"+mm+"-"+yyyy;
   const data = await cancelMeal(cancelData);
   console.log(data);
-  return null;
+  toast.success("Successfully cancelled meal.");
+  return redirect("/mess-bill")
 }

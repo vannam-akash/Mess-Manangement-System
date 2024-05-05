@@ -11,6 +11,7 @@ import styles from "../Login.module.css";
 import axios from "axios";
 import { setStaffAuth } from "auth";
 import { Form, json, redirect } from "react-router-dom";
+import { toast } from "sonner";
 const url = process.env.REACT_APP_API_URL;
 
 const StaffLoginForm = () => {
@@ -74,5 +75,6 @@ export async function staffLoginActions({ request: req }) {
   });
   console.log(data);
   setStaffAuth(data.token, data._id, data.messEnrolled);
+  toast.success("Successfully logged in as Staff");
   return redirect(`/staffs/${data._id}`);
 }

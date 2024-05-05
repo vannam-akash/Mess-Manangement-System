@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   FormGroup,
   Input,
@@ -12,8 +12,9 @@ import {Form, redirect} from "react-router-dom";
 
 import styles from "../Login.module.css"
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import {setStudAuth} from "auth";
+import {toast} from "sonner";
+
 
 // import * as yup from 'yup';
 // import { validationSchema } from './validationSchema.js';
@@ -127,5 +128,6 @@ export async function studentLoginActions({ request: req }) {
   } catch (error) {
     console.log(error);
   }
+  toast.success("Successfully logged in as student!");
   return redirect(`/students/${id}`);
 }

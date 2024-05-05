@@ -30,6 +30,10 @@ app.use("/bills", billRoutes);
 app.use("/messes", messRoutes);
 app.use("/extras", extraRoutes);
 
+app.get("*", (req, res) => {
+  return res.status(404).json({error: "No API exists for the requested route on the server"});
+});
+
 // Server
 app.listen(port, () => {
   console.log("Running on Port:" + port);

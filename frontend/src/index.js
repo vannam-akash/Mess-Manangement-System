@@ -1,7 +1,6 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import {
-  Navigate,
   RouterProvider,
   createBrowserRouter,
 } from "react-router-dom";
@@ -43,6 +42,9 @@ import ExtrasBill, {
 } from "views/pages/ExtrasBill/ExtrasBill";
 import { extrasAction } from "components/Forms/ExtrasForm/ExtrasForm";
 import { logoutActions } from "components/Buttons/LogoutButton";
+
+// Sonner Toaster
+import { Toaster } from 'sonner'
 
 const root = createRoot(document.getElementById("root"));
 const queryClient = new QueryClient();
@@ -141,6 +143,7 @@ const router = createBrowserRouter([
 ]);
 root.render(
   <QueryClientProvider client={queryClient}>
+      <Toaster position="bottom-right" richColors/>
       <RouterProvider router={router} />
   </QueryClientProvider>
 );

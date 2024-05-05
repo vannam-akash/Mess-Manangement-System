@@ -1,10 +1,10 @@
 import styles from "./EnrolledStudents.module.css";
 import { useEffect, useRef } from "react";
-import { redirect, useLoaderData } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import StudentsTable from "components/Tables/EnrolledStudentsTable/StudentsTable";
-import { checkStaffAuthLoader, getMessId, getUserType } from "auth";
+import { checkStaffAuthLoader} from "auth";
 import { getEnrolledStuds } from "api/staff";
-import { getExtrasBill, getMessBill, getStudsBill } from "api/student";
+import { getStudsBill } from "api/student";
 
 const EnrolledStudents = () => {
   const mainRef = useRef();

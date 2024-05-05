@@ -1,6 +1,8 @@
 import { Form, redirect } from "react-router-dom";
 import { delAuth } from "auth";
 import { Button } from "reactstrap";
+import {toast} from "sonner";
+
 
 function LogoutButton() {
   return (
@@ -18,5 +20,6 @@ export default LogoutButton;
 
 export async function logoutActions() {
   delAuth();
+  toast.success("Successfully logged out!");
   return redirect("/");
 }

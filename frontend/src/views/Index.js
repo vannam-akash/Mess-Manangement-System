@@ -56,8 +56,9 @@ function Index() {
     <>
       <main ref={mainRef}>
         <Hero />
+        <Datepicker />
         <MenuCard></MenuCard>
-        <Buttons />
+        {/* <Buttons />
         <Inputs />
         <section className="section">
           <Container>
@@ -80,14 +81,13 @@ function Index() {
             <Alerts />
             <Typography />
             <Modals />
-            <Datepicker />
             <TooltipPopover />
-          </Container>
-        </section>
+            </Container>
+          </section> */}
         <Carousel />
-        <Icons />
+        {/* <Icons />
         <Login />
-        <Download />
+        <Download /> */}
       </main>
     </>
   );

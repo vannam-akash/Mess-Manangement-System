@@ -7,7 +7,7 @@ const url = process.env.REACT_APP_API_URL;
 export async function fetchStudentDetails() {
   const studentId = getId();
   try {
-    const { data: stud } = await axios.get(`${url}/students/${studentId}`, {
+    const { data: stud } = await axios.get(`${url}/studentsjkjak/${studentId}`, {
       headers: {
         Authorization: "Bearer " + getToken(),
       },
@@ -19,17 +19,16 @@ export async function fetchStudentDetails() {
 }
 
 export async function getExtras() {
-  const studentId = getId();
-  try {
-    const { data } = await axios.get(`${url}/extras/${studentId}/get/all`, {
-      headers: {
-        Authorization: "Bearer " + getToken(),
-      },
-    });
-    return data;
-  } catch (error) {
-    throw new Error(error.message);
-  }
+  const studId = getId();
+  const { data } = await axios.get(`${url}/extras/${studId}`, {
+    headers: {
+      Authorization: "Bearer " + getToken(),
+    },
+  }).catch((error)=>{
+    console.log(error.response.data);
+    throw json({title: "Failed to get extras.", msg: error.response.data.error},{status: 500});
+  });
+  return data;
 }
 
 export async function cancelMeal(cancelData) {
@@ -42,7 +41,10 @@ export async function cancelMeal(cancelData) {
     })
     .catch((error) => {
       if (error.response) {
-        throw json({title: "Failed to cancel meal..", msg: error.response.data.error}, {status: 400});
+        throw json(
+          { title: "Failed to cancel meal..", msg: error.response.data.error },
+          { status: 400 }
+        );
       }
     });
   console.log(data);
@@ -50,33 +52,40 @@ export async function cancelMeal(cancelData) {
 }
 
 export async function getMessBill(studId) {
-  const {data} = await axios.get(`${url}/bills/${studId}/getBill`,{
-    headers: {
-      Authorization: "Bearer "+getToken()
-    }
-  }).catch((error)=>{
-    console.log(error.response.data);
-  });
+  const { data } = await axios
+    .get(`${url}/bills/${studId}/getBill`, {
+      headers: {
+        Authorization: "Bearer " + getToken(),
+      },
+    })
+    .catch((error) => {
+      console.log(error.response.data);
+    });
   console.log(data);
   return data;
 }
 
-export async function getExtrasBill(studId){
-  const {data} = await axios.get(`${url}/extras/${studId}`, {
-    headers: {
-      Authorization: "Bearer "+getToken()
-    }
-  }).catch((error)=>{
-    console.log(error.response.data);
-  });
+export async function getExtrasBill(studId) {
+  const { data } = await axios
+    .get(`${url}/extras/${studId}`, {
+      headers: {
+        Authorization: "Bearer " + getToken(),
+      },
+    })
+    .catch((error) => {
+      console.log(error.response.data);
+    });
   console.log(data);
   return data;
 }
 
 export async function getStudsBill(studs) {
-  const bills = await Promise.all( studs.map(async (stud)=>{
-    const {totalBill} = await getMessBill(stud._id), {extrasBill} = await getExtrasBill(stud._id);
-    return {totalBill, extrasBill};
-  }));
+  const bills = await Promise.all(
+    studs.map(async (stud) => {
+      const { totalBill } = await getMessBill(stud._id),
+        { extrasBill } = await getExtrasBill(stud._id);
+      return { totalBill, extrasBill };
+    })
+  );
   return bills;
 }

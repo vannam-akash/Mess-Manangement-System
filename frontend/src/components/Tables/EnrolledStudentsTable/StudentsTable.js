@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import  styles from "./StudentsTable.module.css";
 
 import { Table } from "reactstrap";

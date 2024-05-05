@@ -1,9 +1,7 @@
 import MainNavbar from "components/Navbars/MainNavbar.js";
 import MainFooter from "components/Footers/MainFooter.js";
-import React, { useEffect, useRef } from "react";
-import styles from "./Error.module.css";
 import { Link, useRouteError } from "react-router-dom";
-import { Badge, Button, Card, CardBody, UncontrolledAlert } from "reactstrap";
+import { Button, Card, CardBody} from "reactstrap";
 
 const Error = () => {
   const error = useRouteError();

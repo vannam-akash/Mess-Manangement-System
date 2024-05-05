@@ -1,8 +1,8 @@
-import React, { useContext, useEffect, useRef } from "react";
-import {useLoaderData} from "react-router-dom";
+import React, {  useEffect, useRef } from "react";
+import { useLoaderData } from "react-router-dom";
 
 // reactstrap components
-import {Card, Container} from "reactstrap";
+import { Card, Container } from "reactstrap";
 
 // functions
 import { fetchStudentDetails, getExtrasBill, getMessBill } from "api/student";
@@ -11,8 +11,8 @@ import { checkStudAuthLoader, getId } from "auth";
 
 function StudentProfile() {
   const mainRef = useRef();
-  const {stud, messBillData, extrasBillData} = useLoaderData();
-  
+  const { stud, messBillData, extrasBillData } = useLoaderData();
+
   useEffect(() => {
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
@@ -60,24 +60,27 @@ function StudentProfile() {
                 </div>
               </div>
               <div id="card-content" className="mb-5">
-              <div className="text-center mt-5">
-                <h3>
-                  {stud.fullName}
-                </h3>
-                <div className="h6 font-weight-300">
-                  <i className="ni location_pin mr-2" />
-                  {stud.hostel}
+                <div className="text-center mt-5">
+                  <h3>{stud.fullName}</h3>
+                  <div className="h6 font-weight-300">
+                    <i className="ni location_pin mr-2" />
+                    {stud.hostel}
+                  </div>
+                  <div className="h6 mt-4">
+                    <i className="ni business_briefcase-24 mr-2" />
+                    Roll Number - {stud.rollNo}
+                  </div>
+                  <div>
+                    <i className="ni education_hat mr-2" />
+                    Email ID - {stud.email}
+                  </div>
+                  {stud.messEnrolled && (
+                    <Data
+                      messBillData={messBillData}
+                      extrasBillData={extrasBillData}
+                    />
+                  )}
                 </div>
-                <div className="h6 mt-4">
-                  <i className="ni business_briefcase-24 mr-2" />
-                  Roll Number - {stud.rollNo}
-                </div>
-                <div>
-                  <i className="ni education_hat mr-2" />
-                  Email ID - {stud.email}
-                </div>
-                <Data messBillData={messBillData} extrasBillData={extrasBillData}/>
-              </div>
               </div>
             </Card>
           </Container>
@@ -87,14 +90,16 @@ function StudentProfile() {
   );
 }
 
-
 export default StudentProfile;
 
 export async function studentProfileLoader() {
   checkStudAuthLoader();
   const studId = getId();
   const stud = await fetchStudentDetails();
+  if(!stud.messEnrolled) {
+    return {stud};
+  }
   const messBillData = await getMessBill(studId);
   const extrasBillData = await getExtrasBill(studId);
-  return {stud, messBillData, extrasBillData};
+  return { stud, messBillData, extrasBillData };
 }

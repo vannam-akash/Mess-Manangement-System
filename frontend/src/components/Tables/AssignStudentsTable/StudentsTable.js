@@ -1,31 +1,21 @@
-import React, { useRef, useState } from "react";
 import styles from "./StudentsTable.module.css";
 
-import { Table, Button, UncontrolledAlert } from "reactstrap";
+import { Table, Button} from "reactstrap";
 import { assignStudent } from "api/staff";
 import { getId } from "auth";
-import SuccesAlert from "components/Alerts/SuccesAlert";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 const StudentsTable = ({ studs }) => {
-  // const [flashMessageVisible, setflashMessageVisible] = useState(false);
   const navigate = useNavigate();
   const handleAssignClick = async (studId) => {
     const staffId = getId();
     await assignStudent(staffId, studId);
-    navigate("/")
-    // setflashMessageVisible(true);
-    // setTimeout(() => {
-    //   setflashMessageVisible(false);
-    // }, 5000);
+    toast.success("Successfully assigned student to mess");
+    navigate("/enrolled-students");
   };
   return (
     <>
-      {/* <div className={styles.flashMsg}>
-        {flashMessageVisible && (
-          <SuccesAlert msg="Successfully assigned student to mess!"/>
-        )}
-      </div> */}
       <div className={styles.TableContainer}>
         <Table bordered responsive className={styles.table}>
           <thead>

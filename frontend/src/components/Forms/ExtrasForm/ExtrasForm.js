@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import {
   FormGroup,
   Input,
@@ -8,9 +7,10 @@ import {
   Button,
 } from "reactstrap";
 import styles from "./ExtrasForm.module.css";
-import { Form, redirect, useActionData } from "react-router-dom";
+import { Form, useActionData } from "react-router-dom";
 import { checkStaffAuthLoader } from "auth";
 import { addExtras } from "api/staff";
+import { toast } from "sonner";
 
 const ExtrasForm = () => {
   const data = useActionData();
@@ -108,14 +108,7 @@ export async function extrasAction({ request: req }) {
   const formData = await req.formData();
   const extrasData = Object.fromEntries(formData.entries());
   const added = await addExtras(extrasData);
-  if(added) {
-    return {
-      success: true,
-      message: "Successfully added extras."
-    }
-  }
-  return {
-    success: false,
-    message: "Failed to add extras..."
-  };
+  if(added) toast.success("Successfully added Extras");
+  else toast.error("Failed to add extras");
+  return null;
 }

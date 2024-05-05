@@ -3,7 +3,7 @@ import  styles from "./StudentsTable.module.css";
 
 import { Table } from "reactstrap";
 
-const StudentsTable = ({studs}) => {
+const StudentsTable = ({studs, bills}) => {
   return (
     <>
     
@@ -21,14 +21,14 @@ const StudentsTable = ({studs}) => {
             </tr>
           </thead>
           <tbody>
-            {studs?.map((row, index) => (
-              <tr key={index}>
-                <td>{`${index + 1}`}</td>
+            {studs?.map((row, ind) => (
+              <tr key={ind}>
+                <td>{`${ind + 1}`}</td>
                 <td>{row.fullName}</td>
                 <td>{row.rollNo}</td>
-                <td>{0}</td>
-                <td>{0}</td>
-                <td>{0}</td>
+                <td>{bills[ind].extrasBill}</td>
+                <td>{bills[ind].totalBill}</td>
+                <td>{bills[ind].totalBill+bills[ind].extrasBill}</td>
               </tr>
             ))}
           </tbody>

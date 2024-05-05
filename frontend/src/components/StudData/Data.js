@@ -1,16 +1,16 @@
 import React from "react";
 import styles from "./Data.module.css";
 
-const Data = () => {
+const Data = ({messBillData, extrasBillData}) => {
   return (
     <>
       <div className={styles.container}>
         <div className={styles.row1}>
-          <div className={styles.column1}>10</div>
-          <div className={styles.column1}>500</div>
-          <div className={styles.column1}>3000</div>
-          <div className={styles.column1}>3000</div>
-          <div className={styles.column1}>3000</div>
+          <div className={styles.column1}>{messBillData.breakfastBill}</div>
+          <div className={styles.column1}>{messBillData.lunchBill}</div>
+          <div className={styles.column1}>{messBillData.dinnerBill}</div>
+          <div className={styles.column1}>{messBillData.totalBill}</div>
+          <div className={styles.column1}>{extrasBillData.extrasBill}</div>
         </div>
 
         <div className={styles.row2}>

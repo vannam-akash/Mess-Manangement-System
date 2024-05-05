@@ -93,8 +93,10 @@ billSchema.methods.calculateBill = function () {
 
   if (mealLogs[day][0] === 6) lunchBill += mealLogs[day][2] * price.lunch;
 
-  const totalBill = breakfastBill + lunchBill + dinnerBill;
-
+  breakfastBill = parseFloat(breakfastBill.toFixed(2));
+  lunchBill = parseFloat(lunchBill.toFixed(2));
+  dinnerBill = parseFloat(dinnerBill.toFixed(2));
+  const totalBill = parseFloat((breakfastBill + lunchBill + dinnerBill).toFixed(2));
   return {
     breakfastBill,
     lunchBill,

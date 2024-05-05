@@ -4,32 +4,28 @@ import styles from "./StudentsTable.module.css";
 import { Table, Button, UncontrolledAlert } from "reactstrap";
 import { assignStudent } from "api/staff";
 import { getId } from "auth";
+import SuccesAlert from "components/Alerts/SuccesAlert";
+import { useNavigate } from "react-router-dom";
 
 const StudentsTable = ({ studs }) => {
-  const [flashMessageVisible, setflashMessageVisible] = useState(false);
-  const added = useRef(false);
-  const msg = useRef("Nothing");
-
+  // const [flashMessageVisible, setflashMessageVisible] = useState(false);
+  const navigate = useNavigate();
   const handleAssignClick = async (studId) => {
     const staffId = getId();
     await assignStudent(staffId, studId);
-    setflashMessageVisible(true);
-    setTimeout(() => {
-      setflashMessageVisible(false);
-    }, 5000);
+    navigate("/")
+    // setflashMessageVisible(true);
+    // setTimeout(() => {
+    //   setflashMessageVisible(false);
+    // }, 5000);
   };
   return (
     <>
-      <div className={styles.flashMsg}>
+      {/* <div className={styles.flashMsg}>
         {flashMessageVisible && (
-          <UncontrolledAlert color="success" fade={false}>
-            <span className="alert-inner--icon">
-              <i className="ni ni-like-2" />
-            </span>
-            <span className="alert-inner--text ml-1"><strong>Successfully</strong>, assigned student to mess!</span>
-          </UncontrolledAlert>
+          <SuccesAlert msg="Successfully assigned student to mess!"/>
         )}
-      </div>
+      </div> */}
       <div className={styles.TableContainer}>
         <Table bordered responsive className={styles.table}>
           <thead>

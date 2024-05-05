@@ -48,3 +48,35 @@ export async function cancelMeal(cancelData) {
   console.log(data);
   return data;
 }
+
+export async function getMessBill(studId) {
+  const {data} = await axios.get(`${url}/bills/${studId}/getBill`,{
+    headers: {
+      Authorization: "Bearer "+getToken()
+    }
+  }).catch((error)=>{
+    console.log(error.response.data);
+  });
+  console.log(data);
+  return data;
+}
+
+export async function getExtrasBill(studId){
+  const {data} = await axios.get(`${url}/extras/${studId}`, {
+    headers: {
+      Authorization: "Bearer "+getToken()
+    }
+  }).catch((error)=>{
+    console.log(error.response.data);
+  });
+  console.log(data);
+  return data;
+}
+
+export async function getStudsBill(studs) {
+  const bills = await Promise.all( studs.map(async (stud)=>{
+    const {totalBill} = await getMessBill(stud._id), {extrasBill} = await getExtrasBill(stud._id);
+    return {totalBill, extrasBill};
+  }));
+  return bills;
+}

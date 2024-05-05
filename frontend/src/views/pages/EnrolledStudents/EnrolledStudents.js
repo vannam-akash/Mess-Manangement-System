@@ -4,10 +4,11 @@ import { redirect, useLoaderData } from "react-router-dom";
 import StudentsTable from "components/Tables/EnrolledStudentsTable/StudentsTable";
 import { checkStaffAuthLoader, getMessId, getUserType } from "auth";
 import { getEnrolledStuds } from "api/staff";
+import { getExtrasBill, getMessBill, getStudsBill } from "api/student";
 
 const EnrolledStudents = () => {
   const mainRef = useRef();
-  const enrolledStuds = useLoaderData();
+  const {enrolledStuds, bills} = useLoaderData();
 
   useEffect(() => {
     document.documentElement.scrollTop = 0;
@@ -31,7 +32,7 @@ const EnrolledStudents = () => {
           <section className="section section-shaped section-lg">
             <div className={styles.title}>Students Enrolled</div>
             <div className={styles.studentList}>
-             <StudentsTable studs={enrolledStuds}/>
+             <StudentsTable studs={enrolledStuds} bills={bills}/>
             </div>
           </section>
         </main>
@@ -45,5 +46,7 @@ export default EnrolledStudents;
 export async function enrolledStudsLoader() {
   checkStaffAuthLoader();
   const enrolledStuds = await getEnrolledStuds();
-  return enrolledStuds;
+  const bills = await getStudsBill(enrolledStuds);
+  console.log(bills);
+  return {enrolledStuds, bills};
 }

@@ -38,7 +38,7 @@ router.post(
 
 // Get all extras and extrasBill of a student
 router.get(
-  "/:studentId/get/all",
+  "/:studentId",
   passport.authenticate("student-jwt", { session: false }),
   async (req, res) => {
     try {
@@ -51,14 +51,15 @@ router.get(
       }
 
       const extrasTaken = student.extrasTaken;
-      if (extrasTaken.length === 0) {
-        return res.status(400).json({ error: "No extras taken" });
-      }
-      extrasBill = 0;
+      // if (extrasTaken.length === 0) {
+      //   return res.status(400).json({ error: "No extras taken" });
+      // }
+      let extrasBill = 0;
 
       extrasTaken.forEach((extra) => {
         extrasBill += extra.price * extra.quantity;
       });
+      extrasBill = parseFloat(extrasBill.toFixed(2));
 
       return res.status(200).json({extrasTaken, extrasBill});
     } catch (error) {

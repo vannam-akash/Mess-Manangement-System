@@ -7,7 +7,7 @@ const url = process.env.REACT_APP_API_URL;
 export async function fetchStudentDetails() {
   const studentId = getId();
   try {
-    const { data: stud } = await axios.get(`${url}/studentsjkjak/${studentId}`, {
+    const { data: stud } = await axios.get(`${url}/students/${studentId}`, {
       headers: {
         Authorization: "Bearer " + getToken(),
       },

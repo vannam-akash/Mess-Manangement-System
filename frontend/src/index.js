@@ -1,9 +1,6 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import {
-  RouterProvider,
-  createBrowserRouter,
-} from "react-router-dom";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import "assets/vendor/nucleo/css/nucleo.css";
@@ -28,6 +25,7 @@ import { studentLoginActions } from "components/Forms/StudentLoginForm/StudentLo
 import { staffLoginActions } from "components/Forms/StaffLoginForm/StaffLoginForm";
 import Cancellation, {
   cancelActions,
+  cancellationLoader,
 } from "views/pages/Cancellation/Cancellation";
 // import {cancelActions} from "components/Forms/CancellationForm/CancellationForm";
 import { staffProfileLoader } from "views/pages/StaffProfile/StaffProfile";
@@ -44,7 +42,7 @@ import { extrasAction } from "components/Forms/ExtrasForm/ExtrasForm";
 import { logoutActions } from "components/Buttons/LogoutButton";
 
 // Sonner Toaster
-import { Toaster } from 'sonner'
+import { Toaster } from "sonner";
 
 const root = createRoot(document.getElementById("root"));
 const queryClient = new QueryClient();
@@ -94,12 +92,13 @@ const router = createBrowserRouter([
       },
       {
         path: "logout",
-        action: logoutActions
+        action: logoutActions,
       },
       {
         path: "cancel-meal",
         element: <Cancellation />,
         action: cancelActions,
+        loader: cancellationLoader,
       },
       {
         path: "assign-students",
@@ -143,7 +142,7 @@ const router = createBrowserRouter([
 ]);
 root.render(
   <QueryClientProvider client={queryClient}>
-      <Toaster position="bottom-right" richColors/>
-      <RouterProvider router={router} />
+    <Toaster position="bottom-right" richColors />
+    <RouterProvider router={router} />
   </QueryClientProvider>
 );

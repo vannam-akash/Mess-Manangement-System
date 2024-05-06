@@ -1,7 +1,4 @@
-import React from "react";
-
-// reactstrap components
-import { Button, Container, Row, Col, UncontrolledCarousel } from "reactstrap";
+import { Container, Row, Col, UncontrolledCarousel } from "reactstrap";
 
 const items = [
   {
@@ -39,11 +36,12 @@ function Carousel() {
         <Container className="py-md">
           <Row className="justify-content-between align-items-center">
             <Col className="mb-5 mb-lg-0" lg="5">
-              <h1 className="text-white font-weight-light">
-                Mess Management
-              </h1>
+              <h1 className="text-white font-weight-light">Mess Management</h1>
               <p className="lead text-white mt-4">
-              Discover our innovative Mess Management System for IIT BHU Varanasi. We modernize mess services, streamline billing, and prioritize user convenience. Experience efficient meal management tailored for our vibrant community's dynamic needs
+                Discover our innovative Mess Management System for IIT BHU
+                Varanasi. We modernize mess services, streamline billing, and
+                prioritize user convenience. Experience efficient meal
+                management tailored for our vibrant community's dynamic needs
               </p>
             </Col>
             <Col className="mb-lg-auto" lg="6">

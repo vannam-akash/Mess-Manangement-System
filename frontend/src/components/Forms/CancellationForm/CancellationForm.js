@@ -3,13 +3,8 @@ import { FormGroup, Input, Button, Label, InputGroup, InputGroupAddon, InputGrou
 import styles from "./CancellationForm.module.css";
 import { Form } from "react-router-dom";
 import Datepicker from "components/Inputs/DatePicker";
-import { checkStudAuthLoader } from "auth";
 
 const CancellationForm = () => {
-  function handleClick(event) {
-    event.preventDefault();
-    console.log("inside handle click");
-  }
   return (
     <>
       <div className={`${styles.title} text-center mb-4`}>

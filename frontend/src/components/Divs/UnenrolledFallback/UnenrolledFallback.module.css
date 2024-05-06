@@ -1,0 +1,11 @@
+.fallback {
+  padding-top: 5rem;
+  color: white;
+  text-align: center;
+  margin: auto;
+  width: 80%;
+  padding-bottom: 2rem;
+  font-size: xx-large;
+  font-weight: 800;
+  min-height: 80vh;
+}

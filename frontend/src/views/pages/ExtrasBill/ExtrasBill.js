@@ -4,6 +4,7 @@ import { useLoaderData } from "react-router-dom";
 import ExtrasTable from "components/Tables/ExtrasTable/ExtrasTable";
 import { checkStudAuthLoader } from "auth";
 import { getExtras } from "api/student";
+import UnenrolledFallback from "components/Divs/UnenrolledFallback/UnenrolledFallback";
 
 const ExtrasBill = () => {
   const mainRef = useRef();
@@ -28,12 +29,15 @@ const ExtrasBill = () => {
           <span />
         </div>
         <main ref={mainRef}>
-          <section className="section section-shaped section-lg">
-            <div className={styles.title}>Extras Bill</div>
-            <div className={styles.studentList}>
-              <ExtrasTable extras={extras}/>
-            </div>
-          </section>
+          {!extras.length && <UnenrolledFallback />}
+          {extras.length && (
+            <section className="section section-shaped section-lg">
+              <div className={styles.title}>Extras Bill</div>
+              <div className={styles.studentList}>
+                <ExtrasTable extras={extras} />
+              </div>
+            </section>
+          )}
         </main>
       </section>
     </>
@@ -44,6 +48,6 @@ export default ExtrasBill;
 
 export async function extrasBillLoader() {
   checkStudAuthLoader();
-  const {extrasTaken} = await getExtras();
+  const { extrasTaken } = await getExtras();
   return extrasTaken;
 }

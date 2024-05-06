@@ -1,8 +1,5 @@
-import React, { useEffect, useState } from "react";
 import { Card, CardBody, Container, Row, Col } from "reactstrap";
 import ExtrasForm from "components/Forms/ExtrasForm/ExtrasForm";
-import { checkStaffAuthLoader } from "auth";
-import { addExtras } from "api/staff";
 
 const Extras = () => {
   

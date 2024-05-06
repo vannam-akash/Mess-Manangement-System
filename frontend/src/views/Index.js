@@ -56,7 +56,7 @@ function Index() {
     <>
       <main ref={mainRef}>
         <Hero />
-        <Datepicker />
+        {/* <Datepicker /> */}
         <MenuCard></MenuCard>
         {/* <Buttons />
         <Inputs />

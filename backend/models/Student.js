@@ -29,7 +29,7 @@ const studentSchema = new mongoose.Schema({
     type: mongoose.Types.ObjectId,
     ref: "Mess",
     default: null,
-    // required: true,
+    required: true,
   },
   extrasTaken: [
     {
@@ -41,6 +41,8 @@ const studentSchema = new mongoose.Schema({
   bill: {
     type: mongoose.Types.ObjectId,
     ref: "Bill",
+    default: null,
+    required: true,
   },
   userType: {
     // Required for passport authentication purposes

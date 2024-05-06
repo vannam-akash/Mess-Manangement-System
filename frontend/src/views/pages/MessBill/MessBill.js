@@ -2,8 +2,9 @@ import styles from "./MessBill.module.css";
 import { useEffect, useRef } from "react";
 import { useLoaderData } from "react-router-dom";
 import MessTable from "components/Tables/MessTable/MessTable";
-import { checkStudAuthLoader, getId } from "auth";
+import { checkStudAuthLoader } from "auth";
 import { fetchStudentDetails } from "api/student";
+import UnenrolledFallback from "components/Divs/UnenrolledFallback/UnenrolledFallback";
 
 const MessBill = () => {
   const mainRef = useRef();
@@ -28,18 +29,20 @@ const MessBill = () => {
           <span />
         </div>
         <main ref={mainRef}>
-          <section className="section section-shaped section-lg">
-            <div className={styles.title}>Mess Bill</div>
-            <div className={styles.details}>
-
-            <div className={styles.name}>Name : {student.fullName}</div>
-            <div className={styles.roll}>Roll No : {student.rollNo} </div>
-            <div className={styles.hostel}>Hostel : {student.hostel} </div>
-            </div>
-            <div className={styles.studentList}>
-             <MessTable bill={student.bill}/>
-            </div>
-          </section>
+          {!student.messEnrolled && <UnenrolledFallback />}
+          {student.messEnrolled && (
+            <section className="section section-shaped section-lg">
+              <div className={styles.title}>Mess Bill</div>
+              <div className={styles.details}>
+                <div className={styles.name}>Name : {student.fullName}</div>
+                <div className={styles.roll}>Roll No : {student.rollNo} </div>
+                <div className={styles.hostel}>Hostel : {student.hostel} </div>
+              </div>
+              <div className={styles.studentList}>
+                <MessTable bill={student.bill} />
+              </div>
+            </section>
+          )}
         </main>
       </section>
     </>
@@ -51,6 +54,6 @@ export default MessBill;
 export async function messBillLoader() {
   checkStudAuthLoader();
   const stud = await fetchStudentDetails();
+  console.log(stud);
   return stud;
-
 }

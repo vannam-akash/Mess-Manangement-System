@@ -1,6 +1,6 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { Navigate, RouterProvider, createBrowserRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import "assets/vendor/nucleo/css/nucleo.css";
@@ -137,6 +137,14 @@ const router = createBrowserRouter([
         path: "register-page",
         element: <Register />,
       },
+      {
+        path: "argon-design-system-react",
+        element: <Navigate to="/students/login" replace/>
+      },
+      // {
+      //   path: "*",
+      //   element: <Error/>
+      // }
     ],
   },
 ]);

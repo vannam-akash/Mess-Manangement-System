@@ -55,7 +55,7 @@ function StudentProfile() {
                   <img
                     alt="..."
                     className="rounded-circle"
-                    src={require("assets/img/theme/team-4-800x800.jpg")}
+                    src={require("assets/img/stud/stud1.jpg")}
                   />
                 </div>
               </div>

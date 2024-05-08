@@ -1,5 +1,13 @@
 import React from "react";
-import { FormGroup, Input, Button, Label, InputGroup, InputGroupAddon, InputGroupText } from "reactstrap";
+import {
+  FormGroup,
+  Input,
+  Button,
+  Label,
+  InputGroup,
+  InputGroupAddon,
+  InputGroupText,
+} from "reactstrap";
 import styles from "./CancellationForm.module.css";
 import { Form } from "react-router-dom";
 import Datepicker from "components/Inputs/DatePicker";
@@ -12,16 +20,20 @@ const CancellationForm = () => {
       </div>
 
       <Form method="POST">
-
         <FormGroup className="mb-3">
+          <div className="mt-4 mb-2">
+            <small className="text-uppercase font-weight-bold">
+              Date to Cancel
+            </small>
+          </div>
           <InputGroup className="input-group-alternative">
             <InputGroupAddon addonType="prepend">
               <InputGroupText>
-                <i className="fa fa-phone" />
+                {/* <i className="fa fa-phone" /> */}
               </InputGroupText>
             </InputGroupAddon>
             <Input
-              placeholder="Date to Cancel"
+              // placeholder="Date to Cancel"
               type="date"
               name="date"
               className={styles.input}

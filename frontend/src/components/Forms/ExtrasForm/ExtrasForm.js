@@ -32,7 +32,7 @@ const ExtrasForm = () => {
               </InputGroupText>
             </InputGroupAddon>
             <Input
-              placeholder="Roll Number"
+              placeholder="Student Roll Number"
               type="number"
               name="rollNo"
               className={styles.input}
@@ -45,7 +45,7 @@ const ExtrasForm = () => {
           <InputGroup className="input-group-alternative">
             <InputGroupAddon addonType="prepend">
               <InputGroupText>
-                <i className="fa fa-phone" />
+                <i className="fa fa-cutlery" />
               </InputGroupText>
             </InputGroupAddon>
             <Input
@@ -62,7 +62,7 @@ const ExtrasForm = () => {
           <InputGroup className="input-group-alternative">
             <InputGroupAddon addonType="prepend">
               <InputGroupText>
-                <i className="fa fa-address-card" />
+                <i className="fa fa-bar-chart" />
               </InputGroupText>
             </InputGroupAddon>
             <Input
@@ -79,7 +79,7 @@ const ExtrasForm = () => {
           <InputGroup className="input-group-alternative">
             <InputGroupAddon addonType="prepend">
               <InputGroupText>
-                <i className="fa fa-address-card" />
+                <i className="fa fa-inr" />
               </InputGroupText>
             </InputGroupAddon>
             <Input
